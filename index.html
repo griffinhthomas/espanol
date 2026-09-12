@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Español para la familia</title>
+<meta name="description" content="Catorce días de español para la mesa de la familia de Sofía.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FAF8F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1A1714" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Español">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+</head>
+<body>
+<link rel="stylesheet" href="fonts.css">
+<style>
+:root{
+  --paper:#FAF8F5; --paper-2:#F2EEE8; --ink:#1F1B18; --ink-2:#5C544D; --ink-3:#938A80;
+  --clay:#C4643C; --clay-deep:#9E4B29; --clay-wash:#F6E6DE; --edge:#E3DCD3;
+  --good:#4A7C59; --warn:#B8863B; --bad:#A6402F;
+  --serif:"Fraunces",ui-serif,Georgia,serif;
+  --sans:"Karla",ui-sans-serif,system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#1A1714; --paper-2:#242019; --ink:#F2EEE8; --ink-2:#A89E93; --ink-3:#6B625A;
+    --clay:#D97F58; --clay-deep:#C4643C; --clay-wash:#33241D; --edge:#352F28;
+    --good:#6FA37D; --warn:#D4A55C; --bad:#C96A56;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#1A1714; --paper-2:#242019; --ink:#F2EEE8; --ink-2:#A89E93; --ink-3:#6B625A;
+  --clay:#D97F58; --clay-deep:#C4643C; --clay-wash:#33241D; --edge:#352F28;
+  --good:#6FA37D; --warn:#D4A55C; --bad:#C96A56;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:17px; line-height:1.6;
+  margin:0;
+  padding:env(safe-area-inset-top) calc(16px + env(safe-area-inset-right)) calc(96px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
+  -webkit-text-size-adjust:100%; overscroll-behavior-y:contain;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:640px;margin:0 auto}
+h1,h2,h3{font-family:var(--serif);letter-spacing:-0.015em;line-height:1.15;margin:0;text-wrap:balance}
+button{font-family:inherit;font-size:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:focus-visible{outline:2px solid var(--clay);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* header */
+header{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:32px 0 24px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-size:25px}
+.brand small{display:block;font-family:var(--sans);font-size:13px;color:var(--ink-2);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+.streak{font-family:var(--mono);font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.streak b{color:var(--clay);font-size:20px}
+
+/* nav */
+nav{display:flex;gap:4px;background:var(--paper-2);border:1px solid var(--edge);border-radius:999px;padding:4px;margin-bottom:32px}
+nav button{flex:1;border:0;background:transparent;color:var(--ink-2);padding:10px 8px;border-radius:999px;font-weight:500;font-size:15px;transition:color .15s ease-out,background .15s ease-out;min-height:44px}
+nav button[aria-selected="true"]{background:var(--paper);color:var(--ink);box-shadow:0 1px 2px rgba(31,27,24,.06)}
+
+/* cards */
+.card{background:var(--paper-2);border:1px solid var(--edge);border-radius:12px;padding:24px}
+.stack{display:flex;flex-direction:column;gap:16px}
+.stack-lg{display:flex;flex-direction:column;gap:32px}
+.eyebrow{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+.muted{color:var(--ink-2)}
+.small{font-size:14px}
+
+/* today */
+.today{display:flex;flex-direction:column;gap:24px}
+.daynum{font-family:var(--mono);font-size:13px;color:var(--clay);letter-spacing:.08em;text-transform:uppercase}
+.dots{display:flex;flex-wrap:wrap;gap:8px}
+.dot{width:28px;height:28px;padding:0;cursor:pointer;border-radius:999px;border:1px solid var(--edge);background:var(--paper);color:var(--ink-3);font-family:var(--mono);font-size:11px;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.dot.done{background:var(--clay);border-color:var(--clay);color:#FAF8F5}
+.dot.now{border-color:var(--clay);color:var(--clay);border-width:2px}
+.btn{background:var(--clay);color:#FAF8F5;border:0;border-radius:8px;padding:14px 24px;font-weight:700;min-height:44px;transition:background .15s ease-out}
+.btn:hover{background:var(--clay-deep)}
+.btn-quiet{background:transparent;color:var(--clay);border:1px solid var(--edge)}
+.btn-quiet:hover{background:var(--clay-wash)}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap}
+
+/* stepper */
+.steps{display:flex;gap:8px;margin-bottom:32px}
+.step{flex:1;height:3px;border-radius:999px;background:var(--edge)}
+.step.on{background:var(--clay)}
+.stagelabel{display:flex;align-items:baseline;gap:12px;margin-bottom:24px}
+.stagelabel .n{font-family:var(--mono);font-size:12px;color:var(--clay)}
+
+/* vocab */
+.word{border-bottom:1px solid var(--edge);padding-bottom:16px}
+.word:last-child{border-bottom:0;padding-bottom:0}
+.word .es{font-family:var(--serif);font-size:20px}
+.word .en{color:var(--ink-2);font-size:15px;margin-top:2px}
+.word .ex{margin-top:10px;font-size:15px;padding-left:12px;border-left:2px solid var(--clay-wash)}
+.word .ex i{display:block;color:var(--ink-3);font-style:normal;font-size:14px}
+
+/* grammar */
+.note{background:var(--clay-wash);border-radius:8px;padding:16px;font-size:16px}
+.note b{font-weight:700}
+
+/* convo */
+.turn{display:flex;flex-direction:column;gap:12px}
+.said{background:var(--paper-2);border:1px solid var(--edge);border-radius:12px 12px 12px 4px;padding:16px;align-self:flex-start;max-width:92%}
+.said .who{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay);font-weight:700;margin-bottom:6px}
+.said .es{font-size:17px}
+.said .en{font-size:14px;color:var(--ink-3);margin-top:6px;display:none}
+.said.show .en{display:block}
+.task{font-size:15px;color:var(--ink-2);padding-left:12px;border-left:2px solid var(--edge)}
+input[type=text],textarea{
+  width:100%;font-family:var(--sans);font-size:17px;color:var(--ink);
+  background:var(--paper);border:1px solid var(--edge);border-radius:8px;padding:12px;min-height:48px;resize:vertical;
+}
+input::placeholder,textarea::placeholder{color:var(--ink-3)}
+.verdict{border-radius:8px;padding:16px;font-size:16px}
+.verdict.ok{background:var(--clay-wash);border-left:3px solid var(--good)}
+.verdict.close{background:var(--clay-wash);border-left:3px solid var(--warn)}
+.verdict.miss{background:var(--clay-wash);border-left:3px solid var(--bad)}
+.verdict .model{font-family:var(--serif);font-size:20px;margin:8px 0}
+.verdict .why{font-size:15px;color:var(--ink-2)}
+.tag{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+.tag.ok{color:var(--good)} .tag.close{color:var(--warn)} .tag.miss{color:var(--bad)}
+.linkish{background:none;border:0;color:var(--clay);text-decoration:underline;text-underline-offset:3px;padding:8px 0;font-size:14px}
+
+/* lists */
+.row{display:flex;justify-content:space-between;gap:16px;align-items:baseline;border-bottom:1px solid var(--edge);padding:14px 0}
+.row:last-child{border-bottom:0}
+.row .l .es{font-family:var(--serif);font-size:18px}
+.row .l .en{font-size:14px;color:var(--ink-2)}
+.row .r{font-family:var(--mono);font-size:12px;color:var(--ink-3);white-space:nowrap;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;border:1px solid var(--edge);border-radius:999px;padding:2px 10px;font-size:12px;color:var(--ink-2);background:var(--paper)}
+.empty{color:var(--ink-3);font-size:16px;padding:32px 0;text-align:center}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+hr{border:0;border-top:1px solid var(--edge);margin:32px 0}
+</style>
+<div class="wrap">
+  <header>
+    <div class="brand">Español para la familia<small id="sub">Diez minutos al día</small></div>
+    <div class="streak" id="streak"></div>
+  </header>
+  <nav role="tablist">
+    <button role="tab" id="t-hoy" aria-selected="true">Hoy</button>
+    <button role="tab" id="t-pal" aria-selected="false">Palabras</button>
+    <button role="tab" id="t-err" aria-selected="false">Mis errores</button>
+  </nav>
+  <main id="app"></main>
+</div>
+<script>
+/* Words added from live lessons in chat. Griffin: I append here after we talk. */
+const FROM_CHAT = [];
+
+const CURRICULUM = [
+{day:1,title:"Llegando a la casa",focus:"tú vs. usted",
+ vocab:[
+  {es:"Mucho gusto, señora.",en:"Nice to meet you, ma'am.",ex:"Mucho gusto, señora. Sofía me habla mucho de usted.",exEn:"Nice to meet you. Sofía talks about you a lot."},
+  {es:"Gracias por invitarme.",en:"Thanks for having me.",ex:"Gracias por invitarme, de verdad.",exEn:"Thanks for having me, really."},
+  {es:"Qué linda su casa.",en:"Your home is lovely.",ex:"Qué linda su casa, se siente muy acogedora.",exEn:"Your home is lovely, it feels really cozy."},
+  {es:"¿Cómo le va?",en:"How's it going? (usted)",ex:"Hola, don Miguel, ¿cómo le va?",exEn:"Hi, Miguel, how's it going?"},
+  {es:"Todavía estoy aprendiendo.",en:"I'm still learning.",ex:"Perdón, todavía estoy aprendiendo, pero le entiendo bastante.",exEn:"Sorry, I'm still learning, but I understand you pretty well."}],
+ grammar:{title:"Usted until they tell you otherwise",
+  note:"With Sofía's parents and grandparents, start with <b>usted</b>. It costs you nothing and sounds respectful. The verb takes the same ending as él/ella: tú <i>tienes</i> → usted <i>tiene</i>, tú <i>estás</i> → usted <i>está</i>. When someone says <b>«tutéame»</b> or just starts using tú with you, switch. With siblings and cousins your age, go straight to tú.",
+  drills:[
+   {q:"You have a beautiful family. (to Sofía's mom)",a:"Usted tiene una familia muy linda",alt:["tiene una familia muy linda","usted tiene una familia hermosa"],why:"Tiene, not tienes — usted borrows the él/ella ending."},
+   {q:"How are you? (to her grandfather)",a:"¿Cómo está usted?",alt:["como esta usted","como esta","como le va"],why:"Está with usted. ¿Cómo estás? would be tú."}]},
+ convo:[
+  {who:"Rosa",line:"¡Pasa, pasa! Tú debes ser Griffin. Mucho gusto.",lineEn:"Come in! You must be Griffin. Nice to meet you.",task:"Say nice to meet you back, and use señora.",model:"Mucho gusto, señora. Gracias por invitarme.",accepts:["mucho gusto senora","encantado senora","mucho gusto senora rosa"],why:"«Mucho gusto» is the safe universal. «Encantado» works too — you'd say encantado, Sofía would say encantada."},
+  {who:"Rosa",line:"Ay, no me digas señora, dime Rosa. ¿Cómo estuvo el viaje?",lineEn:"Don't call me ma'am, call me Rosa. How was the trip?",task:"Say the trip was long but fine.",model:"Fue largo, pero todo bien.",accepts:["fue largo pero bien","largo pero bien","estuvo largo pero todo bien"],why:"«Todo bien» is the everyday way to say it went fine. Don't reach for «estuvo bueno» — that's for food and movies."},
+  {who:"Miguel",line:"Griffin, ¿verdad? Yo soy Miguel, el papá de Sofía.",lineEn:"Griffin, right? I'm Miguel, Sofía's dad.",task:"Greet him and tell him his home is lovely.",model:"Mucho gusto, Miguel. Qué linda su casa.",accepts:["mucho gusto miguel que linda su casa","que linda su casa","mucho gusto que linda su casa"],why:"«Su casa» with usted. «Tu casa» would be too familiar on minute one with the dad."},
+  {who:"Miguel",line:"¿Y tú hablas español o Sofía te está engañando?",lineEn:"So do you speak Spanish, or is Sofía lying to me?",task:"Say you're still learning but you understand a lot.",model:"Todavía estoy aprendiendo, pero entiendo bastante.",accepts:["todavia estoy aprendiendo pero entiendo bastante","estoy aprendiendo pero entiendo mucho","todavia estoy aprendiendo"],why:"Say this early and out loud. It buys you patience for the whole night."},
+  {who:"Rosa",line:"Se te entiende muy bien. Siéntate, ya casi está la comida.",lineEn:"You're easy to understand. Sit down, food's almost ready.",task:"Thank her and ask if you can help with anything.",model:"Gracias. ¿Le ayudo con algo?",accepts:["gracias le ayudo con algo","gracias puedo ayudar","gracias necesita ayuda","gracias la ayudo con algo"],why:"Offering help is the single highest-value sentence you can say in someone's mother's kitchen."}]},
+
+{day:2,title:"En la mesa",focus:"ser vs. estar con comida",
+ vocab:[
+  {es:"Está riquísimo.",en:"This is delicious.",ex:"Está riquísimo, ¿qué lleva?",exEn:"This is delicious, what's in it?"},
+  {es:"¿Me pasas la sal?",en:"Can you pass the salt?",ex:"¿Me pasas la sal, por favor?",exEn:"Can you pass the salt, please?"},
+  {es:"Quedé lleno.",en:"I'm full.",ex:"Quedé lleno, de verdad no puedo más.",exEn:"I'm full, I really can't do any more."},
+  {es:"¿Qué lleva?",en:"What's in it?",ex:"Está buenísimo. ¿Qué lleva?",exEn:"It's so good. What's in it?"},
+  {es:"Sírvame poquito.",en:"Give me just a little.",ex:"Bueno, pero sírvame poquito.",exEn:"Okay, but just a little."}],
+ grammar:{title:"Es rico vs. está rico",
+  note:"<b>Ser</b> = what a thing is, always. <b>Estar</b> = how it is right now, in your mouth. «El ceviche <i>es</i> rico» = ceviche is a good dish, generally. «El ceviche <i>está</i> riquísimo» = <i>this</i> ceviche, that you made, tastes amazing. At someone's table you almost always want <b>estar</b> — it's the compliment about their cooking, not about the concept.",
+  drills:[
+   {q:"This soup is delicious. (about the one in front of you)",a:"Esta sopa está riquísima",alt:["la sopa esta riquisima","esta sopa esta muy rica","esta riquisima"],why:"Está — you're rating this bowl, not soup as a category."},
+   {q:"My mom is a very good cook.",a:"Mi mamá es muy buena cocinera",alt:["mi mama es muy buena cocinera","mi mama cocina muy bien"],why:"Ser — that's who she is, not how she is today."}]},
+ convo:[
+  {who:"Rosa",line:"Prueba esto primero, es la receta de mi mamá.",lineEn:"Try this first, it's my mom's recipe.",task:"Tell her it's delicious and ask what's in it.",model:"Está riquísimo. ¿Qué lleva?",accepts:["esta riquisimo que lleva","esta buenisimo que lleva","esta muy rico que lleva"],why:"«¿Qué lleva?» is what people actually ask. «¿Qué tiene?» sounds like you're asking if something's wrong with it."},
+  {who:"Rosa",line:"Lleva cilantro, comino y un poquito de ají. ¿No te pica?",lineEn:"Cilantro, cumin and a little chili. Is it not too spicy for you?",task:"Say no, that you like spicy food.",model:"No, para nada. Me gusta el picante.",accepts:["no me gusta el picante","no para nada me gusta el picante","no esta bien me gusta lo picante"],why:"«El picante» = spicy food as a thing. «Picante» alone after gustar sounds unfinished."},
+  {who:"Miguel",line:"Griffin, ¿te sirvo más?",lineEn:"Griffin, can I serve you more?",task:"Say yes but just a little.",model:"Sí, pero sírvame poquito, por favor.",accepts:["si pero poquito","si poquito por favor","si pero sirvame poquito"],why:"«Poquito» is the diminutive — it softens the ask. Spanish runs on these."},
+  {who:"Rosa",line:"Come, come, que estás muy flaco. ¿Otro poquito?",lineEn:"Eat, eat, you're too skinny. A little more?",task:"Politely decline — say you're full.",model:"No, gracias, quedé lleno. Estuvo todo delicioso.",accepts:["no gracias quede lleno","gracias pero quede lleno","no gracias ya no puedo mas"],why:"«Estoy lleno» works, but «quedé lleno» sounds more natural after a meal — it means you ended up full."},
+  {who:"Miguel",line:"Bueno, entonces guardamos para mañana. Salud.",lineEn:"Alright, we'll save it for tomorrow. Cheers.",task:"Say cheers back and thank them for the meal.",model:"Salud. Muchas gracias por la comida.",accepts:["salud gracias por la comida","salud muchas gracias por la comida","salud gracias por todo"],why:"Say «gracias por la comida» to whoever cooked, directly. It lands."}]},
+
+{day:3,title:"Hablando de tu trabajo",focus:"llevar + tiempo",
+ vocab:[
+  {es:"Trabajo en mercadeo.",en:"I work in marketing.",ex:"Trabajo en mercadeo, en una agencia de publicidad.",exEn:"I work in marketing, at an ad agency."},
+  {es:"Me encargo de...",en:"I'm in charge of / I handle...",ex:"Me encargo de las campañas de redes sociales.",exEn:"I handle the social media campaigns."},
+  {es:"Llevo tres años ahí.",en:"I've been there three years.",ex:"Llevo tres años ahí y me gusta bastante.",exEn:"I've been there three years and I like it a lot."},
+  {es:"una agencia de publicidad",en:"an ad agency",ex:"Es una agencia de publicidad, trabajamos con marcas grandes.",exEn:"It's an ad agency, we work with big brands."},
+  {es:"Es difícil de explicar.",en:"It's hard to explain.",ex:"Es difícil de explicar, pero básicamente hago videos para marcas.",exEn:"It's hard to explain, but basically I make videos for brands."}],
+ grammar:{title:"Llevo dos años saliendo con ella",
+  note:"English says <i>I have been</i> doing something. Spanish says <b>llevo + time + gerundio</b>, in the present. «<i>Llevo</i> tres años <i>trabajando</i> ahí.» «<i>Llevamos</i> dos años <i>saliendo</i>.» Never «he estado por tres años» — technically parseable, immediately foreign. Bare noun works too: «llevo tres años en esa empresa».",
+  drills:[
+   {q:"I've been living in New York for five years.",a:"Llevo cinco años viviendo en Nueva York",alt:["llevo cinco anos viviendo en nueva york","llevo cinco anos en nueva york"],why:"Llevo + time + gerund. Present tense, even though English uses a perfect."},
+   {q:"We've been dating for two years.",a:"Llevamos dos años saliendo",alt:["llevamos dos anos saliendo","llevamos dos anos juntos","llevamos dos anos de novios"],why:"Llevamos — you and Sofía, so first person plural."}]},
+ convo:[
+  {who:"Miguel",line:"Cuéntame, Griffin, ¿a qué te dedicas?",lineEn:"Tell me, Griffin, what do you do?",task:"Say you work in marketing at an ad agency.",model:"Trabajo en mercadeo, en una agencia de publicidad.",accepts:["trabajo en mercadeo en una agencia de publicidad","trabajo en marketing en una agencia de publicidad","trabajo en publicidad"],why:"«¿A qué te dedicas?» is the normal way to ask. «¿Cuál es tu trabajo?» is textbook."},
+  {who:"Miguel",line:"Ah, publicidad. ¿Y qué haces exactamente ahí?",lineEn:"Ah, advertising. And what exactly do you do there?",task:"Say you handle campaigns for brands.",model:"Me encargo de las campañas para las marcas.",accepts:["me encargo de las campanas para marcas","me encargo de campanas de marcas","hago campanas para marcas"],why:"«Me encargo de» = I'm the one responsible for. Sounds like a job, not a task."},
+  {who:"Rosa",line:"¿Y llevas mucho tiempo en esa empresa?",lineEn:"And have you been at that company long?",task:"Say you've been there three years.",model:"Llevo tres años ahí.",accepts:["llevo tres anos ahi","llevo tres anos alli","llevo tres anos en la empresa"],why:"She used «llevas» — mirror it back with «llevo». Free points."},
+  {who:"Miguel",line:"¿Y te gusta? ¿O ya estás buscando otra cosa?",lineEn:"And do you like it? Or are you already looking for something else?",task:"Say you like it, though sometimes it's a lot of work.",model:"Sí, me gusta, aunque a veces es mucho trabajo.",accepts:["si me gusta aunque a veces es mucho trabajo","me gusta pero a veces es mucho trabajo","si me gusta aunque es mucho trabajo"],why:"«Aunque» = although. Using it instead of «pero» makes you sound a level up immediately."},
+  {who:"Miguel",line:"Así es todo trabajo bueno. ¿Y Sofía también trabaja mucho?",lineEn:"That's every good job. And does Sofía work a lot too?",task:"Say yes, more than you.",model:"Sí, ella trabaja más que yo.",accepts:["si ella trabaja mas que yo","si trabaja mas que yo","ella trabaja mas que yo"],why:"«Más que yo» — after que you use the subject pronoun yo, not mí."}]},
+
+{day:4,title:"Quién es quién",focus:"el hermano de Sofía",
+ vocab:[
+  {es:"mi cuñado / mi cuñada",en:"my brother-in-law / sister-in-law",ex:"El esposo de mi hermana es mi cuñado.",exEn:"My sister's husband is my brother-in-law."},
+  {es:"mis suegros",en:"my in-laws (the parents)",ex:"Voy a conocer a mis futuros suegros.",exEn:"I'm going to meet my future in-laws."},
+  {es:"mi sobrino / mi sobrina",en:"my nephew / niece",ex:"Mi sobrina tiene cuatro años.",exEn:"My niece is four."},
+  {es:"¿Cuántos hermanos son?",en:"How many siblings are there?",ex:"¿Cuántos hermanos son ustedes?",exEn:"How many of you siblings are there?"},
+  {es:"Soy el mayor.",en:"I'm the oldest.",ex:"Somos tres. Yo soy el mayor.",exEn:"There are three of us. I'm the oldest."}],
+ grammar:{title:"There's no apostrophe-s. Use de.",
+  note:"«Sofía's brother» has no direct translation. You flip it: <b>el hermano de Sofía</b> — the brother of Sofía. Same for everything: la casa de sus papás, el perro de mi hermana. And <b>su</b> is dangerous: «su hermano» can mean his, her, your, or their brother. When it's ambiguous, say the name: «el hermano de ella».",
+  drills:[
+   {q:"Sofía's mom is very nice.",a:"La mamá de Sofía es muy amable",alt:["la mama de sofia es muy amable","la mama de sofia es muy simpatica"],why:"De + name. Never Sofía's."},
+   {q:"That's my sister's dog.",a:"Ese es el perro de mi hermana",alt:["ese es el perro de mi hermana","es el perro de mi hermana"],why:"Same flip: the dog of my sister."}]},
+ convo:[
+  {who:"Rosa",line:"¿Y tú tienes hermanos, Griffin?",lineEn:"Do you have siblings, Griffin?",task:"Say there are three of you and you're the oldest.",model:"Somos tres. Yo soy el mayor.",accepts:["somos tres yo soy el mayor","somos tres y yo soy el mayor","tengo dos hermanos yo soy el mayor"],why:"«Somos tres» — Spanish counts the whole set including you. «Tengo dos hermanos» is also right, just a different frame."},
+  {who:"Rosa",line:"¡Como Sofía! Ella también es la mayor. ¿Y tus papás dónde viven?",lineEn:"Like Sofía! She's the oldest too. And where do your parents live?",task:"Say they live in California.",model:"Viven en California.",accepts:["viven en california","ellos viven en california","mis papas viven en california"],why:"Drop the pronoun. «Ellos viven» isn't wrong, it's just heavier than it needs to be."},
+  {who:"Miguel",line:"Mira, ella es Carla, la hermana de Sofía, y él es Andrés, su esposo.",lineEn:"This is Carla, Sofía's sister, and Andrés, her husband.",task:"Say nice to meet you both.",model:"Mucho gusto a los dos.",accepts:["mucho gusto a los dos","mucho gusto a ambos","mucho gusto"],why:"«A los dos» = to you both. Small, but it shows you caught both introductions."},
+  {who:"Carla",line:"Ay, por fin te conocemos. Sofía no nos contaba nada de ti.",lineEn:"Finally we meet you. Sofía wasn't telling us anything about you.",task:"Joke that she talks about them constantly.",model:"Pues ella me habla de ustedes todo el tiempo.",accepts:["ella me habla de ustedes todo el tiempo","pues ella habla de ustedes todo el tiempo","ella me habla mucho de ustedes"],why:"«Ustedes» = you all, in Latin America. Never vosotros unless the family is Spanish."},
+  {who:"Carla",line:"Esa es mi hija, Lucía. Tiene cuatro años y no se calla nunca.",lineEn:"That's my daughter, Lucía. She's four and never stops talking.",task:"Say she's adorable, using the word for niece-by-marriage isn't needed — just react.",model:"Qué linda. ¿Ya habla mucho?",accepts:["que linda ya habla mucho","que linda","que hermosa ya habla mucho","que linda cuantos anos tiene"],why:"«Qué linda» is the reflex compliment for a kid. Match the gender: linda for a girl, lindo for a boy."}]},
+
+{day:5,title:"Las preguntas que te van a hacer",focus:"esquivar con cortesía",
+ vocab:[
+  {es:"Todavía no lo hemos hablado.",en:"We haven't talked about it yet.",ex:"Todavía no lo hemos hablado, pero pronto.",exEn:"We haven't talked about it yet, but soon."},
+  {es:"Ya veremos.",en:"We'll see.",ex:"Ya veremos qué pasa el próximo año.",exEn:"We'll see what happens next year."},
+  {es:"Depende de...",en:"It depends on...",ex:"Depende del trabajo, la verdad.",exEn:"It depends on work, honestly."},
+  {es:"Buena pregunta.",en:"Good question. (buys three seconds)",ex:"Uy, buena pregunta. Déjeme pensar.",exEn:"Ooh, good question. Let me think."},
+  {es:"Por ahora estamos bien así.",en:"For now we're happy as we are.",ex:"Por ahora estamos bien así, sin apuro.",exEn:"For now we're happy as we are, no rush."}],
+ grammar:{title:"The polite non-answer",
+  note:"You will get asked about marriage, kids, and money before dessert. Three phrases carry you: <b>todavía no</b> (not yet — implies openness without promising), <b>ya veremos</b> (we'll see), <b>depende de</b> (it depends on). All three are warm, not evasive. The move that <i>is</i> rude: changing the subject with no acknowledgment. Answer with one of these first, <i>then</i> redirect.",
+  drills:[
+   {q:"We haven't decided yet.",a:"Todavía no hemos decidido",alt:["todavia no lo hemos decidido","todavia no hemos decidido","aun no hemos decidido"],why:"Todavía no + present perfect. This is the single most useful dodge you own."},
+   {q:"It depends on her work.",a:"Depende del trabajo de ella",alt:["depende de su trabajo","depende del trabajo de ella"],why:"De + el contracts to del. Always. No exceptions."}]},
+ convo:[
+  {who:"Rosa",line:"Bueno, y ustedes dos... ¿para cuándo la boda?",lineEn:"So, you two... when's the wedding?",task:"Say you haven't talked about it yet, with a smile.",model:"Ay, todavía no lo hemos hablado.",accepts:["todavia no lo hemos hablado","ay todavia no lo hemos hablado","todavia no hemos hablado de eso"],why:"«Lo» stands in for the topic. «Todavía no hemos hablado» alone sounds like you two don't speak."},
+  {who:"Rosa",line:"¡Pero llevan dos años! Yo solo pregunto.",lineEn:"But it's been two years! I'm just asking.",task:"Say for now you're happy as you are.",model:"Por ahora estamos bien así.",accepts:["por ahora estamos bien asi","estamos bien asi por ahora","por ahora estamos bien"],why:"«Bien así» = fine the way things are. Warm, closed, no offense taken."},
+  {who:"Miguel",line:"Déjala, Rosa. Griffin, ¿y piensan quedarse en Nueva York?",lineEn:"Leave him alone, Rosa. Griffin, are you planning to stay in New York?",task:"Say for now yes, but it depends on work.",model:"Por ahora sí, pero depende del trabajo.",accepts:["por ahora si pero depende del trabajo","si pero depende del trabajo","por ahora si depende del trabajo"],why:"«Pensar + infinitive» = to plan to. He asked «piensan quedarse», you could mirror: «pensamos quedarnos»."},
+  {who:"Carla",line:"¿Y quién cocina en la casa, tú o ella?",lineEn:"And who cooks at home, you or her?",task:"Say you cook more, but she cooks better.",model:"Yo cocino más, pero ella cocina mejor.",accepts:["yo cocino mas pero ella cocina mejor","cocino mas pero ella cocina mejor","yo cocino mas pero ella lo hace mejor"],why:"Mejor already means «more well» — never «más mejor»."},
+  {who:"Rosa",line:"¡Esa es la respuesta correcta!",lineEn:"That's the right answer!",task:"Joke that Sofía taught you well.",model:"Sofía me enseñó bien.",accepts:["sofia me enseno bien","sofia me ensenó bien","sofia me enseno muy bien"],why:"Enseñó — preterite, one finished action. You'll drill preterite properly on day 6."}]},
+
+{day:6,title:"Cómo se conocieron",focus:"pretérito vs. imperfecto",
+ vocab:[
+  {es:"Nos conocimos en...",en:"We met at...",ex:"Nos conocimos en una fiesta de un amigo.",exEn:"We met at a friend's party."},
+  {es:"Estaba lloviendo.",en:"It was raining. (backdrop)",ex:"Estaba lloviendo y ella no tenía paraguas.",exEn:"It was raining and she didn't have an umbrella."},
+  {es:"Al principio",en:"At first",ex:"Al principio pensé que no le caía bien.",exEn:"At first I thought she didn't like me."},
+  {es:"Desde entonces",en:"Ever since then",ex:"Desde entonces no nos hemos separado.",exEn:"We haven't been apart since."},
+  {es:"Fue por casualidad.",en:"It was by chance.",ex:"Fue por casualidad, ni siquiera pensaba ir.",exEn:"It was by chance, I wasn't even planning to go."}],
+ grammar:{title:"The camera and the scenery",
+  note:"This is the one that separates intermediate from fluent, and you'll use it every time you tell them a story. <b>Pretérito</b> = the events, the things that happened once and finished: <i>nos conocimos, la vi, le hablé</i>. <b>Imperfecto</b> = the scenery it happened against: what was ongoing, what things were like, what you used to do: <i>estaba lloviendo, ella tenía, yo no sabía</i>. Rule of thumb: if you could put «that day» in front of it, preterite. If you could put «back then», imperfect.",
+  drills:[
+   {q:"We met two years ago. (one event)",a:"Nos conocimos hace dos años",alt:["nos conocimos hace dos anos","nos conocimos hace dos anos atras"],why:"Conocimos, preterite — meeting is a single finished moment."},
+   {q:"I didn't know she spoke Spanish. (ongoing state)",a:"No sabía que hablaba español",alt:["no sabia que hablaba espanol","yo no sabia que ella hablaba espanol"],why:"Sabía, imperfect — not knowing was a state you were in, not an event."}]},
+ convo:[
+  {who:"Rosa",line:"Cuéntame bien, ¿cómo se conocieron ustedes?",lineEn:"Tell me properly, how did you two meet?",task:"Say you met at a friend's party.",model:"Nos conocimos en una fiesta de un amigo.",accepts:["nos conocimos en una fiesta de un amigo","nos conocimos en la fiesta de un amigo","nos conocimos en una fiesta"],why:"Preterite. One night, done."},
+  {who:"Rosa",line:"¿Y qué pasó? ¿Quién habló primero?",lineEn:"And what happened? Who spoke first?",task:"Say you spoke to her first, that she was alone on the balcony.",model:"Yo le hablé primero. Ella estaba sola en el balcón.",accepts:["yo le hable primero ella estaba sola en el balcon","le hable primero ella estaba sola en el balcon","yo hable primero ella estaba sola"],why:"Both tenses in one breath: hablé is the event, estaba is the scene it happened in."},
+  {who:"Carla",line:"¿Y te dijo que sí de una vez o la hiciste sufrir?",lineEn:"And did she say yes right away or did you make her wait?",task:"Say at first you thought she didn't like you.",model:"Al principio pensé que no le caía bien.",accepts:["al principio pense que no le caia bien","al principio yo pense que no le caia bien","al principio pense que no le gustaba"],why:"«Caer bien» = to be liked as a person. «Gustar» about a person means attraction — different sentence entirely."},
+  {who:"Sofía",line:"¡Mentira! Yo le escribí primero al día siguiente.",lineEn:"Liar! I texted him first the next day.",task:"Admit it's true, that she wrote to you first.",model:"Es verdad, ella me escribió primero.",accepts:["es verdad ella me escribio primero","es cierto ella me escribio primero","si ella me escribio primero"],why:"«Me escribió» — indirect object me. She wrote to me."},
+  {who:"Rosa",line:"Qué bonito. ¿Y desde entonces siempre juntos?",lineEn:"How sweet. And you've been together ever since?",task:"Say yes, ever since then, almost every day.",model:"Sí, desde entonces, casi todos los días.",accepts:["si desde entonces casi todos los dias","desde entonces casi todos los dias","si desde entonces"],why:"«Desde entonces» is the phrase that closes a story. Keep it in your pocket."}]},
+
+{day:7,title:"Haciendo planes",focus:"ir a + infinitivo",
+ vocab:[
+  {es:"Vamos a quedarnos hasta el domingo.",en:"We're staying until Sunday.",ex:"Vamos a quedarnos hasta el domingo en la tarde.",exEn:"We're staying until Sunday afternoon."},
+  {es:"Tenemos pensado...",en:"We're thinking of / we plan to...",ex:"Tenemos pensado ir al centro mañana.",exEn:"We're planning to go downtown tomorrow."},
+  {es:"¿Les parece si...?",en:"How about we...? (to a group)",ex:"¿Les parece si salimos a las nueve?",exEn:"How about we leave at nine?"},
+  {es:"¿A qué hora nos vamos?",en:"What time are we leaving?",ex:"¿A qué hora nos vamos mañana?",exEn:"What time are we leaving tomorrow?"},
+  {es:"Cuando ustedes quieran.",en:"Whenever you all want.",ex:"Por mí, cuando ustedes quieran.",exEn:"As far as I'm concerned, whenever you want."}],
+ grammar:{title:"Skip the future tense",
+  note:"Real people say <b>ir a + infinitive</b> for almost everything upcoming: «voy a llamarla», «vamos a salir». The proper future (llamaré, saldremos) exists but reads formal or dramatic in conversation. Also learn <b>¿les parece si...?</b> — literally «does it seem to you all if» — which is how you propose something to a group without deciding for them.",
+  drills:[
+   {q:"We're going to leave early tomorrow.",a:"Vamos a salir temprano mañana",alt:["vamos a salir temprano manana","manana vamos a salir temprano"],why:"Ir a + infinitive. «Saldremos» is correct but sounds like a press release."},
+   {q:"How about we eat at eight?",a:"¿Les parece si comemos a las ocho?",alt:["les parece si comemos a las ocho","que les parece si comemos a las ocho"],why:"Les — you're asking the whole family, not one person."}]},
+ convo:[
+  {who:"Miguel",line:"¿Y cuántos días se quedan?",lineEn:"How many days are you staying?",task:"Say you're staying until Sunday.",model:"Vamos a quedarnos hasta el domingo.",accepts:["vamos a quedarnos hasta el domingo","nos vamos a quedar hasta el domingo","vamos a estar hasta el domingo"],why:"«Quedarse» is reflexive — quedarnos, nos quedamos. «Quedar» alone means to agree to meet."},
+  {who:"Rosa",line:"¡Qué rico! ¿Y qué quieren hacer mañana?",lineEn:"Wonderful! And what do you want to do tomorrow?",task:"Say you're planning to go downtown.",model:"Tenemos pensado ir al centro.",accepts:["tenemos pensado ir al centro","pensamos ir al centro","queremos ir al centro"],why:"«Tener pensado» = to have it in mind. Softer than «vamos a», leaves room for them to counter."},
+  {who:"Miguel",line:"Yo los llevo. ¿A qué hora quieren salir?",lineEn:"I'll drive you. What time do you want to leave?",task:"Say whenever they want, that it's up to them.",model:"Cuando ustedes quieran, como les quede mejor.",accepts:["cuando ustedes quieran","cuando quieran","cuando ustedes quieran como les quede mejor"],why:"«Cuando quieran» takes the subjunctive — the moment hasn't happened yet, so it's quieran, not quieren."},
+  {who:"Rosa",line:"¿Y les parece si comemos aquí antes de salir?",lineEn:"How about we eat here before you go?",task:"Say that sounds perfect to you.",model:"Me parece perfecto.",accepts:["me parece perfecto","me parece muy bien","perfecto me parece bien"],why:"She said «les parece», you answer «me parece». The verb comes right back at you — mirror it."},
+  {who:"Carla",line:"Nosotros llegamos como a las once, ¿está bien?",lineEn:"We'll get there around eleven, is that okay?",task:"Say that's fine, you'll wait for them.",model:"Está bien, los esperamos.",accepts:["esta bien los esperamos","esta bien los esperamos aqui","perfecto los esperamos"],why:"«Los esperamos» — los is Carla and her family, the direct object. Not «esperamos por» — that's an English import."}]}
+];
+</script>
+<script>
+CURRICULUM.push(
+{day:8,title:"Dar tu opinión",focus:"no creo que + subjuntivo",
+ vocab:[
+  {es:"Me parece que...",en:"I think / it seems to me...",ex:"Me parece que es la mejor de las dos.",exEn:"I think it's the better of the two."},
+  {es:"No creo que sea...",en:"I don't think it's...",ex:"No creo que sea tan grave.",exEn:"I don't think it's that serious."},
+  {es:"La verdad es que...",en:"The truth is / honestly...",ex:"La verdad es que no me gustó mucho.",exEn:"Honestly, I didn't like it much."},
+  {es:"Estoy de acuerdo contigo.",en:"I agree with you.",ex:"Estoy de acuerdo contigo en eso.",exEn:"I agree with you on that."},
+  {es:"No sé, ¿tú qué opinas?",en:"I don't know, what do you think?",ex:"No sé, ¿usted qué opina?",exEn:"I don't know, what do you think?"}],
+ grammar:{title:"Doubt flips the verb",
+  note:"«Creo que <b>es</b> bueno» — you believe it, so the verb stays normal (indicative). Negate it and you inject doubt, and doubt takes the <b>subjunctive</b>: «No creo que <b>sea</b> bueno.» Same for «no pienso que sea», «dudo que sea», «no es cierto que sea». The three you'll say most: <b>sea</b> (ser), <b>esté</b> (estar), <b>tenga</b> (tener). Memorize those three and you cover most of it.",
+  drills:[
+   {q:"I don't think it's that expensive.",a:"No creo que sea tan caro",alt:["no creo que sea tan caro","no pienso que sea tan caro"],why:"No creo que → sea, not es. The doubt triggers it."},
+   {q:"I think it's a good idea.",a:"Creo que es buena idea",alt:["creo que es una buena idea","creo que es buena idea","me parece que es buena idea"],why:"Positive creo que → es. No subjunctive when you actually believe it."}]},
+ convo:[
+  {who:"Miguel",line:"¿Viste el partido de ayer? Qué desastre.",lineEn:"Did you see yesterday's game? What a disaster.",task:"Say you saw it, and honestly you didn't like it either.",model:"Sí, lo vi. La verdad es que no me gustó.",accepts:["si lo vi la verdad es que no me gusto","si lo vi la verdad no me gusto","lo vi y la verdad no me gusto"],why:"«Lo vi» — lo replaces el partido. Don't repeat the noun, Spanish finds that clunky."},
+  {who:"Miguel",line:"Es que el entrenador no sirve. ¿No crees?",lineEn:"The coach is useless. Don't you think?",task:"Say you don't think it's the coach's fault.",model:"No creo que sea culpa del entrenador.",accepts:["no creo que sea culpa del entrenador","no creo que sea la culpa del entrenador","no creo que sea culpa del director"],why:"No creo que → sea. If you said «no creo que es», everyone still understands you — it just marks you as a learner."},
+  {who:"Miguel",line:"¿Ah sí? ¿Y entonces de quién es la culpa?",lineEn:"Oh yeah? Then whose fault is it?",task:"Say it seems to you that the players aren't playing well.",model:"Me parece que los jugadores no están jugando bien.",accepts:["me parece que los jugadores no estan jugando bien","me parece que los jugadores no juegan bien","creo que los jugadores no estan jugando bien"],why:"«Me parece que» keeps the indicative — you're asserting, not doubting."},
+  {who:"Carla",line:"Ay, ya empezaron con el fútbol.",lineEn:"Ugh, here they go about soccer.",task:"Agree with her, jokingly, that it's better to change the subject.",model:"Estoy de acuerdo contigo. Mejor cambiamos de tema.",accepts:["estoy de acuerdo contigo mejor cambiamos de tema","estoy de acuerdo mejor cambiamos de tema","tienes razon mejor cambiamos de tema"],why:"«De acuerdo con» + person. Not «de acuerdo a» — that's for documents and rules."},
+  {who:"Miguel",line:"Bueno, bueno. ¿Y a ti qué deporte te gusta?",lineEn:"Fine, fine. What sport do you like?",task:"Say you like basketball more, but you don't know much about soccer.",model:"Me gusta más el básquetbol, pero no sé mucho de fútbol.",accepts:["me gusta mas el basquetbol pero no se mucho de futbol","me gusta mas el basquet pero no se mucho de futbol","prefiero el basquetbol pero no se mucho de futbol"],why:"«Saber de» = to know about a subject. «Saber sobre» is fine too, but «saber acerca de» sounds written."}]},
+
+{day:9,title:"Ayudar en la casa",focus:"pronombres: lo, la, los, las",
+ vocab:[
+  {es:"¿Le ayudo con algo?",en:"Can I help you with something?",ex:"Señora Rosa, ¿le ayudo con algo?",exEn:"Rosa, can I help you with anything?"},
+  {es:"Yo lavo los platos.",en:"I'll do the dishes.",ex:"Usted siéntese, yo lavo los platos.",exEn:"You sit, I'll do the dishes."},
+  {es:"Déjeme a mí.",en:"Let me. / I've got it.",ex:"No, no, déjeme a mí.",exEn:"No, no, let me get that."},
+  {es:"No se moleste.",en:"Don't go to any trouble.",ex:"No se moleste, de verdad.",exEn:"Please don't go to any trouble."},
+  {es:"¿Dónde guardo esto?",en:"Where do I put this away?",ex:"¿Dónde guardo esto, en el cajón?",exEn:"Where does this go, in the drawer?"}],
+ grammar:{title:"lo / la / los / las replace the thing",
+  note:"Once everyone knows what you're talking about, you stop naming it. «¿Lavaste <i>los platos</i>?» → «Sí, ya <b>los</b> lavé.» The pronoun matches gender and number and goes <b>before</b> the conjugated verb: <i>lo lavo, la traigo, los guardé</i>. With an infinitive or gerund you can hook it on the end instead: «voy a lavar<b>los</b>», «estoy lavándo<b>los</b>». Both are right.",
+  drills:[
+   {q:"I already washed them. (the dishes)",a:"Ya los lavé",alt:["ya los lave","los lave ya"],why:"Los = los platos, masculine plural, and it goes in front of the verb."},
+   {q:"I'm going to bring it. (la ensalada)",a:"Voy a traerla",alt:["voy a traerla","la voy a traer"],why:"Both spots work with an infinitive: la voy a traer, or voy a traerla."}]},
+ convo:[
+  {who:"Rosa",line:"Bueno, ya terminamos. Voy a recoger la mesa.",lineEn:"Alright, we're done. I'm going to clear the table.",task:"Offer to help her.",model:"¿Le ayudo con algo?",accepts:["le ayudo con algo","le puedo ayudar con algo","la ayudo con algo"],why:"Both «le ayudo» and «la ayudo» are heard. Le is safer and more common across countries."},
+  {who:"Rosa",line:"No, no, tú eres el invitado. Siéntate.",lineEn:"No, no, you're the guest. Sit down.",task:"Insist — say you'll do the dishes.",model:"Déjeme a mí, yo lavo los platos.",accepts:["dejeme a mi yo lavo los platos","dejeme a mi yo los lavo","no dejeme a mi yo lavo los platos"],why:"Insisting once is expected. In most Latin families the first «no» isn't a real no."},
+  {who:"Rosa",line:"Ay, qué pena contigo. Bueno, pero solo esos.",lineEn:"Oh, I feel bad. Fine, but only those.",task:"Say don't worry about it, that you like washing dishes.",model:"No se preocupe, me gusta lavar platos.",accepts:["no se preocupe me gusta lavar platos","no se preocupe a mi me gusta lavar platos","tranquila me gusta lavar platos"],why:"«No se preocupe» with usted. «No te preocupes» would be tú — watch which one she's using with you."},
+  {who:"Miguel",line:"Ese muchacho sí sirve. Griffin, ¿ya los guardaste?",lineEn:"This guy's useful. Griffin, did you put them away yet?",task:"Say not yet, and ask where they go.",model:"Todavía no. ¿Dónde los guardo?",accepts:["todavia no donde los guardo","todavia no donde guardo esto","aun no donde los guardo"],why:"He said «los guardaste» — reuse los in your answer. That's the whole lesson in one line."},
+  {who:"Miguel",line:"En ese gabinete de arriba, a la izquierda.",lineEn:"In that cabinet up top, on the left.",task:"Say got it, thanks.",model:"Listo, gracias.",accepts:["listo gracias","perfecto gracias","ya listo gracias"],why:"«Listo» is the everyday «got it / done / all set». Enormously useful, barely taught."}]},
+
+{day:10,title:"Cariño y cumplidos",focus:"los diminutivos",
+ vocab:[
+  {es:"un cafecito",en:"a little coffee (warm, not small)",ex:"¿Se toma un cafecito conmigo?",exEn:"Have a coffee with me?"},
+  {es:"un ratito",en:"a little while",ex:"Quédate un ratito más.",exEn:"Stay a little longer."},
+  {es:"Qué amable.",en:"That's so kind.",ex:"Qué amable, muchas gracias.",exEn:"That's so kind, thank you."},
+  {es:"Se nota que...",en:"You can tell that...",ex:"Se nota que cocina con mucho cariño.",exEn:"You can tell you cook with a lot of love."},
+  {es:"Me hicieron sentir en casa.",en:"You all made me feel at home.",ex:"De verdad me hicieron sentir en casa.",exEn:"You really made me feel at home."}],
+ grammar:{title:"-ito is affection, not size",
+  note:"«Un cafecito» is not a small coffee. It's a <i>friendly</i> coffee. The diminutive <b>-ito/-ita</b> softens anything: <i>ahorita, poquito, ratito, despacito, cerquita</i>. It's how Spanish takes the edge off a request or adds warmth to an offer — «espérame un momentito» is much gentler than «espérame un momento». Use it and you stop sounding like a textbook. Careful with people, though: «viejito» is sweet, «gordito» depends entirely on the family.",
+  drills:[
+   {q:"Wait for me a little bit.",a:"Espérame un momentito",alt:["esperame un momentito","esperame un ratito"],why:"Momentito, not momento. The -ito is doing all the politeness work."},
+   {q:"You can tell you made it with love.",a:"Se nota que lo hizo con mucho cariño",alt:["se nota que lo hizo con mucho carino","se nota que lo hiciste con mucho carino","se nota que cocina con carino"],why:"«Se nota que» + indicative. It's an observation, not a doubt."}]},
+ convo:[
+  {who:"Rosa",line:"¿Te sirvo un cafecito?",lineEn:"Can I get you a little coffee?",task:"Say yes please, that would be lovely.",model:"Sí, por favor, qué rico.",accepts:["si por favor que rico","si por favor muchas gracias","claro que si gracias"],why:"«Qué rico» works for coffee, food, weather, a nap. It's the all-purpose delight word."},
+  {who:"Rosa",line:"Es de mi pueblo. Mi hermana me lo manda.",lineEn:"It's from my hometown. My sister sends it to me.",task:"Say you can tell, that it's very good.",model:"Se nota, está buenísimo.",accepts:["se nota esta buenisimo","se nota esta muy bueno","se nota que es muy bueno"],why:"«Buenísimo» — the -ísimo ending is the free upgrade from «muy bueno». Use it constantly."},
+  {who:"Rosa",line:"Quédense un ratito más, no se vayan tan rápido.",lineEn:"Stay a little longer, don't run off so fast.",task:"Say of course, that you're in no rush.",model:"Claro, no tenemos apuro.",accepts:["claro no tenemos apuro","claro no tenemos prisa","por supuesto no tenemos apuro"],why:"«Apuro» in most of Latin America, «prisa» in Spain and Mexico. Both understood everywhere."},
+  {who:"Rosa",line:"Me da gusto que Sofía te haya traído. Ya eres de la familia.",lineEn:"I'm glad Sofía brought you. You're family now.",task:"Tell her they made you feel at home.",model:"Me hicieron sentir en casa, de verdad.",accepts:["me hicieron sentir en casa","me hicieron sentir en casa de verdad","ustedes me hicieron sentir en casa"],why:"«Hicieron» — ustedes, all of them. This is the sentence that gets repeated after you leave. Learn it cold."},
+  {who:"Miguel",line:"Aquí tienes tu casa cuando quieras.",lineEn:"This is your home whenever you want.",task:"Say that's very kind, thank you.",model:"Qué amable, muchas gracias.",accepts:["que amable muchas gracias","muy amable muchas gracias","que amable gracias"],why:"«Qué amable» is the correct reflex here. «Qué bueno» would sound like you're evaluating the offer."}]},
+
+{day:11,title:"Cuando no entiendes nada",focus:"se me olvidó",
+ vocab:[
+  {es:"¿Me lo puede repetir más despacio?",en:"Can you say that again more slowly?",ex:"Perdón, ¿me lo puede repetir más despacio?",exEn:"Sorry, can you repeat that more slowly?"},
+  {es:"¿Cómo se dice...?",en:"How do you say...?",ex:"¿Cómo se dice «deadline» en español?",exEn:"How do you say deadline in Spanish?"},
+  {es:"No te seguí.",en:"I didn't follow you.",ex:"Perdón, no te seguí, ¿de quién hablabas?",exEn:"Sorry, I lost you, who were you talking about?"},
+  {es:"Se me olvidó la palabra.",en:"The word slipped my mind.",ex:"Se me olvidó la palabra, es como un...",exEn:"I forgot the word, it's like a..."},
+  {es:"Más o menos entendí.",en:"I sort of got it.",ex:"Más o menos entendí, pero no todo.",exEn:"I mostly got it, but not all of it."}],
+ grammar:{title:"Se me olvidó — the blame-free construction",
+  note:"Spanish has a beautiful move for accidents: instead of «I forgot», you say <b>se me olvidó</b> — «it forgot itself on me». The thing did it, not you. Same family: <i>se me cayó</i> (I dropped it), <i>se me perdió</i> (I lost it), <i>se me hizo tarde</i> (I ran late). The verb agrees with <b>the thing</b>, not with you: «se me olvidó la palabra», «se me olvidar<b>on</b> las llaves».",
+  drills:[
+   {q:"I forgot her name.",a:"Se me olvidó su nombre",alt:["se me olvido su nombre","se me olvido el nombre"],why:"Olvidó agrees with «su nombre», singular — not with you."},
+   {q:"I dropped the glass.",a:"Se me cayó el vaso",alt:["se me cayo el vaso"],why:"Same shape. And it quietly says it wasn't your fault, which is the point."}]},
+ convo:[
+  {who:"Miguel",line:"Entonces el hijo del compadre de tu suegro se casó con la vecina que vivía al lado de donde vivíamos antes.",lineEn:"So my in-law's buddy's son married the neighbor who lived next to where we used to live.",task:"Say sorry, you didn't follow him.",model:"Perdón, no le seguí.",accepts:["perdon no le segui","perdon no te segui","perdon no entendi"],why:"He's usted for you, so «no le seguí». If you'd switched to tú with him, «no te seguí»."},
+  {who:"Miguel",line:"Ja, es que hablo muy rápido. Te lo digo otra vez.",lineEn:"Ha, I talk too fast. I'll tell you again.",task:"Ask him to repeat it a bit more slowly.",model:"¿Me lo puede repetir más despacio?",accepts:["me lo puede repetir mas despacio","puede repetirlo mas despacio","me lo repite mas despacio por favor"],why:"«Más despacio», not «más lento». Lento describes a thing; despacio describes how you do it."},
+  {who:"Rosa",line:"Es que él cuenta todo con mil detalles. ¿Quieres postre?",lineEn:"He tells everything with a thousand details. Want dessert?",task:"Say yes, but you forgot the word for it — ask how to say a dessert word.",model:"Sí. Se me olvidó la palabra, ¿cómo se dice «cheesecake»?",accepts:["si se me olvido la palabra como se dice cheesecake","como se dice cheesecake en espanol","se me olvido la palabra como se dice"],why:"«¿Cómo se dice X?» is the most valuable question you own. Ask it out loud, not in your head."},
+  {who:"Carla",line:"Se dice «tarta de queso», o «pay de queso» acá.",lineEn:"It's called tarta de queso, or pay de queso here.",task:"Repeat it back and thank her.",model:"Pay de queso. Gracias.",accepts:["pay de queso gracias","tarta de queso gracias","pay de queso muchas gracias"],why:"Say the new word back immediately. It's the difference between hearing it and keeping it."},
+  {who:"Rosa",line:"¿Entendiste todo lo que dijo Miguel?",lineEn:"Did you understand everything Miguel said?",task:"Say you sort of got it, but not all of it.",model:"Más o menos, pero no todo.",accepts:["mas o menos pero no todo","mas o menos entendi pero no todo","mas o menos"],why:"«Más o menos» is honest and totally normal. Nobody expects 100%, and pretending is worse."}]},
+
+{day:12,title:"Bromas y confianza",focus:"caer bien / caer mal",
+ vocab:[
+  {es:"Me estás cargando.",en:"You're messing with me.",ex:"¿En serio? No, me estás cargando.",exEn:"Seriously? No, you're messing with me."},
+  {es:"Ni modo.",en:"Oh well. / Nothing to be done.",ex:"Se acabó el postre. Ni modo.",exEn:"Dessert's gone. Oh well."},
+  {es:"Me cayó bien.",en:"I liked him/her. (as a person)",ex:"Tu hermano me cayó muy bien.",exEn:"I really liked your brother."},
+  {es:"Se pasó.",en:"He went too far. / That was too much.",ex:"Ay, se pasó con esa broma.",exEn:"Oof, that joke went too far."},
+  {es:"Ya en serio...",en:"But seriously though...",ex:"Ya en serio, ¿cómo te fue?",exEn:"But seriously, how did it go?"}],
+ grammar:{title:"Caer bien works backwards, like gustar",
+  note:"You don't like a person — the person <i>falls well</i> on you. «Tu hermano <b>me cae</b> bien» = I like your brother. The subject is the other person, so: «me caen bien tus primos» (plural). Watch this: <b>me gusta tu hermano</b> means you're attracted to him. At a family dinner that is a very different sentence. For liking people as people, always <b>caer bien</b>.",
+  drills:[
+   {q:"I really like your cousins. (as people)",a:"Me caen muy bien tus primos",alt:["me caen muy bien tus primos","tus primos me caen muy bien"],why:"Caen, plural — the cousins are the subject doing the falling."},
+   {q:"I liked him right away.",a:"Me cayó bien de una vez",alt:["me cayo bien de una vez","me cayo bien enseguida","me cayo bien inmediatamente"],why:"Cayó, preterite — the first impression is a single moment."}]},
+ convo:[
+  {who:"Carla",line:"Griffin, Sofía nos dijo que bailas salsa. ¿Es verdad?",lineEn:"Griffin, Sofía told us you dance salsa. Is that true?",task:"Say she's messing with you, that you dance terribly.",model:"Te está cargando, bailo pésimo.",accepts:["te esta cargando bailo pesimo","ella te esta cargando bailo pesimo","te esta cargando bailo muy mal"],why:"«Pésimo» = terribly. One word, does more work than «muy mal»."},
+  {who:"Carla",line:"Uy, no importa. Aquí todos bailamos mal, pero bailamos.",lineEn:"Doesn't matter. We all dance badly here, but we dance.",task:"Say oh well, then you'll dance.",model:"Bueno, ni modo. Entonces bailo.",accepts:["bueno ni modo entonces bailo","ni modo entonces bailo","ni modo bailo"],why:"«Ni modo» = a shrug in two syllables. Wildly common, never taught."},
+  {who:"Miguel",line:"Griffin, ¿ya te dijeron que en esta familia el que llega último lava todo?",lineEn:"Griffin, did they tell you the last one to arrive washes everything?",task:"Say seriously? and ask if he's messing with you.",model:"¿En serio? ¿Me está cargando?",accepts:["en serio me esta cargando","en serio me esta molestando","en serio me esta jugando"],why:"«¿En serio?» buys you time and reads as playing along, which is exactly what he wants."},
+  {who:"Sofía",line:"Papá, ya déjalo. Se lo cree todo.",lineEn:"Dad, leave him alone. He believes everything.",task:"Say it's fine, that you like her dad.",model:"Está bien, tu papá me cae bien.",accepts:["esta bien tu papa me cae bien","no importa tu papa me cae bien","esta bien me cae bien tu papa"],why:"Cae bien for people. «Me gusta tu papá» would land very differently."},
+  {who:"Carla",line:"Ya en serio, ¿cómo te sentiste hoy con todos nosotros?",lineEn:"Seriously though, how did you feel today with all of us?",task:"Say very comfortable, that they all made you laugh a lot.",model:"Muy cómodo, me hicieron reír mucho.",accepts:["muy comodo me hicieron reir mucho","muy comodo ustedes me hicieron reir mucho","muy a gusto me hicieron reir mucho"],why:"«Hacer + infinitive» = to make someone do something. Me hicieron reír, me hizo pensar."}]},
+
+{day:13,title:"Temas delicados",focus:"el condicional para suavizar",
+ vocab:[
+  {es:"Prefiero no opinar.",en:"I'd rather not weigh in.",ex:"De eso prefiero no opinar, la verdad.",exEn:"Honestly, I'd rather not weigh in on that."},
+  {es:"Cada quien.",en:"To each their own.",ex:"Bueno, cada quien, ¿no?",exEn:"Well, to each their own, right?"},
+  {es:"No estoy muy al tanto.",en:"I'm not really up to speed on it.",ex:"No estoy muy al tanto de la política de allá.",exEn:"I'm not really up on politics there."},
+  {es:"Es más complicado de lo que parece.",en:"It's more complicated than it looks.",ex:"Creo que es más complicado de lo que parece.",exEn:"I think it's more complicated than it looks."},
+  {es:"Mejor cambiemos de tema.",en:"Let's change the subject.",ex:"Mejor cambiemos de tema, ¿no?",exEn:"Let's change the subject, yeah?"}],
+ grammar:{title:"The conditional is the politeness gear",
+  note:"Swap the present for the <b>conditional</b> and any sentence gets softer. «Quiero» → «<b>querría</b> / me <b>gustaría</b>». «Puede» → «<b>podría</b>». «Es mejor» → «<b>sería</b> mejor». «¿Me pasas la sal?» is fine; «¿Me <b>podría</b> pasar la sal?» is deferential. Endings are dead simple — take the whole infinitive and add <i>-ía, -ías, -ía, -íamos, -ían</i>. No exceptions to memorize for the common ones.",
+  drills:[
+   {q:"I'd rather not talk about that.",a:"Preferiría no hablar de eso",alt:["preferiria no hablar de eso","prefiero no hablar de eso","preferiria no opinar de eso"],why:"Preferiría, conditional. Softer than «prefiero», which can land flat."},
+   {q:"Could you repeat that?",a:"¿Podría repetirlo?",alt:["podria repetirlo","me lo podria repetir"],why:"Podría, not puede. Same request, half the friction."}]},
+ convo:[
+  {who:"Miguel",line:"Griffin, ¿y allá en Estados Unidos qué piensan de todo lo que está pasando?",lineEn:"Griffin, what do people over in the US think about everything going on?",task:"Say honestly you're not very up to speed on it.",model:"La verdad, no estoy muy al tanto.",accepts:["la verdad no estoy muy al tanto","no estoy muy al tanto la verdad","la verdad no estoy al tanto"],why:"«Al tanto» = up to date. Better than «no sé», which can sound like you're stonewalling."},
+  {who:"Miguel",line:"Pero algo tendrás que pensar, ¿no?",lineEn:"But you must think something, right?",task:"Say you'd rather not weigh in, that it's more complicated than it looks.",model:"Preferiría no opinar, es más complicado de lo que parece.",accepts:["preferiria no opinar es mas complicado de lo que parece","prefiero no opinar es mas complicado de lo que parece","preferiria no opinar"],why:"«De lo que parece» — that «lo que» is the structure for «than what». Very useful, slightly weird to English ears."},
+  {who:"Rosa",line:"Déjalo, Miguel, no le preguntes esas cosas.",lineEn:"Leave him alone, Miguel, don't ask him those things.",task:"Say it's no trouble, you just prefer to listen.",model:"No hay problema, prefiero escuchar.",accepts:["no hay problema prefiero escuchar","no hay ningun problema prefiero escuchar","tranquila prefiero escuchar"],why:"«Prefiero escuchar» is graceful — it declines without shutting him down."},
+  {who:"Miguel",line:"Bueno, cada quien piensa distinto y así está bien.",lineEn:"Well, everyone thinks differently and that's fine.",task:"Agree — say exactly, to each their own.",model:"Exacto, cada quien.",accepts:["exacto cada quien","exactamente cada quien","asi es cada quien"],why:"«Cada quien» in Latin America, «cada uno» in Spain. Both close the topic politely."},
+  {who:"Carla",line:"¿Y podríamos hablar de otra cosa, por favor?",lineEn:"And could we talk about something else, please?",task:"Agree, say it would be better to change the subject.",model:"Sí, sería mejor cambiar de tema.",accepts:["si seria mejor cambiar de tema","seria mejor cambiar de tema","si mejor cambiemos de tema"],why:"«Sería» — she opened with a conditional, you answer with one. That matching is what fluency sounds like."}]},
+
+{day:14,title:"La despedida",focus:"que + subjuntivo para desear",
+ vocab:[
+  {es:"Muchísimas gracias por todo.",en:"Thank you so much for everything.",ex:"Muchísimas gracias por todo, de verdad.",exEn:"Thank you so much for everything, really."},
+  {es:"La pasé muy bien.",en:"I had a great time.",ex:"La pasé muy bien con ustedes.",exEn:"I had a great time with you all."},
+  {es:"Salúdeme a...",en:"Say hi to ... for me.",ex:"Salúdeme a su hermana, por favor.",exEn:"Say hi to your sister for me."},
+  {es:"Que les vaya bien.",en:"Take care. / Hope it goes well.",ex:"Nos vemos, que les vaya bien.",exEn:"See you, take care."},
+  {es:"Están invitados cuando quieran.",en:"You're welcome anytime.",ex:"Están invitados a Nueva York cuando quieran.",exEn:"You're welcome in New York anytime."}],
+ grammar:{title:"Que + subjuntivo = a wish",
+  note:"Every Spanish goodbye is a small blessing, and they all have the same shape: <b>que</b> + subjunctive. «Que <b>les vaya</b> bien», «que <b>descansen</b>», «que <b>te mejores</b>», «que <b>tengan</b> buen viaje». It's a shortened «espero que...». You don't need to build it from scratch — learn these four whole and deploy them. Leaving without one is the difference between polite and warm.",
+  drills:[
+   {q:"Have a good trip. (to the whole family)",a:"Que tengan buen viaje",alt:["que tengan buen viaje","que tengan un buen viaje"],why:"Tengan — ustedes, subjunctive. It's a wish, not a statement."},
+   {q:"Get some rest. (to Rosa, usted)",a:"Que descanse",alt:["que descanse","que descanse usted"],why:"Descanse for usted, descansen for ustedes. One letter, whole different room."}]},
+ convo:[
+  {who:"Rosa",line:"Ay, ya se van. Se me pasó volando el fin de semana.",lineEn:"Oh, you're leaving already. The weekend flew by.",task:"Say thank you so much for everything.",model:"Muchísimas gracias por todo, señora Rosa.",accepts:["muchisimas gracias por todo","muchisimas gracias por todo rosa","muchas gracias por todo rosa"],why:"«Muchísimas» — the -ísimo again. It reads as sincere in a way «muchas» doesn't at a goodbye."},
+  {who:"Rosa",line:"No, gracias a ti por venir. ¿La pasaste bien?",lineEn:"No, thank you for coming. Did you have a good time?",task:"Say you had a great time with all of them.",model:"La pasé muy bien con ustedes.",accepts:["la pase muy bien con ustedes","la pase muy bien","la pase excelente con ustedes"],why:"«La pasé bien» — that «la» refers to nothing in particular. Just memorize the phrase whole."},
+  {who:"Miguel",line:"Cuídense en el camino. Y vuelvan pronto, ¿oyeron?",lineEn:"Take care on the road. And come back soon, you hear?",task:"Say of course, and tell them they're invited to New York anytime.",model:"Claro que sí. Y ustedes están invitados a Nueva York cuando quieran.",accepts:["claro que si estan invitados a nueva york cuando quieran","claro y ustedes estan invitados a nueva york cuando quieran","por supuesto estan invitados a nueva york cuando quieran"],why:"Returning the invitation is the move. «Cuando quieran» — subjunctive again, because the visit hasn't happened."},
+  {who:"Carla",line:"Nos vemos, Griffin. Cuídate mucho.",lineEn:"See you, Griffin. Take good care.",task:"Say say hi to Lucía for you.",model:"Salúdame a Lucía.",accepts:["saludame a lucia","saludame a lucia de mi parte","dale un saludo a lucia"],why:"Carla is tú for you, so «salúdame». With Rosa or Miguel it'd be «salúdeme»."},
+  {who:"Rosa",line:"Bueno, ya váyanse antes de que me ponga a llorar.",lineEn:"Alright, go before I start crying.",task:"Say goodbye with a wish — take care, and get some rest.",model:"Que les vaya bien. Y que descansen.",accepts:["que les vaya bien y que descansen","que les vaya bien","que les vaya bien que descansen"],why:"You made it. That's the sentence that leaves the door open for next time."}]}
+);
+</script>
+<script>
+/* ---------- state ---------- */
+const KEY = "esfam-v1";
+const blank = {done:{}, streak:0, last:"", misses:[], seen:{}};
+let S = blank;
+try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign({}, blank, JSON.parse(raw)); } catch(e){}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} }
+
+const today = () => new Date().toISOString().slice(0,10);
+function daysBetween(a,b){ return Math.round((new Date(b) - new Date(a)) / 86400000); }
+
+/* ---------- text matching ---------- */
+function norm(s){
+  return (s||"").toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g,"")
+    .replace(/[¿?¡!.,;:"'()]/g," ")
+    .replace(/\s+/g," ").trim();
+}
+function grade(input, model, accepts){
+  const n = norm(input);
+  if (!n) return "miss";
+  const targets = [model].concat(accepts||[]).map(norm);
+  if (targets.includes(n)) return "ok";
+  const got = new Set(n.split(" "));
+  let best = 0;
+  for (const t of targets){
+    const want = t.split(" ").filter(w => w.length > 2);
+    if (!want.length) continue;
+    const hit = want.filter(w => got.has(w)).length;
+    best = Math.max(best, hit / want.length);
+  }
+  if (best >= 0.75) return "ok";
+  if (best >= 0.45) return "close";
+  return "miss";
+}
+
+/* ---------- misses ---------- */
+function logMiss(a){
+  const k = norm(a.model);
+  let m = S.misses.find(x => x.k === k);
+  if (m){ m.hits = 0; m.wrong++; m.ts = today(); }
+  else S.misses.push({k, prompt:a.prompt, model:a.model, accepts:a.accepts||[], why:a.why, day:a.day, hits:0, wrong:1, ts:today()});
+  save();
+}
+function creditMiss(model){
+  const k = norm(model);
+  const i = S.misses.findIndex(x => x.k === k);
+  if (i < 0) return;
+  S.misses[i].hits++;
+  if (S.misses[i].hits >= 2) S.misses.splice(i,1);
+  save();
+}
+function clearMiss(model){
+  const k = norm(model);
+  const i = S.misses.findIndex(x => x.k === k);
+  if (i >= 0){ S.misses.splice(i,1); save(); }
+}
+function reviewPool(){
+  return S.misses
+    .filter(m => m.ts !== today())
+    .sort((a,b) => (b.wrong - a.wrong) || (a.ts < b.ts ? -1 : 1))
+    .slice(0,3);
+}
+
+/* ---------- progress ---------- */
+const nextDay = () => { for (const l of CURRICULUM) if (!S.done[l.day]) return l.day; return null; };
+function complete(day){
+  const t = today();
+  if (!S.done[day]) S.done[day] = t;
+  if (S.last !== t){
+    S.streak = (S.last && daysBetween(S.last, t) === 1) ? S.streak + 1 : 1;
+    S.last = t;
+  }
+  save();
+}
+
+/* ---------- render helpers ---------- */
+const app = document.getElementById("app");
+const esc = s => (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+let view = "hoy";
+
+function paintStreak(){
+  const el = document.getElementById("streak");
+  const n = Object.keys(S.done).length;
+  el.innerHTML = S.streak ? `<b>${S.streak}</b> día${S.streak===1?"":"s"} seguidos · ${n}/14` : `${n}/14 lecciones`;
+}
+function setView(v){
+  view = v;
+  for (const [id,name] of [["t-hoy","hoy"],["t-pal","palabras"],["t-err","errores"]])
+    document.getElementById(id).setAttribute("aria-selected", String(name === v));
+  render();
+}
+document.getElementById("t-hoy").onclick = () => setView("hoy");
+document.getElementById("t-pal").onclick = () => setView("palabras");
+document.getElementById("t-err").onclick = () => setView("errores");
+
+/* ---------- home ---------- */
+function renderHome(){
+  const d = nextDay();
+  const rev = reviewPool();
+  const dots = CURRICULUM.map(l => {
+    const cls = S.done[l.day] ? "dot done" : (l.day === d ? "dot now" : "dot");
+    return `<button class="${cls}" data-goto="${l.day}" title="Día ${l.day}: ${esc(l.title)}">${l.day}</button>`;
+  }).join("");
+
+  if (d === null){
+    app.innerHTML = `
+      <div class="today">
+        <div class="card stack">
+          <div class="eyebrow">Terminaste el curso</div>
+          <h2 style="font-size:31px">Los catorce días, hechos.</h2>
+          <p class="muted" style="margin:0">Ahora esto es tu gimnasio. Repite cualquier día, o dale a los errores que todavía te persiguen.</p>
+          ${rev.length ? `<div class="btn-row"><button class="btn" id="go-rev">Repasar ${rev.length} error${rev.length===1?"":"es"}</button></div>` : ``}
+        </div>
+        <div><div class="eyebrow" style="margin-bottom:12px">Repetir un día</div><div class="dots">${dots}</div></div>
+      </div>`;
+    if (rev.length) document.getElementById("go-rev").onclick = () => startLesson(null);
+  } else {
+    const l = CURRICULUM.find(x => x.day === d);
+    app.innerHTML = `
+      <div class="today">
+        <div class="card stack">
+          <div class="daynum">Día ${l.day} de 14</div>
+          <h2 style="font-size:31px">${esc(l.title)}</h2>
+          <p class="muted" style="margin:0">Enfoque de hoy: ${esc(l.focus)}. Diez minutos.</p>
+          <div class="stack" style="gap:8px;font-size:15px">
+            <div>${rev.length ? `<span class="pill">Repaso · ${rev.length}</span>` : `<span class="pill">Sin repaso pendiente</span>`}
+            <span class="pill">5 palabras</span> <span class="pill">1 punto de gramática</span> <span class="pill">5 respuestas</span></div>
+          </div>
+          <div class="btn-row"><button class="btn" id="go">Empezar</button></div>
+        </div>
+        <div><div class="eyebrow" style="margin-bottom:12px">El camino</div><div class="dots">${dots}</div></div>
+      </div>`;
+    document.getElementById("go").onclick = () => startLesson(l.day);
+  }
+  app.querySelectorAll("[data-goto]").forEach(b => {
+    b.onclick = () => startLesson(Number(b.dataset.goto));
+  });
+}
+
+/* ---------- lesson ---------- */
+let L = null;
+
+function buildQueue(day){
+  const q = [];
+  reviewPool().forEach(m => q.push({
+    stage:0, kind:"ask", label:"Repaso",
+    prompt:m.prompt, model:m.model, accepts:m.accepts, why:m.why, isReview:true, day:m.day
+  }));
+  if (day !== null){
+    const l = CURRICULUM.find(x => x.day === day);
+    q.push({stage:1, kind:"vocab", label:"Palabras nuevas", vocab:l.vocab});
+    q.push({stage:2, kind:"note", label:"Gramática", grammar:l.grammar});
+    l.grammar.drills.forEach(dr => q.push({
+      stage:2, kind:"ask", label:"Gramática",
+      prompt:dr.q, model:dr.a, accepts:dr.alt, why:dr.why, day:day
+    }));
+    l.convo.forEach(t => q.push({
+      stage:3, kind:"ask", label:"Conversación",
+      who:t.who, line:t.line, lineEn:t.lineEn,
+      prompt:t.task, model:t.model, accepts:t.accepts, why:t.why, day:day
+    }));
+  }
+  q.push({stage:3, kind:"done"});
+  return q;
+}
+
+function startLesson(day){
+  L = {day, q:buildQueue(day), i:0, right:0, total:0};
+  view = "leccion";
+  for (const id of ["t-hoy","t-pal","t-err"]) document.getElementById(id).setAttribute("aria-selected","false");
+  render();
+}
+
+function stageBar(stage){
+  return `<div class="steps">${[0,1,2,3].map(i => `<div class="step ${i<=stage?"on":""}"></div>`).join("")}</div>`;
+}
+
+function renderLesson(){
+  const step = L.q[L.i];
+  const head = L.day ? `Día ${L.day} · ${esc(CURRICULUM.find(x=>x.day===L.day).title)}` : "Repaso libre";
+
+  if (step.kind === "done"){
+    const pct = L.total ? Math.round(100 * L.right / L.total) : 100;
+    const nd = L.day ? CURRICULUM.find(x => x.day === L.day + 1) : null;
+    app.innerHTML = `
+      ${stageBar(3)}
+      <div class="card stack">
+        <div class="eyebrow">Terminado</div>
+        <h2 style="font-size:31px">${L.right} de ${L.total}</h2>
+        <p class="muted" style="margin:0">${pct >= 80 ? "Sólido. Eso ya te lo sabes." : pct >= 50 ? "Ahí vas. Lo que fallaste vuelve en dos días." : "Día duro. Eso es lo que significa que sirvió — vuelve mañana."}</p>
+        ${nd ? `<div style="border-top:1px solid var(--edge);padding-top:16px"><div class="eyebrow" style="margin-bottom:6px">La próxima vez</div><div style="font-family:var(--serif);font-size:20px">${esc(nd.title)}</div><div class="muted small">${esc(nd.focus)}</div></div>` : ``}
+        <div class="btn-row"><button class="btn" id="fin">Listo</button></div>
+      </div>`;
+    document.getElementById("fin").onclick = () => { setView("hoy"); };
+    return;
+  }
+
+  if (step.kind === "vocab"){
+    app.innerHTML = `
+      ${stageBar(step.stage)}
+      <div class="stagelabel"><span class="n">02</span><h2 style="font-size:25px">Palabras nuevas</h2></div>
+      <div class="card stack">
+        ${step.vocab.map(v => `
+          <div class="word">
+            <div class="es">${esc(v.es)}</div>
+            <div class="en">${esc(v.en)}</div>
+            <div class="ex">${esc(v.ex)}<i>${esc(v.exEn)}</i></div>
+          </div>`).join("")}
+      </div>
+      <div class="btn-row" style="margin-top:24px"><button class="btn" id="nx">Seguir</button></div>`;
+    document.getElementById("nx").onclick = advance;
+    return;
+  }
+
+  if (step.kind === "note"){
+    app.innerHTML = `
+      ${stageBar(step.stage)}
+      <div class="stagelabel"><span class="n">03</span><h2 style="font-size:25px">${esc(step.grammar.title)}</h2></div>
+      <div class="card"><div class="note">${step.grammar.note}</div></div>
+      <div class="btn-row" style="margin-top:24px"><button class="btn" id="nx">Ahora pruébalo</button></div>`;
+    document.getElementById("nx").onclick = advance;
+    return;
+  }
+
+  // ask
+  const n = step.stage === 0 ? "01" : step.stage === 2 ? "03" : "04";
+  const label = step.isReview ? "Repaso" : step.label;
+  app.innerHTML = `
+    ${stageBar(step.stage)}
+    <div class="stagelabel"><span class="n">${n}</span><h2 style="font-size:25px">${esc(label)}</h2></div>
+    <div class="turn">
+      ${step.line ? `<div class="said" id="said">
+          <div class="who">${esc(step.who)}</div>
+          <div class="es">${esc(step.line)}</div>
+          <div class="en">${esc(step.lineEn)}</div>
+        </div>
+        <button class="linkish" id="tr" style="align-self:flex-start">¿Qué dijo?</button>` : ``}
+      <div class="task">${esc(step.prompt)}</div>
+      <textarea id="ans" rows="2" placeholder="Escríbelo en español…" autocomplete="off" autocapitalize="sentences" spellcheck="false"></textarea>
+      <div class="btn-row"><button class="btn" id="chk">Revisar</button><button class="btn btn-quiet" id="skip">No sé</button></div>
+    </div>
+    <div id="out" style="margin-top:24px"></div>`;
+
+  const ta = document.getElementById("ans");
+  ta.focus();
+  ta.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); check(); } });
+  document.getElementById("chk").onclick = check;
+  document.getElementById("skip").onclick = () => check(true);
+  const tr = document.getElementById("tr");
+  if (tr) tr.onclick = () => { document.getElementById("said").classList.add("show"); tr.remove(); };
+
+  function check(skipped){
+    const v = skipped ? "" : ta.value;
+    const r = skipped ? "miss" : grade(v, step.model, step.accepts);
+    L.total++;
+    if (r === "ok"){ L.right++; if (step.isReview) creditMiss(step.model); }
+    else logMiss({prompt:step.prompt, model:step.model, accepts:step.accepts, why:step.why, day:step.day});
+
+    const tag = r === "ok" ? `<span class="tag ok">Correcto</span>` : r === "close" ? `<span class="tag close">Casi</span>` : `<span class="tag miss">Todavía no</span>`;
+    document.getElementById("out").innerHTML = `
+      <div class="verdict ${r}">
+        ${tag}
+        <div class="model">${esc(step.model)}</div>
+        <div class="why">${esc(step.why)}</div>
+        ${r !== "ok" ? `<button class="linkish" id="mine">Lo que escribí también sirve</button>` : ``}
+      </div>
+      <div class="btn-row" style="margin-top:16px"><button class="btn" id="nx">Seguir</button></div>`;
+    document.getElementById("chk").disabled = true;
+    document.getElementById("skip").disabled = true;
+    ta.disabled = true;
+    const mine = document.getElementById("mine");
+    if (mine) mine.onclick = () => { clearMiss(step.model); L.right++; mine.textContent = "Anotado."; mine.disabled = true; };
+    document.getElementById("nx").onclick = advance;
+    document.getElementById("nx").focus();
+  }
+}
+
+function advance(){
+  L.i++;
+  if (L.q[L.i].kind === "done" && L.day) complete(L.day);
+  paintStreak();
+  render();
+}
+
+/* ---------- palabras ---------- */
+function renderPalabras(){
+  const days = CURRICULUM.filter(l => S.done[l.day]);
+  const total = days.reduce((n,l) => n + l.vocab.length, 0) + FROM_CHAT.length;
+  if (!total){
+    app.innerHTML = `<div class="empty">Todavía no hay nada aquí.<br>Termina el día 1 y tus palabras empiezan a acumularse.</div>`;
+    return;
+  }
+  app.innerHTML = `
+    <div class="stack-lg">
+      ${FROM_CHAT.length ? `<div>
+        <div class="sec-h"><div class="eyebrow">De nuestras clases en el chat</div><span class="muted small">${FROM_CHAT.length}</span></div>
+        <div class="card">${FROM_CHAT.map(v => `
+          <div class="word"><div class="es">${esc(v.es)}</div><div class="en">${esc(v.en)}</div>
+          <div class="ex">${esc(v.ex)}<i>${esc(v.exEn)}</i></div></div>`).join("")}</div>
+      </div>` : ``}
+      ${days.slice().reverse().map(l => `
+        <div>
+          <div class="sec-h"><div class="eyebrow">Día ${l.day} · ${esc(l.title)}</div></div>
+          <div class="card">${l.vocab.map(v => `
+            <div class="word"><div class="es">${esc(v.es)}</div><div class="en">${esc(v.en)}</div>
+            <div class="ex">${esc(v.ex)}<i>${esc(v.exEn)}</i></div></div>`).join("")}</div>
+        </div>`).join("")}
+    </div>`;
+}
+
+/* ---------- errores ---------- */
+function renderErrores(){
+  if (!S.misses.length){
+    app.innerHTML = `<div class="empty">Nada pendiente.<br>Lo que falles aparece aquí y vuelve al principio de una lección.</div>`;
+    return;
+  }
+  const sorted = S.misses.slice().sort((a,b) => b.wrong - a.wrong);
+  app.innerHTML = `
+    <div class="stack">
+      <p class="muted small" style="margin:0 0 8px">Cada uno vuelve al principio de una lección hasta que lo aciertes dos veces seguidas.</p>
+      <div class="card">
+        ${sorted.map(m => `
+          <div class="row">
+            <div class="l">
+              <div class="es">${esc(m.model)}</div>
+              <div class="en">${esc(m.prompt)}</div>
+              <div class="en" style="color:var(--ink-3);margin-top:4px">${esc(m.why)}</div>
+            </div>
+            <div class="r">${m.wrong}×<br>día ${m.day || "—"}</div>
+          </div>`).join("")}
+      </div>
+    </div>`;
+}
+
+/* ---------- go ---------- */
+function render(){
+  paintStreak();
+  if (view === "leccion") renderLesson();
+  else if (view === "palabras") renderPalabras();
+  else if (view === "errores") renderErrores();
+  else renderHome();
+  window.scrollTo(0,0);
+}
+render();
+</script>
+
+<script>
+if ("serviceWorker" in navigator)
+  addEventListener("load", () => navigator.serviceWorker.register("sw.js"));
+</script>
+</body>
+</html>
