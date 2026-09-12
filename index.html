@@ -449,13 +449,14 @@ function grade(input, model, accepts){
   if (!n) return "miss";
   const targets = [model].concat(accepts||[]).map(norm);
   if (targets.includes(n)) return "ok";
-  const got = new Set(n.split(" "));
+  const got = n.split(" ");
+  const gotSet = new Set(got);
   let best = 0;
   for (const t of targets){
-    const want = t.split(" ").filter(w => w.length > 2);
-    if (!want.length) continue;
-    const hit = want.filter(w => got.has(w)).length;
-    best = Math.max(best, hit / want.length);
+    const want = t.split(" ");
+    const hits = want.filter(w => gotSet.has(w)).length;
+    // min of recall and precision: missing words and padding both cost you
+    best = Math.max(best, Math.min(hits / want.length, hits / got.length));
   }
   if (best >= 0.75) return "ok";
   if (best >= 0.45) return "close";
