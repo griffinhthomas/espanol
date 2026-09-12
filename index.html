@@ -673,7 +673,7 @@ function renderLesson(){
   const ta = document.getElementById("ans");
   ta.focus();
   ta.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); check(); } });
-  document.getElementById("chk").onclick = check;
+  document.getElementById("chk").onclick = () => check();
   document.getElementById("skip").onclick = () => check(true);
   const tr = document.getElementById("tr");
   if (tr) tr.onclick = () => { document.getElementById("said").classList.add("show"); tr.remove(); };
