@@ -138,6 +138,29 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
 .empty{color:var(--ink-3);font-size:16px;padding:32px 0;text-align:center}
 .sec-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px}
 hr{border:0;border-top:1px solid var(--edge);margin:32px 0}
+
+/* input scene */
+.scene-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--edge)}
+.scene{font-size:17px;line-height:1.75}
+.scene p{margin:0 0 12px}
+.scene p:last-child{margin:0}
+.gl{background:none;border:0;padding:0;color:inherit;font:inherit;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:var(--clay);text-underline-offset:4px}
+.gl.on{color:var(--clay);text-decoration:none}
+.gl.on::after{content:" (" attr(data-gloss) ")";color:var(--ink-3);font-size:.85em}
+
+/* speaker */
+.spk{position:relative;background:transparent;border:1px solid var(--edge);color:var(--clay);border-radius:999px;width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;flex:none;transition:background .15s ease-out}
+.spk:hover{background:var(--clay-wash)}
+.spk::before{content:"";position:absolute;top:50%;left:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
+.btn svg{vertical-align:-2px;margin-right:6px}
+
+/* sound pairs */
+.pair-opts{display:flex;gap:8px}
+.pair-opts .btn{flex:1;font-family:var(--serif);font-size:20px}
+
+/* memory hook under a word */
+.hook{font-size:14px;color:var(--ink-2);margin-top:10px;padding-left:12px;border-left:2px solid var(--edge)}
+.row .r{line-height:1.6;letter-spacing:1px}
 </style>
 <div class="wrap">
   <header>
@@ -427,21 +450,213 @@ CURRICULUM.push(
 );
 </script>
 <script>
+/* Palteca layer: input scenes, sound pairs, memory hooks.
+   Words marked [word|meaning] are tappable in the scene. */
+const PAIRS = {
+  pero_perro: {a:"pero", b:"perro", note:"One flick of the tongue against the roof of your mouth, or a full rolled trill. But — vs. dog."},
+  caro_carro: {a:"caro", b:"carro", note:"Same single-tap vs. trill. Expensive — vs. car."},
+  pero_pelo:  {a:"pero", b:"pelo",  note:"The Spanish r is a tap right behind your teeth, almost where English puts a d. Your ear wants to file it as l. But — vs. hair."},
+  cana_cana:  {a:"cana", b:"caña",  note:"n vs. ñ. A grey hair — vs. sugarcane, or a draft beer."},
+  sonar_sonar:{a:"sonar",b:"soñar", note:"The same n vs. ñ, now inside a verb. To ring — vs. to dream."},
+  hablo_hablo:{a:"hablo",b:"habló", note:"The stress jumps to the last syllable and the present becomes the past. I speak — vs. he spoke."},
+  tomo_tomo:  {a:"tomo", b:"tomó",  note:"Same move. I take — vs. she took. This is how you hear which tense someone is in."},
+  llevo_llevo:{a:"llevo",b:"llevó", note:"I carry — vs. he carried. The whole tense lives in that last syllable."},
+  papa_papa:  {a:"papa", b:"papá",  note:"Potato — vs. dad. Put the stress on the wrong one at the dinner table and everyone will enjoy it."},
+  mesa_misa:  {a:"mesa", b:"misa",  note:"Spanish e and i are short and pure, no glide. Table — vs. mass."},
+  peso_piso:  {a:"peso", b:"piso",  note:"The same e/i cliff. Weight — vs. floor."},
+  esta_esta:  {a:"esta", b:"está",  note:"This — vs. is. Nothing separates them but the stress."},
+  coro_corro: {a:"coro", b:"corro", note:"Choir — vs. I run. Tap against trill, one more time."},
+  cero_cerro: {a:"cero", b:"cerro", note:"Zero — vs. hill."}
+};
+
+const PALTECA = {
+1:{pairs:["pero_perro","mesa_misa"],
+ input:{title:"La puerta se abre",text:
+"Es sábado por la tarde. Sofía [toca el timbre|rings the doorbell] y su mamá abre la puerta enseguida. Se llama Rosa. Abraza a Sofía, mira a Griffin y sonríe.\n—Tú debes ser Griffin —dice—. Mucho gusto. Pasa, pasa.\nGriffin entra despacio. La casa [huele a|smells like] comida. En la sala hay fotos de toda la familia en la pared.\n—Gracias por invitarme —dice él—. Qué linda su casa.\nRosa se ríe.\n—Ay, no me digas «señora». Dime Rosa.\nMiguel, el papá, [se asoma|leans in] desde la cocina y levanta la mano.\n—¿Cómo le va, joven? ¿Habla español?\n—Todavía estoy aprendiendo —dice Griffin."},
+ hooks:["Gusto is the same root as gusto in English. You meet them with relish.",
+        "Invitarme ends in -me because the invitation lands on you. Invite-ar-ME.",
+        "Linda is a name. Picture a woman called Linda walking in and admiring the living room.",
+        "Literally how does it go for you — le is the person it's going for.",
+        "Todavía hides a road in it: to-da-VÍA. You're still on the way."]},
+
+2:{pairs:["caro_carro","peso_piso"],
+ input:{title:"Demasiada comida",text:
+"En la mesa hay demasiada comida. Rosa sirve el primer plato y mira a Griffin sin [parpadear|blinking].\n—Prueba esto. Es la receta de mi mamá.\nGriffin prueba. Está riquísimo, de verdad, y no tiene que [fingir|fake it].\n—¿Qué lleva? —pregunta.\n—Cilantro, comino y un poquito de ají. ¿No te pica?\n—No, para nada. Me gusta el picante.\nRosa le sirve más antes de que él conteste. Miguel se ríe.\n—Aquí nadie [se queda con hambre|leaves hungry] —dice—. Ni modo."},
+ hooks:["Rico means rich. The -ísimo ending is the volume knob: rich becomes richest.",
+        "Sal is salt with the t knocked off the end.",
+        "Quedé lleno — you ended up full. Lleno looks like level, filled to the line.",
+        "Llevar is to carry. The dish is carrying cilantro around inside it.",
+        "Poquito is poco put through the shrink ray. Everything gets softer with -ito."]},
+
+3:{pairs:["llevo_llevo","esta_esta"],
+ input:{title:"El interrogatorio",text:
+"Después de comer, Miguel [se recuesta|leans back] en la silla y empieza el interrogatorio, pero con cariño.\n—Cuéntame, Griffin. ¿A qué te dedicas?\n—Trabajo en mercadeo, en una agencia de publicidad.\n—Ah, publicidad. ¿Y qué haces exactamente?\n—Me encargo de las campañas para las marcas.\n—¿Y llevas mucho tiempo ahí?\n—Llevo tres años.\nMiguel [asiente|nods] despacio, como si estuviera [evaluando|sizing up] algo.\n—¿Y te gusta? ¿O ya estás buscando otra cosa?\n—Me gusta, aunque a veces es mucho trabajo.\n—Así es todo trabajo bueno —dice Miguel."},
+ hooks:["Mercadeo has market sitting inside it: mercado + eo.",
+        "Encargarse — you take the cargo. It's your load to carry.",
+        "Llevar again, but now it's carrying time instead of food. I've been carrying three years there.",
+        "Publicidad is publicity. Free word, just move the stress to the end.",
+        "Difícil de explicar — de, not para. The difficulty belongs to the explaining."]},
+
+4:{pairs:["cana_cana","papa_papa"],
+ input:{title:"Demasiados nombres",text:
+"Carla llega con su esposo Andrés y con Lucía, [la nena|the little girl], que tiene cuatro años y no se calla nunca.\n—Ella es Carla, la hermana de Sofía —dice Rosa.\nGriffin ya [se perdió|got lost] con los nombres. Hay un cuñado, dos sobrinos, una tía que no vino y un primo que llega más tarde.\n—¿Y tú tienes hermanos? —pregunta Carla.\n—Somos tres. Yo soy el mayor.\n—¡Como Sofía! Ella también es la mayor.\nLucía [se esconde|hides] detrás de su mamá y mira a Griffin con [desconfianza|suspicion]."},
+ hooks:["Cuñado sounds like it's been wedged in. That's the in-law who married into the middle of things.",
+        "Suegros — your partner's parents. One word for the whole pair.",
+        "Sobrino shares a root with sovereign — the small sovereign who rules your sister's house.",
+        "¿Cuántos hermanos son? — Spanish counts the whole set, you included. Somos tres.",
+        "Mayor is major. The major one is the oldest."]},
+
+5:{pairs:["pero_pelo","hablo_hablo"],
+ input:{title:"Con el café llegan las preguntas",text:
+"El café llega y con el café llegan las preguntas de verdad.\n—Bueno, y ustedes dos... ¿para cuándo la boda? —dice Rosa.\nSofía [pone los ojos en blanco|rolls her eyes].\n—Mamá.\n—¡Yo solo pregunto!\nGriffin respira.\n—Todavía no lo hemos hablado.\n—Pero llevan dos años.\n—Por ahora estamos bien así.\nMiguel [interviene|steps in]:\n—Déjalo, Rosa. Griffin, ¿y piensan quedarse en Nueva York?\n—Por ahora sí, pero depende del trabajo.\nCarla [no pierde el tiempo|wastes no time]:\n—¿Y quién cocina en la casa?\n—Yo cocino más, pero ella cocina mejor.\nRosa aplaude. —¡Esa es la respuesta correcta!"},
+ hooks:["Todavía no — not yet. It leaves the door open without promising anyone anything.",
+        "Ya veremos — we'll already see. The ya makes it sound settled instead of evasive.",
+        "Depende de. Always de. De + el crushes together into del, no exceptions.",
+        "Buena pregunta buys you three full seconds of thinking time and sounds gracious.",
+        "Bien así — fine the way it is. Así is the shrug."]},
+
+6:{pairs:["hablo_hablo","tomo_tomo"],
+ input:{title:"La noche del balcón",text:
+"—Cuéntame bien —dice Rosa—. ¿Cómo se conocieron?\n—Nos conocimos en una fiesta de un amigo.\nGriffin [se acuerda|remembers] de todo. Estaba lloviendo esa noche. Él no quería ir. Ella estaba sola en el balcón, con un vaso en la mano, mirando la calle.\n—Yo le hablé primero —dice.\n—¡Mentira! —grita Sofía desde la cocina—. Yo le escribí primero al día siguiente.\n—Es verdad —[admite|admits] Griffin—. Al principio pensé que no le caía bien.\nRosa [suspira|sighs].\n—Qué bonito. ¿Y desde entonces siempre juntos?\n—Desde entonces, casi todos los días."},
+ hooks:["Nos conocimos — we knew each other, once, in one finished moment. That's why it's preterite.",
+        "Estaba lloviendo is the weather behind the scene, not an event in it. Backdrop verbs take imperfect.",
+        "Al principio — at the beginning. Principio is the principal, the first one.",
+        "Desde entonces — since then. This is the phrase that closes a story.",
+        "Por casualidad — by casualty, by chance. Nobody planned it."]},
+
+7:{pairs:["esta_esta","coro_corro"],
+ input:{title:"Miguel ya decidió",text:
+"—¿Y cuántos días se quedan? —pregunta Miguel.\n—Vamos a quedarnos hasta el domingo.\n—¡Qué rico! ¿Y qué quieren hacer mañana?\n—Tenemos pensado ir al centro.\n—Yo los llevo —dice Miguel, y no es una oferta, es [un hecho|a done deal]—. ¿A qué hora quieren salir?\n—Cuando ustedes quieran.\nRosa [asoma la cabeza|pokes her head in]:\n—¿Y les parece si comemos aquí antes de salir?\n—Me parece perfecto.\nCarla [avisa|lets them know] que ellos llegan como a las once.\n—Está bien —dice Griffin—. Los esperamos."},
+ hooks:["Quedarse is reflexive — you park yourself somewhere. Nos quedamos.",
+        "Tenemos pensado — we have it thought. Softer than we're going to, leaves them room to counter.",
+        "¿Les parece si...? — does it seem okay to you all? You propose without deciding for anyone.",
+        "Nos vamos, not salimos, when you mean the group is heading out together.",
+        "Cuando quieran takes the subjunctive because the moment hasn't happened yet."]}
+};
+
+Object.assign(PALTECA, {
+8:{pairs:["pero_perro","cero_cerro"],
+ input:{title:"El partido que nadie ve",text:
+"El partido está en la tele y nadie lo está viendo, [salvo|except] Miguel.\n—¿Viste el de ayer? Qué desastre.\n—Sí, lo vi. La verdad es que no me gustó.\n—Es que el entrenador no [sirve|is any good]. ¿No crees?\n—No creo que sea culpa del entrenador.\nMiguel [se endereza|sits up]. Ahora sí está interesado.\n—¿Ah sí? ¿Y de quién es la culpa?\n—Me parece que los jugadores no están jugando bien.\n—Ay, ya empezaron —dice Carla desde el sofá.\n—Bueno, bueno —dice Miguel—. ¿Y a ti qué deporte te gusta?"},
+ hooks:["Me parece que — it seems to me. You're asserting, so the verb stays normal.",
+        "No creo que sea. Doubt bends the verb. Sea is the bent form of es.",
+        "La verdad es que is the throat-clearing that means I'm about to be honest.",
+        "De acuerdo CON a person. Not a — you agree alongside someone, not toward them.",
+        "¿Tú qué opinas? hands the floor back and gets you out of any corner."]},
+
+9:{pairs:["sonar_sonar","caro_carro"],
+ input:{title:"El trapo",text:
+"Cuando todos terminan, Rosa se levanta a recoger la mesa. Griffin se levanta también.\n—¿Le ayudo con algo?\n—No, no, tú eres el invitado. Siéntate.\nGriffin no se sienta.\n—Déjeme a mí. Yo lavo los platos.\n—Ay, [qué pena contigo|I feel terrible] —dice Rosa, pero ya le está pasando el [trapo|dish towel]—. Bueno, pero solo esos.\nMiguel lo mira desde la puerta y [aprueba|approves].\n—Ese muchacho sí sirve. Griffin, ¿ya los guardaste?\n—Todavía no. ¿Dónde los guardo?\n—En ese [gabinete|cabinet] de arriba, a la izquierda."},
+ hooks:["¿Le ayudo con algo? is the highest-value sentence you can say in someone's mother's kitchen.",
+        "Once everyone knows it's the dishes, you stop saying dishes. Los lavo.",
+        "Déjeme a mí — leave it to me. Insisting once is expected; the first no isn't a real no.",
+        "No se moleste — don't trouble yourself. Molestar is to bother, not the English meaning.",
+        "Guardar is to guard, to put somewhere safe. ¿Dónde lo guardo?"]},
+
+10:{pairs:["cana_cana","mesa_misa"],
+ input:{title:"El cafecito",text:
+"Ya es de noche. La casa está tranquila. Rosa [pone la cafetera|puts the coffee on].\n—¿Te sirvo un cafecito?\n—Sí, por favor. Qué rico.\n—Es de mi pueblo. Mi hermana me lo manda.\n—Se nota. Está buenísimo.\nSe quedan un rato en la cocina sin decir mucho. Afuera se oye un perro.\n—Quédense un ratito más —dice Rosa—. No se vayan tan rápido.\n—Claro. No tenemos [apuro|rush].\nRosa lo mira.\n—Me da gusto que Sofía te haya traído. Ya eres de la familia.\n—Me hicieron sentir en casa. De verdad."},
+ hooks:["A cafecito is not a small coffee. It's a friendly one. The -ito is warmth, not size.",
+        "Un ratito — a little while. Rato is the chunk of time, -ito makes it cozy.",
+        "Qué amable is the reflex when someone offers you something. Not qué bueno — that rates the offer.",
+        "Se nota — it shows. The thing announces itself without anyone saying it.",
+        "Me hicieron sentir en casa. Learn this one cold — it's the line they repeat after you leave."]},
+
+11:{pairs:["caro_carro","pero_pelo"],
+ input:{title:"Pierdes el hilo",text:
+"Miguel cuenta una historia larguísima. Griffin [pierde el hilo|loses the thread] en el segundo [apellido|last name].\n—...el hijo del compadre de tu suegro se casó con la vecina que vivía al lado de donde vivíamos antes.\n—Perdón, no le seguí.\nMiguel se ríe.\n—Es que hablo muy rápido. Te lo digo otra vez.\n—¿Me lo puede repetir más despacio?\nRosa [lo rescata|rescues him]:\n—Él cuenta todo con mil detalles. ¿Quieres postre?\n—Sí. Se me olvidó la palabra. ¿Cómo se dice «cheesecake»?\n—Pay de queso, acá.\n—Pay de queso —repite Griffin, y esta vez [se le queda|it sticks]."},
+ hooks:["Más despacio, never más lento. Lento describes a thing; despacio describes how you do it.",
+        "¿Cómo se dice...? is the most valuable question you own. Ask it out loud, not in your head.",
+        "No te seguí — I didn't follow you. Same image as English, so it costs you nothing to remember.",
+        "Se me olvidó — it forgot itself on me. Spanish hands the blame to the word, not to you.",
+        "Más o menos is honest and completely normal. Nobody expects a hundred percent."]},
+
+12:{pairs:["coro_corro","peso_piso"],
+ input:{title:"Cuando empiezan las bromas",text:
+"[La confianza|The easiness] llega cuando empiezan las bromas.\n—Griffin, Sofía nos dijo que bailas salsa —dice Carla—. ¿Es verdad?\n—Te está cargando. Bailo [pésimo|terribly].\n—Uy, no importa. Aquí todos bailamos mal, pero bailamos.\n—Bueno, ni modo. Entonces bailo.\nMiguel no [se queda atrás|gets left behind]:\n—¿Ya te dijeron que en esta familia el que llega último lava todo?\n—¿En serio? ¿Me está cargando?\n—Papá, ya déjalo —dice Sofía—. [Se lo cree todo|He believes everything].\n—Está bien. Tu papá me cae bien.\nCarla [se pone seria|gets serious] un segundo.\n—Ya en serio. ¿Cómo te sentiste hoy?"},
+ hooks:["Cargar is to load. Someone cargando you is loading you up with nonsense.",
+        "Ni modo is a shrug in two syllables. Nothing to be done, oh well, moving on.",
+        "Caer bien works backwards: the person falls well on you. Me cae bien tu papá.",
+        "Careful — me gusta tu hermano means you're attracted to him. For liking people, always caer bien.",
+        "Ya en serio flips the table back to sincere. Useful after three minutes of teasing."]},
+
+13:{pairs:["tomo_tomo","papa_papa"],
+ input:{title:"Miguel baja el volumen",text:
+"[Tarde o temprano|Sooner or later] pasa. Miguel baja el volumen de la tele.\n—Griffin, ¿y allá en Estados Unidos qué piensan de todo lo que está pasando?\nLa mesa [se queda callada|goes quiet].\n—La verdad, no estoy muy al tanto.\n—Pero algo tendrás que pensar, ¿no?\n—Preferiría no opinar. Es más complicado de lo que parece.\n—Déjalo, Miguel —dice Rosa—. No le preguntes esas cosas.\n—No hay problema. Prefiero escuchar.\nMiguel [lo piensa|thinks it over] y asiente.\n—Bueno. Cada quien piensa distinto y así está bien.\nCarla: —¿Y podríamos hablar de otra cosa, por favor?"},
+ hooks:["Al tanto — up to the count, up to date. Better than no sé, which sounds like stonewalling.",
+        "Cada quien — each whoever. To each their own, and the topic is politely closed.",
+        "De lo que parece — than what it seems. That lo que is the structure for than what.",
+        "Preferiría, podría, sería: add -ía and any sentence gets a softer landing.",
+        "Prefiero escuchar declines without shutting the person down. Graceful exit."]},
+
+14:{pairs:["cero_cerro","llevo_llevo"],
+ input:{title:"Las maletas en la puerta",text:
+"El domingo llega demasiado rápido. Las maletas ya están en la puerta.\n—Ay, ya se van. [Se me pasó volando|It flew by on me] el fin de semana.\n—Muchísimas gracias por todo.\n—No, gracias a ti por venir. ¿La pasaste bien?\n—La pasé muy bien con ustedes.\nMiguel le da la mano y después lo abraza, que es distinto.\n—Cuídense en el camino. Y vuelvan pronto, ¿oyeron?\n—Claro que sí. Y ustedes están invitados a Nueva York cuando quieran.\nCarla lo abraza. —Nos vemos. Cuídate mucho.\n—Salúdame a Lucía.\nRosa ya tiene [los ojos rojos|red eyes].\n—Bueno, ya váyanse antes de que me ponga a llorar."},
+ hooks:["Muchísimas, not muchas. At a goodbye the -ísimo is what makes it read as sincere.",
+        "La pasé bien — that la refers to nothing at all. Just memorize the phrase whole.",
+        "Salúdame a Lucía — greet Lucía for me. Salúdeme if you're on usted with them.",
+        "Que les vaya bien is a shortened I hope it goes well. Every Spanish goodbye is a small blessing.",
+        "Cuando quieran — subjunctive, because the visit hasn't happened yet."]}
+});
+
+</script>
+<script>
 /* ---------- state ---------- */
-const KEY = "esfam-v1";
-const blank = {done:{}, streak:0, last:"", misses:[], seen:{}};
+const KEY = "esfam-v2";
+const blank = {done:{}, streak:0, last:"", srs:{}};
 let S = blank;
-try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign({}, blank, JSON.parse(raw)); } catch(e){}
+try {
+  const raw = localStorage.getItem(KEY);
+  if (raw) S = Object.assign({}, blank, JSON.parse(raw));
+  else {
+    const old = localStorage.getItem("esfam-v1");   // carry over the first version
+    if (old) {
+      const o = JSON.parse(old);
+      S = {done:o.done||{}, streak:o.streak||0, last:o.last||"", srs:{}};
+      (o.misses||[]).forEach(m => S.srs[m.k] = {
+        kind:"ask", box:1, due:todayStr(),
+        prompt:m.prompt, model:m.model, accepts:m.accepts||[], why:m.why, day:m.day
+      });
+    }
+  }
+} catch(e){}
 function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} }
 
-const today = () => new Date().toISOString().slice(0,10);
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+const today = todayStr;
 function daysBetween(a,b){ return Math.round((new Date(b) - new Date(a)) / 86400000); }
+function plusDays(n){ const d = new Date(); d.setDate(d.getDate()+n); return d.toISOString().slice(0,10); }
+
+/* ---------- the phone's Spanish voice ---------- */
+let VOICE = null;
+function pickVoice(){
+  if (!("speechSynthesis" in window)) return;
+  const all = speechSynthesis.getVoices().filter(v => /^es/i.test(v.lang));
+  // prefer Latin American Spanish, fall back to any Spanish at all
+  VOICE = all.find(v => /es[-_](MX|US|419|CO|AR|CL|PE)/i.test(v.lang)) || all[0] || null;
+}
+if ("speechSynthesis" in window){
+  pickVoice();
+  speechSynthesis.addEventListener("voiceschanged", () => { pickVoice(); if (view === "hoy") render(); });
+}
+function say(text, rate){
+  if (!VOICE) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.voice = VOICE; u.lang = VOICE.lang; u.rate = rate ? Number(rate) : 0.92;
+  speechSynthesis.speak(u);
+}
+const SPK = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg>';
+function spk(text, rate, label){
+  if (!VOICE) return "";
+  return `<button class="spk" data-say="${esc(text)}" data-rate="${rate||0.92}" aria-label="${label||"Escuchar"}">${SPK}</button>`;
+}
 
 /* ---------- text matching ---------- */
 function norm(s){
   return (s||"").toLowerCase()
     .normalize("NFD").replace(/[̀-ͯ]/g,"")
-    .replace(/[¿?¡!.,;:"'()]/g," ")
+    .replace(/[¿?¡!.,;:"'()«»—-]/g," ")
     .replace(/\s+/g," ").trim();
 }
 function grade(input, model, accepts){
@@ -463,32 +678,33 @@ function grade(input, model, accepts){
   return "miss";
 }
 
-/* ---------- misses ---------- */
-function logMiss(a){
-  const k = norm(a.model);
-  let m = S.misses.find(x => x.k === k);
-  if (m){ m.hits = 0; m.wrong++; m.ts = today(); }
-  else S.misses.push({k, prompt:a.prompt, model:a.model, accepts:a.accepts||[], why:a.why, day:a.day, hits:0, wrong:1, ts:today()});
+/* ---------- spacing (Leitner boxes) ---------- */
+const STEPS = [1, 2, 4, 8, 16];          // days until it comes back, by box
+function srsMiss(payload){
+  const k = payload.kind === "pair" ? "pair:" + payload.pairId : "ask:" + norm(payload.model);
+  const cur = S.srs[k];
+  S.srs[k] = Object.assign({}, payload, {box:1, due: plusDays(STEPS[0]), wrong: (cur ? cur.wrong||0 : 0) + 1});
   save();
 }
-function creditMiss(model){
-  const k = norm(model);
-  const i = S.misses.findIndex(x => x.k === k);
-  if (i < 0) return;
-  S.misses[i].hits++;
-  if (S.misses[i].hits >= 2) S.misses.splice(i,1);
+function srsHit(payload){
+  const k = payload.kind === "pair" ? "pair:" + payload.pairId : "ask:" + norm(payload.model);
+  const cur = S.srs[k];
+  if (!cur) return;
+  const box = Math.min(cur.box + 1, STEPS.length);
+  if (box >= STEPS.length && cur.box >= STEPS.length) { delete S.srs[k]; save(); return; }
+  cur.box = box; cur.due = plusDays(STEPS[box - 1]);
   save();
 }
-function clearMiss(model){
-  const k = norm(model);
-  const i = S.misses.findIndex(x => x.k === k);
-  if (i >= 0){ S.misses.splice(i,1); save(); }
+function srsClear(payload){
+  const k = payload.kind === "pair" ? "pair:" + payload.pairId : "ask:" + norm(payload.model);
+  if (S.srs[k]) { delete S.srs[k]; save(); }
 }
-function reviewPool(){
-  return S.misses
-    .filter(m => m.ts !== today())
-    .sort((a,b) => (b.wrong - a.wrong) || (a.ts < b.ts ? -1 : 1))
-    .slice(0,3);
+function dueItems(n){
+  const t = today();
+  return Object.values(S.srs)
+    .filter(i => i.due <= t)
+    .sort((a,b) => (a.due < b.due ? -1 : a.due > b.due ? 1 : a.box - b.box))
+    .slice(0, n || 3);
 }
 
 /* ---------- progress ---------- */
@@ -505,8 +721,16 @@ function complete(day){
 
 /* ---------- render helpers ---------- */
 const app = document.getElementById("app");
-const esc = s => (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const esc = s => (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 let view = "hoy";
+
+function scene(text){
+  return text.split("\n").map(line => {
+    const html = esc(line).replace(/\[([^\]|]+)\|([^\]]+)\]/g,
+      (m, w, g) => `<button class="gl" data-gloss="${g}">${w}</button>`);
+    return `<p>${html}</p>`;
+  }).join("");
+}
 
 function paintStreak(){
   const el = document.getElementById("streak");
@@ -515,22 +739,32 @@ function paintStreak(){
 }
 function setView(v){
   view = v;
-  for (const [id,name] of [["t-hoy","hoy"],["t-pal","palabras"],["t-err","errores"]])
+  for (const [id,name] of [["t-hoy","hoy"],["t-pal","palabras"],["t-err","memoria"]])
     document.getElementById(id).setAttribute("aria-selected", String(name === v));
   render();
 }
 document.getElementById("t-hoy").onclick = () => setView("hoy");
 document.getElementById("t-pal").onclick = () => setView("palabras");
-document.getElementById("t-err").onclick = () => setView("errores");
+document.getElementById("t-err").onclick = () => setView("memoria");
+document.getElementById("t-err").textContent = "Memoria";
+
+// one listener for every speaker button and every glossed word
+app.addEventListener("click", e => {
+  const s = e.target.closest("[data-say]");
+  if (s) { say(s.dataset.say, s.dataset.rate); return; }
+  const g = e.target.closest(".gl");
+  if (g) g.classList.toggle("on");
+});
 
 /* ---------- home ---------- */
 function renderHome(){
   const d = nextDay();
-  const rev = reviewPool();
+  const due = dueItems(3).length;
   const dots = CURRICULUM.map(l => {
     const cls = S.done[l.day] ? "dot done" : (l.day === d ? "dot now" : "dot");
     return `<button class="${cls}" data-goto="${l.day}" title="Día ${l.day}: ${esc(l.title)}">${l.day}</button>`;
   }).join("");
+  const novoz = VOICE ? "" : `<p class="muted small" style="margin:0">Sin voz en español todavía. En el iPhone: Ajustes › Accesibilidad › Contenido hablado › Voces › Español. Descarga una y vuelve.</p>`;
 
   if (d === null){
     app.innerHTML = `
@@ -538,12 +772,13 @@ function renderHome(){
         <div class="card stack">
           <div class="eyebrow">Terminaste el curso</div>
           <h2 style="font-size:31px">Los catorce días, hechos.</h2>
-          <p class="muted" style="margin:0">Ahora esto es tu gimnasio. Repite cualquier día, o dale a los errores que todavía te persiguen.</p>
-          ${rev.length ? `<div class="btn-row"><button class="btn" id="go-rev">Repasar ${rev.length} error${rev.length===1?"":"es"}</button></div>` : ``}
+          <p class="muted" style="margin:0">Ahora esto es tu gimnasio. Repite cualquier día, o deja que la memoria te traiga lo que toca.</p>
+          ${due ? `<div class="btn-row"><button class="btn" id="go-rev">Repasar ${due}</button></div>` : ``}
+          ${novoz}
         </div>
         <div><div class="eyebrow" style="margin-bottom:12px">Repetir un día</div><div class="dots">${dots}</div></div>
       </div>`;
-    if (rev.length) document.getElementById("go-rev").onclick = () => startLesson(null);
+    if (due) document.getElementById("go-rev").onclick = () => startLesson(null);
   } else {
     const l = CURRICULUM.find(x => x.day === d);
     app.innerHTML = `
@@ -551,46 +786,44 @@ function renderHome(){
         <div class="card stack">
           <div class="daynum">Día ${l.day} de 14</div>
           <h2 style="font-size:31px">${esc(l.title)}</h2>
-          <p class="muted" style="margin:0">Enfoque de hoy: ${esc(l.focus)}. Diez minutos.</p>
-          <div class="stack" style="gap:8px;font-size:15px">
-            <div>${rev.length ? `<span class="pill">Repaso · ${rev.length}</span>` : `<span class="pill">Sin repaso pendiente</span>`}
-            <span class="pill">5 palabras</span> <span class="pill">1 punto de gramática</span> <span class="pill">5 respuestas</span></div>
+          <p class="muted" style="margin:0">Primero lo escuchas y lo entiendes. Después lo dices tú.</p>
+          <div style="font-size:15px">
+            ${due ? `<span class="pill">Repaso · ${due}</span> ` : ``}<span class="pill">Una escena</span>
+            <span class="pill">5 palabras</span> <span class="pill">Oído</span> <span class="pill">5 respuestas</span>
           </div>
           <div class="btn-row"><button class="btn" id="go">Empezar</button></div>
+          ${novoz}
         </div>
         <div><div class="eyebrow" style="margin-bottom:12px">El camino</div><div class="dots">${dots}</div></div>
       </div>`;
     document.getElementById("go").onclick = () => startLesson(l.day);
   }
-  app.querySelectorAll("[data-goto]").forEach(b => {
-    b.onclick = () => startLesson(Number(b.dataset.goto));
-  });
+  app.querySelectorAll("[data-goto]").forEach(b => b.onclick = () => startLesson(Number(b.dataset.goto)));
 }
 
 /* ---------- lesson ---------- */
 let L = null;
+const STAGES = ["Repaso", "La escena", "Palabras", "El oído", "Conversación", "Por qué funciona"];
 
 function buildQueue(day){
   const q = [];
-  reviewPool().forEach(m => q.push({
-    stage:0, kind:"ask", label:"Repaso",
-    prompt:m.prompt, model:m.model, accepts:m.accepts, why:m.why, isReview:true, day:m.day
-  }));
+  dueItems(3).forEach(i => q.push(Object.assign({}, i, {stage:0, isReview:true})));
   if (day !== null){
     const l = CURRICULUM.find(x => x.day === day);
-    q.push({stage:1, kind:"vocab", label:"Palabras nuevas", vocab:l.vocab});
-    q.push({stage:2, kind:"note", label:"Gramática", grammar:l.grammar});
-    l.grammar.drills.forEach(dr => q.push({
-      stage:2, kind:"ask", label:"Gramática",
-      prompt:dr.q, model:dr.a, accepts:dr.alt, why:dr.why, day:day
-    }));
+    const p = PALTECA[day];
+    q.push({stage:1, kind:"scene", input:p.input});
+    q.push({stage:2, kind:"vocab", vocab:l.vocab, hooks:p.hooks});
+    p.pairs.forEach(id => q.push({stage:3, kind:"pair", pairId:id, day}));
     l.convo.forEach(t => q.push({
-      stage:3, kind:"ask", label:"Conversación",
-      who:t.who, line:t.line, lineEn:t.lineEn,
-      prompt:t.task, model:t.model, accepts:t.accepts, why:t.why, day:day
+      stage:4, kind:"ask", who:t.who, line:t.line, lineEn:t.lineEn,
+      prompt:t.task, model:t.model, accepts:t.accepts, why:t.why, day
+    }));
+    q.push({stage:5, kind:"note", grammar:l.grammar});
+    l.grammar.drills.forEach(dr => q.push({
+      stage:5, kind:"ask", prompt:dr.q, model:dr.a, accepts:dr.alt, why:dr.why, day
     }));
   }
-  q.push({stage:3, kind:"done"});
+  q.push({stage:5, kind:"done"});
   return q;
 }
 
@@ -600,67 +833,138 @@ function startLesson(day){
   for (const id of ["t-hoy","t-pal","t-err"]) document.getElementById(id).setAttribute("aria-selected","false");
   render();
 }
-
-function stageBar(stage){
-  return `<div class="steps">${[0,1,2,3].map(i => `<div class="step ${i<=stage?"on":""}"></div>`).join("")}</div>`;
+function bar(stage){
+  return `<div class="steps">${STAGES.map((_,i) => `<div class="step ${i<=stage?"on":""}"></div>`).join("")}</div>`;
+}
+function label(step){
+  const name = step.isReview ? "Repaso" : STAGES[step.stage];
+  return `<div class="stagelabel"><span class="n">${String(step.stage+1).padStart(2,"0")}</span><h2 style="font-size:25px">${esc(name)}</h2></div>`;
+}
+function advance(){
+  L.i++;
+  if (L.q[L.i].kind === "done" && L.day) complete(L.day);
+  paintStreak();
+  render();
+}
+function nextBtn(text){
+  return `<div class="btn-row" style="margin-top:24px"><button class="btn" id="nx">${text||"Seguir"}</button></div>`;
 }
 
 function renderLesson(){
   const step = L.q[L.i];
-  const head = L.day ? `Día ${L.day} · ${esc(CURRICULUM.find(x=>x.day===L.day).title)}` : "Repaso libre";
 
   if (step.kind === "done"){
     const pct = L.total ? Math.round(100 * L.right / L.total) : 100;
     const nd = L.day ? CURRICULUM.find(x => x.day === L.day + 1) : null;
     app.innerHTML = `
-      ${stageBar(3)}
+      ${bar(5)}
       <div class="card stack">
         <div class="eyebrow">Terminado</div>
         <h2 style="font-size:31px">${L.right} de ${L.total}</h2>
-        <p class="muted" style="margin:0">${pct >= 80 ? "Sólido. Eso ya te lo sabes." : pct >= 50 ? "Ahí vas. Lo que fallaste vuelve en dos días." : "Día duro. Eso es lo que significa que sirvió — vuelve mañana."}</p>
+        <p class="muted" style="margin:0">${pct >= 80 ? "Sólido. Eso ya te lo sabes." : pct >= 50 ? "Ahí vas. Lo que fallaste vuelve mañana, y otra vez en dos días." : "Día duro. Eso es lo que significa que sirvió — vuelve mañana."}</p>
         ${nd ? `<div style="border-top:1px solid var(--edge);padding-top:16px"><div class="eyebrow" style="margin-bottom:6px">La próxima vez</div><div style="font-family:var(--serif);font-size:20px">${esc(nd.title)}</div><div class="muted small">${esc(nd.focus)}</div></div>` : ``}
         <div class="btn-row"><button class="btn" id="fin">Listo</button></div>
       </div>`;
-    document.getElementById("fin").onclick = () => { setView("hoy"); };
+    document.getElementById("fin").onclick = () => setView("hoy");
+    return;
+  }
+
+  if (step.kind === "scene"){
+    app.innerHTML = `
+      ${bar(step.stage)}
+      ${label(step)}
+      <div class="card">
+        <div class="scene-h">
+          <div style="font-family:var(--serif);font-size:20px">${esc(step.input.title)}</div>
+          ${spk(step.input.text.replace(/\[([^\]|]+)\|[^\]]+\]/g,"$1"), 0.85, "Escuchar la escena")}
+        </div>
+        <div class="scene">${scene(step.input.text)}</div>
+        <p class="muted small" style="margin:16px 0 0">Toca cualquier palabra subrayada para ver qué significa. Aquí no se califica nada — solo entiéndela.</p>
+      </div>
+      ${nextBtn("Ya la entendí")}`;
+    document.getElementById("nx").onclick = advance;
     return;
   }
 
   if (step.kind === "vocab"){
     app.innerHTML = `
-      ${stageBar(step.stage)}
-      <div class="stagelabel"><span class="n">02</span><h2 style="font-size:25px">Palabras nuevas</h2></div>
+      ${bar(step.stage)}
+      ${label(step)}
       <div class="card stack">
-        ${step.vocab.map(v => `
+        ${step.vocab.map((v,i) => `
           <div class="word">
-            <div class="es">${esc(v.es)}</div>
+            <div class="es">${esc(v.es)} ${spk(v.es, 0.9)}</div>
             <div class="en">${esc(v.en)}</div>
-            <div class="ex">${esc(v.ex)}<i>${esc(v.exEn)}</i></div>
+            <div class="ex">${esc(v.ex)} ${spk(v.ex, 0.9)}<i>${esc(v.exEn)}</i></div>
+            <div class="hook">${esc(step.hooks[i])}</div>
           </div>`).join("")}
       </div>
-      <div class="btn-row" style="margin-top:24px"><button class="btn" id="nx">Seguir</button></div>`;
+      ${nextBtn()}`;
     document.getElementById("nx").onclick = advance;
     return;
   }
 
   if (step.kind === "note"){
     app.innerHTML = `
-      ${stageBar(step.stage)}
-      <div class="stagelabel"><span class="n">03</span><h2 style="font-size:25px">${esc(step.grammar.title)}</h2></div>
-      <div class="card"><div class="note">${step.grammar.note}</div></div>
-      <div class="btn-row" style="margin-top:24px"><button class="btn" id="nx">Ahora pruébalo</button></div>`;
+      ${bar(step.stage)}
+      ${label(step)}
+      <div class="card">
+        <div style="font-family:var(--serif);font-size:20px;margin-bottom:12px">${esc(step.grammar.title)}</div>
+        <div class="note">${step.grammar.note}</div>
+      </div>
+      ${nextBtn("Ahora pruébalo")}`;
     document.getElementById("nx").onclick = advance;
     return;
   }
 
-  // ask
-  const n = step.stage === 0 ? "01" : step.stage === 2 ? "03" : "04";
-  const label = step.isReview ? "Repaso" : step.label;
+  if (step.kind === "pair"){
+    const p = PAIRS[step.pairId];
+    const which = Math.random() < 0.5 ? "a" : "b";
+    app.innerHTML = `
+      ${bar(step.stage)}
+      ${label(step)}
+      ${VOICE ? `
+      <div class="card stack">
+        <p class="muted small" style="margin:0">Una de estas dos. ¿Cuál oíste?</p>
+        <div class="btn-row"><button class="btn" data-say="${esc(p[which])}" data-rate="0.8">${SPK} Escuchar</button></div>
+        <div class="pair-opts">
+          <button class="btn btn-quiet" data-pick="a">${esc(p.a)}</button>
+          <button class="btn btn-quiet" data-pick="b">${esc(p.b)}</button>
+        </div>
+      </div>
+      <div id="out"></div>`
+      : `<div class="card"><p class="muted" style="margin:0">Esta parte necesita una voz en español en el teléfono. Ajustes › Accesibilidad › Contenido hablado › Voces › Español.</p></div>${nextBtn()}`}`;
+
+    if (!VOICE){ document.getElementById("nx").onclick = advance; return; }
+    say(p[which], 0.8);
+    app.querySelectorAll("[data-pick]").forEach(b => b.onclick = () => {
+      const ok = b.dataset.pick === which;
+      L.total++;
+      if (ok){ L.right++; srsHit(step); } else srsMiss(step);
+      app.querySelectorAll("[data-pick]").forEach(x => x.disabled = true);
+      document.getElementById("out").innerHTML = `
+        <div class="verdict ${ok ? "ok" : "miss"}" style="margin-top:24px">
+          <span class="tag ${ok ? "ok" : "miss"}">${ok ? "Eso era" : "Era la otra"}</span>
+          <div class="model">${esc(p[which])}</div>
+          <div class="why">${esc(p.note)}</div>
+          <div class="btn-row" style="margin-top:12px">
+            <button class="btn btn-quiet" data-say="${esc(p.a)}" data-rate="0.75">${SPK} ${esc(p.a)}</button>
+            <button class="btn btn-quiet" data-say="${esc(p.b)}" data-rate="0.75">${SPK} ${esc(p.b)}</button>
+          </div>
+        </div>
+        ${nextBtn()}`;
+      document.getElementById("nx").onclick = advance;
+    });
+    return;
+  }
+
+  // kind === "ask"
   app.innerHTML = `
-    ${stageBar(step.stage)}
-    <div class="stagelabel"><span class="n">${n}</span><h2 style="font-size:25px">${esc(label)}</h2></div>
+    ${bar(step.stage)}
+    ${label(step)}
     <div class="turn">
       ${step.line ? `<div class="said" id="said">
-          <div class="who">${esc(step.who)}</div>
+          <div class="who">${esc(step.who)} ${spk(step.line, 0.9)}</div>
           <div class="es">${esc(step.line)}</div>
           <div class="en">${esc(step.lineEn)}</div>
         </div>
@@ -680,85 +984,87 @@ function renderLesson(){
   if (tr) tr.onclick = () => { document.getElementById("said").classList.add("show"); tr.remove(); };
 
   function check(skipped){
-    const v = skipped ? "" : ta.value;
-    const r = skipped ? "miss" : grade(v, step.model, step.accepts);
+    const r = skipped ? "miss" : grade(ta.value, step.model, step.accepts);
     L.total++;
-    if (r === "ok"){ L.right++; if (step.isReview) creditMiss(step.model); }
-    else logMiss({prompt:step.prompt, model:step.model, accepts:step.accepts, why:step.why, day:step.day});
+    const payload = {kind:"ask", prompt:step.prompt, model:step.model, accepts:step.accepts, why:step.why, day:step.day};
+    if (r === "ok"){ L.right++; srsHit(payload); } else srsMiss(payload);
 
-    const tag = r === "ok" ? `<span class="tag ok">Correcto</span>` : r === "close" ? `<span class="tag close">Casi</span>` : `<span class="tag miss">Todavía no</span>`;
+    const tag = r === "ok" ? `<span class="tag ok">Correcto</span>`
+              : r === "close" ? `<span class="tag close">Casi</span>`
+              : `<span class="tag miss">Todavía no</span>`;
     document.getElementById("out").innerHTML = `
       <div class="verdict ${r}">
         ${tag}
-        <div class="model">${esc(step.model)}</div>
+        <div class="model">${esc(step.model)} ${spk(step.model, 0.9)}</div>
         <div class="why">${esc(step.why)}</div>
         ${r !== "ok" ? `<button class="linkish" id="mine">Lo que escribí también sirve</button>` : ``}
       </div>
-      <div class="btn-row" style="margin-top:16px"><button class="btn" id="nx">Seguir</button></div>`;
+      ${nextBtn()}`;
     document.getElementById("chk").disabled = true;
     document.getElementById("skip").disabled = true;
     ta.disabled = true;
     const mine = document.getElementById("mine");
-    if (mine) mine.onclick = () => { clearMiss(step.model); L.right++; mine.textContent = "Anotado."; mine.disabled = true; };
+    if (mine) mine.onclick = () => { srsClear(payload); L.right++; mine.textContent = "Anotado."; mine.disabled = true; };
     document.getElementById("nx").onclick = advance;
     document.getElementById("nx").focus();
   }
 }
 
-function advance(){
-  L.i++;
-  if (L.q[L.i].kind === "done" && L.day) complete(L.day);
-  paintStreak();
-  render();
-}
-
 /* ---------- palabras ---------- */
 function renderPalabras(){
   const days = CURRICULUM.filter(l => S.done[l.day]);
-  const total = days.reduce((n,l) => n + l.vocab.length, 0) + FROM_CHAT.length;
-  if (!total){
+  if (!days.length && !FROM_CHAT.length){
     app.innerHTML = `<div class="empty">Todavía no hay nada aquí.<br>Termina el día 1 y tus palabras empiezan a acumularse.</div>`;
     return;
   }
+  const card = (v, hook) => `
+    <div class="word">
+      <div class="es">${esc(v.es)} ${spk(v.es, 0.9)}</div>
+      <div class="en">${esc(v.en)}</div>
+      <div class="ex">${esc(v.ex)}<i>${esc(v.exEn)}</i></div>
+      ${hook ? `<div class="hook">${esc(hook)}</div>` : ``}
+    </div>`;
   app.innerHTML = `
     <div class="stack-lg">
       ${FROM_CHAT.length ? `<div>
-        <div class="sec-h"><div class="eyebrow">De nuestras clases en el chat</div><span class="muted small">${FROM_CHAT.length}</span></div>
-        <div class="card">${FROM_CHAT.map(v => `
-          <div class="word"><div class="es">${esc(v.es)}</div><div class="en">${esc(v.en)}</div>
-          <div class="ex">${esc(v.ex)}<i>${esc(v.exEn)}</i></div></div>`).join("")}</div>
+        <div class="sec-h"><div class="eyebrow">De nuestras clases en el chat</div></div>
+        <div class="card">${FROM_CHAT.map(v => card(v)).join("")}</div>
       </div>` : ``}
       ${days.slice().reverse().map(l => `
         <div>
           <div class="sec-h"><div class="eyebrow">Día ${l.day} · ${esc(l.title)}</div></div>
-          <div class="card">${l.vocab.map(v => `
-            <div class="word"><div class="es">${esc(v.es)}</div><div class="en">${esc(v.en)}</div>
-            <div class="ex">${esc(v.ex)}<i>${esc(v.exEn)}</i></div></div>`).join("")}</div>
+          <div class="card">${l.vocab.map((v,i) => card(v, PALTECA[l.day].hooks[i])).join("")}</div>
         </div>`).join("")}
     </div>`;
 }
 
-/* ---------- errores ---------- */
-function renderErrores(){
-  if (!S.misses.length){
-    app.innerHTML = `<div class="empty">Nada pendiente.<br>Lo que falles aparece aquí y vuelve al principio de una lección.</div>`;
+/* ---------- memoria ---------- */
+function renderMemoria(){
+  const items = Object.values(S.srs);
+  if (!items.length){
+    app.innerHTML = `<div class="empty">Nada guardado todavía.<br>Lo que falles se queda aquí y vuelve mañana, después en dos días, cuatro, ocho, dieciséis.</div>`;
     return;
   }
-  const sorted = S.misses.slice().sort((a,b) => b.wrong - a.wrong);
+  const t = today();
+  const sorted = items.slice().sort((a,b) => (a.due < b.due ? -1 : a.due > b.due ? 1 : a.box - b.box));
+  const due = sorted.filter(i => i.due <= t).length;
+  const row = i => {
+    const title = i.kind === "pair" ? `${PAIRS[i.pairId].a} / ${PAIRS[i.pairId].b}` : i.model;
+    const sub = i.kind === "pair" ? "Distinguir de oído" : i.prompt;
+    const when = i.due <= t ? "hoy" : `en ${daysBetween(t, i.due)} d`;
+    return `
+      <div class="row">
+        <div class="l">
+          <div class="es">${esc(title)}</div>
+          <div class="en">${esc(sub)}</div>
+        </div>
+        <div class="r">${"●".repeat(i.box)}${"○".repeat(STEPS.length - i.box)}<br>${when}</div>
+      </div>`;
+  };
   app.innerHTML = `
     <div class="stack">
-      <p class="muted small" style="margin:0 0 8px">Cada uno vuelve al principio de una lección hasta que lo aciertes dos veces seguidas.</p>
-      <div class="card">
-        ${sorted.map(m => `
-          <div class="row">
-            <div class="l">
-              <div class="es">${esc(m.model)}</div>
-              <div class="en">${esc(m.prompt)}</div>
-              <div class="en" style="color:var(--ink-3);margin-top:4px">${esc(m.why)}</div>
-            </div>
-            <div class="r">${m.wrong}×<br>día ${m.day || "—"}</div>
-          </div>`).join("")}
-      </div>
+      <p class="muted small" style="margin:0 0 8px">${due ? `${due} para hoy. ` : ``}Cada acierto lo empuja más lejos: mañana, dos días, cuatro, ocho, dieciséis. Cinco puntos llenos y sale de la lista.</p>
+      <div class="card">${sorted.map(row).join("")}</div>
     </div>`;
 }
 
@@ -767,11 +1073,12 @@ function render(){
   paintStreak();
   if (view === "leccion") renderLesson();
   else if (view === "palabras") renderPalabras();
-  else if (view === "errores") renderErrores();
+  else if (view === "memoria") renderMemoria();
   else renderHome();
   window.scrollTo(0,0);
 }
 render();
+
 </script>
 
 <script>

@@ -1,4 +1,4 @@
-const CACHE = "esfam-3";
+const CACHE = "esfam-4";
 const SHELL = [
   "./",
   "index.html",
