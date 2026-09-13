@@ -236,24 +236,24 @@ const CURRICULUM = [
   {who:"Daniel",line:"¿Y te gusta? ¿O ya estás buscando otra cosa?",lineEn:"And do you like it? Or are you already looking for something else?",task:"Say you like it, though sometimes it's a lot of work.",model:"Sí, me gusta, aunque a veces es mucho trabajo.",accepts:["si me gusta aunque a veces es mucho trabajo","me gusta pero a veces es mucho trabajo","si me gusta aunque es mucho trabajo"],why:"«Aunque» = although. Using it instead of «pero» makes you sound a level up immediately."},
   {who:"Daniel",line:"Así es todo trabajo bueno. ¿Y Sofía también trabaja mucho?",lineEn:"That's every good job. And does Sofía work a lot too?",task:"Say yes, more than you.",model:"Sí, ella trabaja más que yo.",accepts:["si ella trabaja mas que yo","si trabaja mas que yo","ella trabaja mas que yo"],why:"«Más que yo» — after que you use the subject pronoun yo, not mí."}]},
 
-{day:4,title:"Quién es quién",focus:"el hermano de Sofía",
+{day:4,title:"Quién es quién",focus:"el plural que cubre a todos",
  vocab:[
-  {es:"mi cuñado / mi cuñada",en:"my brother-in-law / sister-in-law",ex:"El esposo de mi hermana es mi cuñado.",exEn:"My sister's husband is my brother-in-law."},
-  {es:"mis suegros",en:"my in-laws (the parents)",ex:"Voy a conocer a mis futuros suegros.",exEn:"I'm going to meet my future in-laws."},
-  {es:"mi sobrino / mi sobrina",en:"my nephew / niece",ex:"Mi sobrina tiene cuatro años.",exEn:"My niece is four."},
-  {es:"¿Cuántos hermanos son?",en:"How many siblings are there?",ex:"¿Cuántos hermanos son ustedes?",exEn:"How many of you siblings are there?"},
-  {es:"Soy el mayor.",en:"I'm the oldest.",ex:"Somos tres. Yo soy el mayor.",exEn:"There are three of us. I'm the oldest."}],
- grammar:{title:"There's no apostrophe-s. Use de.",
-  note:"«Sofía's brother» has no direct translation. You flip it: <b>el hermano de Sofía</b> — the brother of Sofía. Same for everything: la casa de sus papás, el perro de mi hermana. And <b>su</b> is dangerous: «su hermano» can mean his, her, your, or their brother. When it's ambiguous, say the name: «el hermano de ella».",
+  {es:"por parte de papá",en:"on my dad's side",ex:"Hernán y Valeria son mis hermanos por parte de papá.",exEn:"Hernán and Valeria are my siblings on my dad's side."},
+  {es:"mis sobrinos",en:"my nieces and nephews",ex:"Carla tiene cuatro hijos, así que tengo cuatro sobrinos.",exEn:"Carla has four kids, so I have four nieces and nephews."},
+  {es:"Somos cinco en total.",en:"There are five of us in all.",ex:"Con Sofía somos cinco en total.",exEn:"Counting Sofía there are five of us in all."},
+  {es:"la tía, la prima",en:"the aunt, the cousin",ex:"María es la tía de Sofía, la hermana de su mamá.",exEn:"María is Sofía's aunt, her mom's sister."},
+  {es:"¿Cuál de las dos?",en:"Which of the two?",ex:"Hay dos Zoe. ¿Cuál de las dos?",exEn:"There are two Zoes. Which one?"}],
+ grammar:{title:"One boy in the group and the whole word turns masculine",
+  note:"Carla's four are Zoe, Sienna, Emma and Ciro. Three girls, one boy, and in Spanish they are <b>los hijos</b> — never las hijas. A single masculine member flips the entire group: <i>hermanos</i> covers brothers and sisters together, <i>sobrinos</i> covers nieces and nephews, <i>primos</i> covers cousins of any mix, and <i>tíos</i> can mean an aunt and uncle as a pair. So «¿cuántos <b>hermanos</b> tienes?» is just asking about siblings. One more thing this family will make you use constantly: there is no apostrophe-s in Spanish. Carla's husband is <b>el esposo de Carla</b>.",
   drills:[
-   {q:"Sofía's mom is very nice.",a:"La mamá de Sofía es muy amable",alt:["la mama de sofia es muy amable","la mama de sofia es muy simpatica"],why:"De + name. Never Sofía's."},
-   {q:"That's my sister's dog.",a:"Ese es el perro de mi hermana",alt:["ese es el perro de mi hermana","es el perro de mi hermana"],why:"Same flip: the dog of my sister."}]},
+   {q:"Sofía's brother is named Christian.",a:"El hermano de Sofía se llama Christian",alt:["el hermano de sofia se llama christian","su hermano se llama christian"],why:"De + the name. Spanish flips it around: the brother of Sofía."},
+   {q:"Carla has four kids. (three girls and one boy)",a:"Carla tiene cuatro hijos",alt:["carla tiene cuatro hijos","tiene cuatro hijos"],why:"Hijos, not hijas. Ciro on his own makes the whole group masculine."}]},
  convo:[
-  {who:"Sara",line:"¿Y tú tienes hermanos, Griffin?",lineEn:"Do you have siblings, Griffin?",task:"Say there are three of you and you're the oldest.",model:"Somos tres. Yo soy el mayor.",accepts:["somos tres yo soy el mayor","somos tres y yo soy el mayor","tengo dos hermanos yo soy el mayor"],why:"«Somos tres» — Spanish counts the whole set including you. «Tengo dos hermanos» is also right, just a different frame."},
-  {who:"Sara",line:"¡Como Sofía! Ella también es la mayor. ¿Y tus papás dónde viven?",lineEn:"Like Sofía! She's the oldest too. And where do your parents live?",task:"Say they live in California.",model:"Viven en California.",accepts:["viven en california","ellos viven en california","mis papas viven en california"],why:"Drop the pronoun. «Ellos viven» isn't wrong, it's just heavier than it needs to be."},
-  {who:"Daniel",line:"Mira, ella es Carla, la hermana de Sofía, y él es Andrés, su esposo.",lineEn:"This is Carla, Sofía's sister, and Andrés, her husband.",task:"Say nice to meet you both.",model:"Mucho gusto a los dos.",accepts:["mucho gusto a los dos","mucho gusto a ambos","mucho gusto"],why:"«A los dos» = to you both. Small, but it shows you caught both introductions."},
-  {who:"Carla",line:"Ay, por fin te conocemos. Sofía no nos contaba nada de ti.",lineEn:"Finally we meet you. Sofía wasn't telling us anything about you.",task:"Joke that she talks about them constantly.",model:"Pues ella me habla de ustedes todo el tiempo.",accepts:["ella me habla de ustedes todo el tiempo","pues ella habla de ustedes todo el tiempo","ella me habla mucho de ustedes"],why:"«Ustedes» = you all, in Latin America. Never vosotros unless the family is Spanish."},
-  {who:"Carla",line:"Esa es mi hija, Lucía. Tiene cuatro años y no se calla nunca.",lineEn:"That's my daughter, Lucía. She's four and never stops talking.",task:"Say she's adorable, using the word for niece-by-marriage isn't needed — just react.",model:"Qué linda. ¿Ya habla mucho?",accepts:["que linda ya habla mucho","que linda","que hermosa ya habla mucho","que linda cuantos anos tiene"],why:"«Qué linda» is the reflex compliment for a kid. Match the gender: linda for a girl, lindo for a boy."}]},
+  {who:"Sara",line:"Te voy a presentar a todos, pero no te preocupes si no te acuerdas de los nombres.",lineEn:"I'm going to introduce you to everyone, but don't worry if you can't keep the names straight.",task:"Ask how many siblings there are in total.",model:"¿Cuántos hermanos son en total?",accepts:["cuantos hermanos son en total","cuantos hermanos son","cuantos hermanos hay en total"],why:"«Son», because Spanish counts them as a set rather than asking how many someone has."},
+  {who:"Carla",line:"Yo soy Carla. Hernán, Valeria y yo somos los mayores, por parte de papá.",lineEn:"I'm Carla. Hernán, Valeria and I are the older ones, on our dad's side.",task:"Say nice to meet her, then ask if Franco is her husband.",model:"Mucho gusto. ¿Y Franco es tu esposo?",accepts:["mucho gusto y franco es tu esposo","mucho gusto franco es tu esposo","mucho gusto es franco tu esposo"],why:"Tú with her, not usted. She's Sofía's sister and close to your age."},
+  {who:"Christian",line:"Y yo soy Christian, el hermano de Sofía. El que le presta el carro.",lineEn:"And I'm Christian, Sofía's brother. The one who lends her the car.",task:"Tell him she talks about him a lot.",model:"Ella me habla mucho de ti.",accepts:["ella me habla mucho de ti","me habla mucho de ti","sofia me habla mucho de ti"],why:"«De ti», never «de tú». After a preposition, tú turns into ti."},
+  {who:"Carla",line:"Y esos cuatro de allá son míos: Zoe, Ciro, Sienna y Emma.",lineEn:"And those four over there are mine: Zoe, Ciro, Sienna and Emma.",task:"Say four! and ask which one is the youngest.",model:"¡Cuatro! ¿Y cuál es la menor?",accepts:["cuatro y cual es la menor","cuatro cual es la menor","y cual es la menor"],why:"«Cuál» when you're picking one out of a group you both already know about."},
+  {who:"María",line:"Yo soy María, la hermana de Sara. Vine con mis hijas, Zoe y Natalie.",lineEn:"I'm María, Sara's sister. I came with my daughters, Zoe and Natalie.",task:"Say wait, two Zoes? and ask which is which.",model:"¿Dos Zoe? ¿Cuál es cuál?",accepts:["dos zoe cual es cual","espera dos zoe cual es cual","hay dos zoe cual es cual"],why:"«¿Cuál es cuál?» — which is which. Ask it out loud now or stay confused for three days."}]},
 
 {day:5,title:"Las preguntas que te van a hacer",focus:"esquivar con cortesía",
  vocab:[
@@ -445,7 +445,7 @@ CURRICULUM.push(
   {who:"Sara",line:"Ay, ya se van. Se me pasó volando el fin de semana.",lineEn:"Oh, you're leaving already. The weekend flew by.",task:"Say thank you so much for everything.",model:"Muchísimas gracias por todo, señora Sara.",accepts:["muchisimas gracias por todo","muchisimas gracias por todo sara","muchas gracias por todo sara"],why:"«Muchísimas» — the -ísimo again. It reads as sincere in a way «muchas» doesn't at a goodbye."},
   {who:"Sara",line:"No, gracias a ti por venir. ¿La pasaste bien?",lineEn:"No, thank you for coming. Did you have a good time?",task:"Say you had a great time with all of them.",model:"La pasé muy bien con ustedes.",accepts:["la pase muy bien con ustedes","la pase muy bien","la pase excelente con ustedes"],why:"«La pasé bien» — that «la» refers to nothing in particular. Just memorize the phrase whole."},
   {who:"Daniel",line:"Cuídense en el camino. Y vuelvan pronto, ¿oyeron?",lineEn:"Take care on the road. And come back soon, you hear?",task:"Say of course, and tell them they're invited to New York anytime.",model:"Claro que sí. Y ustedes están invitados a Nueva York cuando quieran.",accepts:["claro que si estan invitados a nueva york cuando quieran","claro y ustedes estan invitados a nueva york cuando quieran","por supuesto estan invitados a nueva york cuando quieran"],why:"Returning the invitation is the move. «Cuando quieran» — subjunctive again, because the visit hasn't happened."},
-  {who:"Carla",line:"Nos vemos, Griffin. Cuídate mucho.",lineEn:"See you, Griffin. Take good care.",task:"Say say hi to Lucía for you.",model:"Salúdame a Lucía.",accepts:["saludame a lucia","saludame a lucia de mi parte","dale un saludo a lucia"],why:"Carla is tú for you, so «salúdame». With Sara or Daniel it'd be «salúdeme»."},
+  {who:"Carla",line:"Nos vemos, Griffin. Cuídate mucho.",lineEn:"See you, Griffin. Take good care.",task:"Say say hi to Emma for you.",model:"Salúdame a Emma.",accepts:["saludame a emma","saludame a emma de mi parte","dale un saludo a emma"],why:"Carla is tú for you, so «salúdame». With Sara or Daniel it'd be «salúdeme»."},
   {who:"Sara",line:"Bueno, ya váyanse antes de que me ponga a llorar.",lineEn:"Alright, go before I start crying.",task:"Say goodbye with a wish — take care, and get some rest.",model:"Que les vaya bien. Y que descansen.",accepts:["que les vaya bien y que descansen","que les vaya bien","que les vaya bien que descansen"],why:"You made it. That's the sentence that leaves the door open for next time."}]}
 );
 </script>
@@ -498,13 +498,13 @@ const PALTECA = {
         "Difícil de explicar — de, not para. The difficulty belongs to the explaining."]},
 
 4:{pairs:["cana_cana","papa_papa"],
- input:{title:"Demasiados nombres",text:
-"Carla llega con su esposo Andrés y con Lucía, [la nena|the little girl], que tiene cuatro años y no se calla nunca.\n—Ella es Carla, la hermana de Sofía —dice Sara.\nGriffin ya [se perdió|got lost] con los nombres. Hay un cuñado, dos sobrinos, una tía que no vino y un primo que llega más tarde.\n—¿Y tú tienes hermanos? —pregunta Carla.\n—Somos tres. Yo soy el mayor.\n—¡Como Sofía! Ella también es la mayor.\nLucía [se esconde|hides] detrás de su mamá y mira a Griffin con [desconfianza|suspicion]."},
- hooks:["Cuñado sounds like it's been wedged in. That's the in-law who married into the middle of things.",
-        "Suegros — your partner's parents. One word for the whole pair.",
-        "Sobrino shares a root with sovereign — the small sovereign who rules your sister's house.",
-        "¿Cuántos hermanos son? — Spanish counts the whole set, you included. Somos tres.",
-        "Mayor is major. The major one is the oldest."]},
+ input:{title:"Dos Zoe",text:
+"La casa se llena en veinte minutos. Griffin [deja de contar|stops counting] en el séptimo nombre.\nPrimero llegan Hernán y Valeria, los hermanos mayores de Sofía por parte de papá. Después Carla con Franco y con cuatro niños: Zoe, Ciro, Sienna y Emma.\n—Y él es Christian, mi hermano —dice Sofía.\nMás tarde [aparece|shows up] María, la hermana de Sara, con sus dos hijas.\n—Ella también se llama Zoe —dice María, [señalando|pointing at] a la más alta.\nGriffin [levanta las cejas|raises his eyebrows].\n—¿Dos Zoe?\n—Dos Zoe —dice Sofía—. [Ya te acostumbrarás|You'll get used to it]."},
+ hooks:["Por parte de papá — on dad's side. Sorts the half siblings out without anyone having to make it a thing.",
+        "Sobrinos covers nieces and nephews at once. Ciro alone drags the whole word masculine.",
+        "Somos cinco. Spanish counts the set, and you're standing inside it.",
+        "Tía is aunt, tío is uncle, and tíos together means the two of them as a pair.",
+        "Cuál picks one out of a group you both already know. Qué asks what something even is."]},
 
 5:{pairs:["pero_pelo","hablo_hablo"],
  input:{title:"Con el café llegan las preguntas",text:
@@ -591,10 +591,10 @@ Object.assign(PALTECA, {
 
 14:{pairs:["cero_cerro","llevo_llevo"],
  input:{title:"Las maletas en la puerta",text:
-"El domingo llega demasiado rápido. Las maletas ya están en la puerta.\n—Ay, ya se van. [Se me pasó volando|It flew by on me] el fin de semana.\n—Muchísimas gracias por todo.\n—No, gracias a ti por venir. ¿La pasaste bien?\n—La pasé muy bien con ustedes.\nMiguel le da la mano y después lo abraza, que es distinto.\n—Cuídense en el camino. Y vuelvan pronto, ¿oyeron?\n—Claro que sí. Y ustedes están invitados a Nueva York cuando quieran.\nCarla lo abraza. —Nos vemos. Cuídate mucho.\n—Salúdame a Lucía.\nRosa ya tiene [los ojos rojos|red eyes].\n—Bueno, ya váyanse antes de que me ponga a llorar."},
+"El domingo llega demasiado rápido. Las maletas ya están en la puerta.\n—Ay, ya se van. [Se me pasó volando|It flew by on me] el fin de semana.\n—Muchísimas gracias por todo.\n—No, gracias a ti por venir. ¿La pasaste bien?\n—La pasé muy bien con ustedes.\nMiguel le da la mano y después lo abraza, que es distinto.\n—Cuídense en el camino. Y vuelvan pronto, ¿oyeron?\n—Claro que sí. Y ustedes están invitados a Nueva York cuando quieran.\nCarla lo abraza. —Nos vemos. Cuídate mucho.\n—Salúdame a Emma.\nRosa ya tiene [los ojos rojos|red eyes].\n—Bueno, ya váyanse antes de que me ponga a llorar."},
  hooks:["Muchísimas, not muchas. At a goodbye the -ísimo is what makes it read as sincere.",
         "La pasé bien — that la refers to nothing at all. Just memorize the phrase whole.",
-        "Salúdame a Lucía — greet Lucía for me. Salúdeme if you're on usted with them.",
+        "Salúdame a Emma — greet Emma for me. Salúdeme if you're on usted with them.",
         "Que les vaya bien is a shortened I hope it goes well. Every Spanish goodbye is a small blessing.",
         "Cuando quieran — subjunctive, because the visit hasn't happened yet."]}
 });
