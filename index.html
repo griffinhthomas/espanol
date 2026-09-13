@@ -603,6 +603,218 @@ Object.assign(PALTECA, {
 
 </script>
 <script>
+/* Days 15-21: Argentine Spanish, for Sofía. Voseo throughout. */
+Object.assign(PAIRS, {
+  tiene_tenes: {a:"tiene", b:"tenés", note:"Neutral Spanish and Argentine, side by side. The stress walks to the end and the vowel changes. He has, versus you have."},
+  habla_habla: {a:"habla", b:"hablá", note:"He speaks, versus Speak! The Argentine command drops the r off hablar and lands hard on the last syllable."},
+  sabe_sabes:  {a:"sabe", b:"sabés", note:"Same shift, different verb. She knows, versus you know."},
+  viene_veni:  {a:"viene", b:"vení", note:"He's coming, versus Come here! You'll hear vení about forty times a day."}
+});
+
+CURRICULUM.push(
+{day:15,title:"Vos, no tú",focus:"el voseo",
+ vocab:[
+  {es:"vos sos",en:"you are",ex:"Vos sos la única que me entiende.",exEn:"You're the only one who gets me."},
+  {es:"vos tenés",en:"you have",ex:"¿Vos tenés hambre o seguimos?",exEn:"Are you hungry or should we keep going?"},
+  {es:"decime",en:"tell me",ex:"Decime la verdad, no me importa.",exEn:"Tell me the truth, I don't mind."},
+  {es:"con vos",en:"with you",ex:"Quiero ir con vos, no sola.",exEn:"I want to go with you, not alone."},
+  {es:"dale",en:"okay / go ahead",ex:"Dale, nos vemos a las ocho.",exEn:"Okay, see you at eight."}],
+ grammar:{title:"Tú is dead. Long live vos.",
+  note:"Argentines use <b>vos</b> where the rest of the Spanish-speaking world uses tú, and the verb changes with it. Present tense is easy: take the infinitive, drop the r, stress the last syllable. hablar becomes <b>hablás</b>, tener becomes <b>tenés</b>, vivir becomes <b>vivís</b>. Ser is the one oddball: <b>sos</b>. Commands work the same way: decir becomes <b>decí</b>, venir becomes <b>vení</b>, mirar becomes <b>mirá</b>. And the two words that will give you away instantly: <b>contigo</b> and <b>ti</b> do not exist here. It's <b>con vos</b> and <b>para vos</b>, every time.",
+  drills:[
+   {q:"You're right. (to Sofía)",a:"Vos tenés razón",alt:["vos tenes razon","tenes razon"],why:"Tenés, not tienes. The stress moves to the end and the ie collapses to e."},
+   {q:"I want to go with you.",a:"Quiero ir con vos",alt:["quiero ir con vos","quiero ir con vos a mi"],why:"Con vos. Contigo is the single fastest way to sound like you learned from an app."}]},
+ convo:[
+  {who:"Sofía",line:"Nadie me habla así, amor. Nadie.",lineEn:"Nobody talks to me like that, babe. Nobody.",task:"Ask her how they do talk to her.",model:"¿Y cómo te hablan?",accepts:["y como te hablan","como te hablan","entonces como te hablan"],why:"Hablan is they, which doesn't change in Argentina. Only the tú forms move."},
+  {who:"Sofía",line:"«¿Vos tenés hambre?» Vos tenés. Vos sos. Vos querés. Probá.",lineEn:"Vos tenés hambre. Vos tenés. Vos sos. Vos querés. Try it.",task:"Ask her if she's hungry, in vos.",model:"¿Vos tenés hambre?",accepts:["vos tenes hambre","tenes hambre","y vos tenes hambre"],why:"Tenés. Your mouth wants tienes for about three weeks, then it stops."},
+  {who:"Sofía",line:"Ahí está. Y no me digas «contigo», por favor.",lineEn:"There you go. And please don't say contigo.",task:"Say you want to go with her, using con vos.",model:"Quiero ir con vos.",accepts:["quiero ir con vos","yo quiero ir con vos"],why:"Con vos. She will notice this one more than any conjugation."},
+  {who:"Sofía",line:"Mucho mejor. ¿Y sabés decir algo más en argentino?",lineEn:"Much better. Do you know how to say anything else in Argentine?",task:"Tell her she's the only one who understands you.",model:"Vos sos la única que me entiende.",accepts:["vos sos la unica que me entiende","sos la unica que me entiende","vos sos la unica"],why:"Sos, not eres. This is the one irregular you have to memorize outright."},
+  {who:"Sofía",line:"Ay. Ya sos medio argentino.",lineEn:"Aw. You're half Argentine already.",task:"Say okay, and tell her to teach you more.",model:"Dale. Enseñame más.",accepts:["dale ensename mas","dale ensename mas por favor","dale enseñame mas"],why:"Enseñame, the vos command with the pronoun stuck on the end. Not enséñame."}]},
+
+{day:16,title:"Cómo le hablás",focus:"te quiero y te amo",
+ vocab:[
+  {es:"mi amor",en:"my love (everyday, not dramatic)",ex:"Mi amor, ¿me pasás el agua?",exEn:"Babe, can you pass me the water?"},
+  {es:"gordi",en:"an Argentine pet name, nothing to do with size",ex:"Gordi, ya salí del laburo.",exEn:"Babe, I just got off work."},
+  {es:"Te extraño.",en:"I miss you.",ex:"Te extraño un montón.",exEn:"I miss you so much."},
+  {es:"Te quiero.",en:"I love you (warm, everyday)",ex:"Te quiero, bobo.",exEn:"Love you, dummy."},
+  {es:"un montón",en:"a ton, loads",ex:"Me gustó un montón.",exEn:"I liked it a lot."}],
+ grammar:{title:"Te quiero and te amo are not interchangeable",
+  note:"<b>Te quiero</b> is the everyday one. Warm, affectionate, said constantly, and it also works for close friends and family. <b>Te amo</b> is the heavy one, and Argentines do use it with a partner, but it carries real weight and it is not what you text about lunch. Start with te quiero and save te amo for when you mean the whole thing. One more thing: <b>gordi</b>, <b>gordo</b> and <b>gorda</b> are ordinary terms of affection in Argentina and carry no comment about anyone's body. Same with <b>negri</b>. If she calls you gordo, that is not a dig.",
+  drills:[
+   {q:"I miss you so much.",a:"Te extraño un montón",alt:["te extraño un monton","te extrano un monton","te extraño mucho"],why:"Extrañar is the verb everywhere. Un montón is the Argentine way to pile it on."},
+   {q:"Love you, babe. (the everyday one)",a:"Te quiero, mi amor",alt:["te quiero mi amor","te quiero amor","te quiero gordi"],why:"Te quiero, not te amo. Te amo in a lunch text lands strangely."}]},
+ convo:[
+  {who:"Sofía",line:"Che, ¿ya saliste del laburo?",lineEn:"Hey, are you off work yet?",task:"Say yes, and that you're on your way.",model:"Sí, ya salí. Voy para allá.",accepts:["si ya sali voy para alla","ya sali voy para alla","si ya sali ya voy"],why:"Laburo is work, and che is the all-purpose hey. Both are pure Argentine."},
+  {who:"Sofía",line:"Dale. Te espero en casa. ¿Comemos algo acá?",lineEn:"Okay. I'll wait for you at home. Should we eat here?",task:"Say that sounds great, and that you missed her today.",model:"Dale. Te extrañé hoy.",accepts:["dale te extrañe hoy","dale te extrane hoy","si dale te extrañe hoy"],why:"Te extrañé, past tense. Extrañar takes a direct object, so no de after it."},
+  {who:"Sofía",line:"Ay, gordi. Yo también.",lineEn:"Aw, babe. Me too.",task:"Tell her you love her, the everyday way.",model:"Te quiero.",accepts:["te quiero","te quiero mucho","te quiero gordi"],why:"Te quiero. Warm and normal. Te amo would be a different conversation."},
+  {who:"Sofía",line:"¿Sabés que sos lo mejor que me pasó?",lineEn:"Do you know you're the best thing that's happened to me?",task:"Say she's exaggerating, but that you like it.",model:"Estás exagerando, pero me gusta.",accepts:["estas exagerando pero me gusta","exageras pero me gusta","estas exagerando pero me encanta"],why:"Estás exagerando works. The vos form of exagerar is exagerás if you want it."},
+  {who:"Sofía",line:"No exagero nada. Vení rápido.",lineEn:"I'm not exaggerating at all. Come quick.",task:"Say you're coming now.",model:"Ya voy.",accepts:["ya voy","ya voy para alla","dale ya voy"],why:"Ya voy is the universal I'm on my way. Vení is her command form of venir."}]},
+
+{day:17,title:"Mensajes",focus:"los imperativos que vas a escribir todo el día",
+ vocab:[
+  {es:"¿Qué onda?",en:"What's up?",ex:"¿Qué onda, cómo venís?",exEn:"What's up, how's it going?"},
+  {es:"Avisame.",en:"Let me know.",ex:"Avisame cuando salgas.",exEn:"Let me know when you leave."},
+  {es:"Bancame.",en:"Hold on. / Wait for me.",ex:"Bancame cinco minutos.",exEn:"Give me five minutes."},
+  {es:"¿A qué hora salís?",en:"What time do you get out?",ex:"¿A qué hora salís hoy?",exEn:"What time are you done today?"},
+  {es:"Te espero.",en:"I'll wait for you.",ex:"Dale, te espero acá.",exEn:"Okay, I'll wait for you here."}],
+ grammar:{title:"Stick the pronoun on the end and you have a text message",
+  note:"Argentine commands to one person drop the r off the infinitive and take the stress at the end: avisar becomes <b>avisá</b>, bancar becomes <b>bancá</b>, mandar becomes <b>mandá</b>. Then the pronoun hooks straight onto the back: <b>avisame</b>, <b>bancame</b>, <b>mandame</b>, <b>llamame</b>, <b>decime</b>, <b>contame</b>. That's most of what you will ever type to her. Notice there's no written accent on avisame or bancame, because adding the me shifts where the stress naturally falls. And <b>bancar</b> is worth knowing beyond texting: <i>te banco</i> means I've got your back.",
+  drills:[
+   {q:"Let me know when you get there.",a:"Avisame cuando llegues",alt:["avisame cuando llegues","avisame cuando llegas"],why:"Cuando + subjunctive for something that hasn't happened. Argentines use llegues here, the tú form."},
+   {q:"Call me when you can.",a:"Llamame cuando puedas",alt:["llamame cuando puedas","llamame cuando podas"],why:"Llamame, not llámame. The added me moves the stress for you."}]},
+ convo:[
+  {who:"Sofía",line:"Che, ¿qué onda? ¿A qué hora salís?",lineEn:"Hey, what's up? What time do you get out?",task:"Say around seven, and ask her to let you know when she leaves.",model:"Como a las siete. Avisame cuando salgas.",accepts:["como a las siete avisame cuando salgas","a las siete avisame cuando salgas","como a las siete avisame"],why:"Como a las siete is around seven. Avisame is the text you'll send most."},
+  {who:"Sofía",line:"Dale. Estoy saliendo en diez.",lineEn:"Okay. I'm leaving in ten.",task:"Ask her to hold on, you're still at the office.",model:"Bancame, todavía estoy en la oficina.",accepts:["bancame todavia estoy en la oficina","bancame todavia estoy en el laburo","bancame un toque todavia estoy en la oficina"],why:"Bancame. No single English word covers it: hold on, wait up, bear with me."},
+  {who:"Sofía",line:"Bueno pero apurate que tengo hambre.",lineEn:"Fine but hurry up, I'm hungry.",task:"Say you're leaving now and you'll wait for her at the corner.",model:"Ya salgo. Te espero en la esquina.",accepts:["ya salgo te espero en la esquina","ya salgo y te espero en la esquina","ya voy te espero en la esquina"],why:"Te espero. Esperar takes the object directly, so never espero por vos."},
+  {who:"Sofía",line:"¿En la esquina de siempre?",lineEn:"The usual corner?",task:"Say yes, the usual one.",model:"Sí, la de siempre.",accepts:["si la de siempre","la de siempre","si en la de siempre"],why:"La de siempre. Spanish drops the noun and keeps the la, where English repeats one."},
+  {who:"Sofía",line:"Perfecto. Mandame un mensaje cuando llegues.",lineEn:"Perfect. Text me when you get there.",task:"Say okay, you'll let her know.",model:"Dale, te aviso.",accepts:["dale te aviso","dale te aviso cuando llegue","listo te aviso"],why:"Te aviso, present tense doing future work. Argentines rarely reach for avisaré."}]}
+);
+
+CURRICULUM.push(
+{day:18,title:"Piropos",focus:"encantar y el re",
+ vocab:[
+  {es:"Estás hermosa.",en:"You look beautiful.",ex:"Estás hermosa con ese vestido.",exEn:"You look beautiful in that dress."},
+  {es:"Me encantás.",en:"I'm crazy about you.",ex:"Me encantás, en serio.",exEn:"I'm crazy about you, seriously."},
+  {es:"Te queda bárbaro.",en:"That looks great on you.",ex:"Ese saco te queda bárbaro.",exEn:"That jacket looks great on you."},
+  {es:"Sos lo más.",en:"You're the best.",ex:"Sos lo más, de verdad.",exEn:"You're the best, really."},
+  {es:"re lindo",en:"really nice (re = very)",ex:"Fue un día re lindo.",exEn:"It was a really nice day."}],
+ grammar:{title:"Re, and the verbs that run backwards",
+  note:"<b>Re</b> is the Argentine volume knob and it goes in front of anything: <i>re lindo, re cansado, re bien, te re quiero</i>. Use it and you sound like you live there. Second thing: <b>encantar</b> works like gustar, backwards from English. You are not the one doing the liking. «<b>Me encantás</b>» is literally you enchant me, so the verb agrees with <i>her</i>, and the vos ending gives you encantás. Same shape in <b>te queda bárbaro</b>, where the jacket is doing the fitting, not her.",
+  drills:[
+   {q:"I'm crazy about you.",a:"Me encantás",alt:["me encantas","me encantás mucho"],why:"Encantás agrees with her, since she's the one doing the enchanting."},
+   {q:"That dress looks great on you.",a:"Ese vestido te queda bárbaro",alt:["ese vestido te queda barbaro","te queda barbaro ese vestido"],why:"The dress is the subject. It fits you well, rather than you wearing it well."}]},
+ convo:[
+  {who:"Sofía",line:"¿Me queda bien esto o me cambio?",lineEn:"Does this look okay on me or should I change?",task:"Tell her it looks great on her.",model:"Te queda bárbaro.",accepts:["te queda barbaro","te queda re bien","te queda barbaro en serio"],why:"Bárbaro is Argentine for great. Nothing to do with barbarians."},
+  {who:"Sofía",line:"¿Posta? No me estás diciendo eso para salir rápido.",lineEn:"For real? You're not just saying that so we can leave.",task:"Say for real, that she looks beautiful.",model:"Posta. Estás hermosa.",accepts:["posta estas hermosa","posta estas re linda","en serio estas hermosa"],why:"Posta means for real. Estás, not eres, because you mean right now in that dress."},
+  {who:"Sofía",line:"Bueno, dale. ¿Vamos?",lineEn:"Alright then. Shall we?",task:"Say yes, and that you're crazy about her.",model:"Vamos. Me encantás.",accepts:["vamos me encantas","dale vamos me encantas","si vamos me encantas"],why:"Me encantás. The ás ending is what makes it her and not a thing."},
+  {who:"Sofía",line:"Ay, pará. ¿Qué te pasa hoy?",lineEn:"Aw, stop. What's with you today?",task:"Say nothing, that it was just a really nice day.",model:"Nada, fue un día re lindo.",accepts:["nada fue un dia re lindo","nada fue un dia re lindo con vos","nada fue re lindo el dia"],why:"Re lindo. Drop the re and the sentence still works, it just sounds foreign."},
+  {who:"Sofía",line:"Sos un bobo. Vamos que llegamos tarde.",lineEn:"You're such a dork. Let's go, we're late.",task:"Tell her she's the best.",model:"Sos lo más.",accepts:["sos lo mas","vos sos lo mas","sos lo mas en serio"],why:"Sos lo más, literally you are the most. No noun needed."}]},
+
+{day:19,title:"Cuando se pelean",focus:"perdoname",
+ vocab:[
+  {es:"No me estás escuchando.",en:"You're not listening to me.",ex:"Pará, no me estás escuchando.",exEn:"Stop, you're not listening to me."},
+  {es:"Perdoname.",en:"I'm sorry. / Forgive me.",ex:"Perdoname, no quise decir eso.",exEn:"I'm sorry, I didn't mean that."},
+  {es:"Tenés razón.",en:"You're right.",ex:"Tenés razón, me pasé.",exEn:"You're right, I went too far."},
+  {es:"Me dolió.",en:"That hurt me.",ex:"Me dolió lo que dijiste.",exEn:"What you said hurt me."},
+  {es:"No te enojes.",en:"Don't be mad.",ex:"No te enojes, hablémoslo.",exEn:"Don't be mad, let's talk about it."}],
+ grammar:{title:"Perdoname does more work than lo siento",
+  note:"<b>Lo siento</b> is what you say when someone's dog dies. For something you did, Argentines say <b>perdoname</b> or <b>perdón</b>. It asks her for something, which is the point of an apology. Then there's <b>no quise decir eso</b>: quise is the preterite of querer, and in the negative it means I didn't mean to, rather than I didn't want to. Learn the whole phrase. And the softest thing you can say mid-argument is <b>hablémoslo</b>, let's talk it through, which puts the two of you on the same side of the problem.",
+  drills:[
+   {q:"I'm sorry, I didn't mean that.",a:"Perdoname, no quise decir eso",alt:["perdoname no quise decir eso","perdon no quise decir eso"],why:"Perdoname, not lo siento. And no quise is I didn't mean to, not I didn't want to."},
+   {q:"You're right, I went too far.",a:"Tenés razón, me pasé",alt:["tenes razon me pase","tenes razon me pase un poco"],why:"Pasarse is to overstep. Me pasé is exactly I went too far."}]},
+ convo:[
+  {who:"Sofía",line:"Pará. No me estás escuchando.",lineEn:"Stop. You're not listening to me.",task:"Say you are listening, but ask her to say it again.",model:"Te estoy escuchando. Decímelo otra vez.",accepts:["te estoy escuchando decimelo otra vez","si te estoy escuchando decimelo otra vez","te escucho decimelo otra vez"],why:"Decímelo, two pronouns hooked on the end of the vos command, in that order."},
+  {who:"Sofía",line:"Que me dolió lo que dijiste delante de mi hermana.",lineEn:"That what you said in front of my sister hurt me.",task:"Say you're sorry, that you didn't mean it that way.",model:"Perdoname, no quise decir eso.",accepts:["perdoname no quise decir eso","perdon no quise decir eso","perdoname no lo quise decir asi"],why:"Perdoname. Lo siento here would sound like you're offering condolences."},
+  {who:"Sofía",line:"Pero lo dijiste igual.",lineEn:"But you said it anyway.",task:"Admit she's right, that you went too far.",model:"Tenés razón, me pasé.",accepts:["tenes razon me pase","si tenes razon me pase","tenes razon la verdad me pase"],why:"Conceding fast in Spanish sounds the same as it does in English. It works."},
+  {who:"Sofía",line:"Bueno. Igual no quiero pelear ahora.",lineEn:"Fine. I don't want to fight right now anyway.",task:"Say don't be mad, and let's talk about it.",model:"No te enojes. Hablémoslo.",accepts:["no te enojes hablemoslo","no te enojes hablemos","no te enojes despues lo hablamos"],why:"Hablémoslo puts you both on the same side. Enojarse is to get mad, reflexive."},
+  {who:"Sofía",line:"Dale. Pero después, ¿sí?",lineEn:"Okay. But later, alright?",task:"Say okay, later, and that you love her.",model:"Dale, después. Te quiero.",accepts:["dale despues te quiero","dale despues te quiero mucho","listo despues te quiero"],why:"Don't skip the te quiero here. In Argentina it's how a fight gets closed."}]},
+
+{day:20,title:"Planes de dos",focus:"querés que + subjuntivo",
+ vocab:[
+  {es:"¿Te parece si...?",en:"How about we...?",ex:"¿Te parece si vamos en enero?",exEn:"How about we go in January?"},
+  {es:"No sé si estoy listo.",en:"I don't know if I'm ready.",ex:"No sé si estoy listo para eso.",exEn:"I don't know if I'm ready for that."},
+  {es:"Me da miedo.",en:"It scares me.",ex:"Me da miedo un poco, la verdad.",exEn:"It scares me a little, honestly."},
+  {es:"¿Vos qué querés?",en:"What do you want?",ex:"Dejá de preguntarme. ¿Vos qué querés?",exEn:"Stop asking me. What do you want?"},
+  {es:"Hablémoslo.",en:"Let's talk it through.",ex:"No decidamos hoy. Hablémoslo.",exEn:"Let's not decide today. Let's talk it through."}],
+ grammar:{title:"When you want her to do something, the verb bends",
+  note:"«<b>Querés que</b> + subjunctive» is the shape for wanting someone else to do something: <i>¿querés que vayamos?</i>, <i>¿querés que hable con ellos?</i>. English uses an infinitive here and Spanish refuses. One useful quirk: for the subjunctive, Argentines mostly use the ordinary tú forms rather than voseo ones, so it's <b>que tengas</b> and <b>que vengas</b>, not tengás and vengás. So the voseo you spent day 15 learning politely steps aside here.",
+  drills:[
+   {q:"Do you want me to talk to them?",a:"¿Querés que hable con ellos?",alt:["queres que hable con ellos","queres que yo hable con ellos"],why:"Querés que + subjunctive. Hable, not hablo, because you're talking about a wish."},
+   {q:"How about we go in January?",a:"¿Te parece si vamos en enero?",alt:["te parece si vamos en enero","que te parece si vamos en enero"],why:"After si you stay in the normal present. No subjunctive there."}]},
+ convo:[
+  {who:"Sofía",line:"Mi mamá preguntó otra vez si vamos para las fiestas.",lineEn:"My mom asked again if we're coming for the holidays.",task:"Ask what she wants to do.",model:"¿Y vos qué querés hacer?",accepts:["y vos que queres hacer","vos que queres hacer","que queres hacer vos"],why:"Querés. Putting vos in front adds emphasis, which is what you want here."},
+  {who:"Sofía",line:"Quiero ir. Pero también quiero que vos estés cómodo.",lineEn:"I want to go. But I also want you to be comfortable.",task:"Say you want to go too, and it scares you a little.",model:"Yo también quiero ir. Me da un poco de miedo.",accepts:["yo tambien quiero ir me da un poco de miedo","tambien quiero ir me da un poco de miedo","quiero ir pero me da un poco de miedo"],why:"Me da miedo, it gives me fear. Spanish hands the fear to the thing, not to you."},
+  {who:"Sofía",line:"¿Miedo de qué, bobo?",lineEn:"Scared of what, dummy?",task:"Say you don't know if you're ready for two weeks with her whole family.",model:"No sé si estoy listo para dos semanas con toda tu familia.",accepts:["no se si estoy listo para dos semanas con toda tu familia","no se si estoy listo para dos semanas con tu familia","no se si estoy listo para eso"],why:"Estar listo, not ser listo. Ser listo means clever."},
+  {who:"Sofía",line:"Nadie está listo para eso. Yo tampoco.",lineEn:"Nobody's ready for that. Me neither.",task:"Ask her if she wants you to talk to her mom.",model:"¿Querés que hable con tu mamá?",accepts:["queres que hable con tu mama","queres que yo hable con tu mama","queres que le hable a tu mama"],why:"Querés que + hable. The subjunctive shows up the second there are two people in the sentence."},
+  {who:"Sofía",line:"No, todavía no. Pensémoslo unos días.",lineEn:"No, not yet. Let's think about it for a few days.",task:"Say okay, let's talk it through this weekend.",model:"Dale. Hablémoslo el finde.",accepts:["dale hablemoslo el finde","dale hablemoslo este fin de semana","listo hablemoslo el finde"],why:"El finde is the Argentine short form of fin de semana. Everyone says it."}]},
+
+{day:21,title:"Las cosas grandes",focus:"después de cualquier preposición, vos",
+ vocab:[
+  {es:"Te amo.",en:"I love you. (the heavy one)",ex:"Te amo, en serio.",exEn:"I love you, really."},
+  {es:"Quiero estar con vos.",en:"I want to be with you.",ex:"Quiero estar con vos, y ya está.",exEn:"I want to be with you, and that's it."},
+  {es:"sin vos",en:"without you",ex:"No me imagino esto sin vos.",exEn:"I can't picture this without you."},
+  {es:"Te banco.",en:"I've got your back.",ex:"Hagas lo que hagas, te banco.",exEn:"Whatever you do, I've got your back."},
+  {es:"para siempre",en:"forever",ex:"No te lo digo por decir. Para siempre.",exEn:"I'm not just saying it. Forever."}],
+ grammar:{title:"Every preposition takes vos",
+  note:"You've been building this since day 15 and it lands here. <b>Con vos, sin vos, para vos, por vos, a vos</b>. Neutral Spanish would want conmigo, sin ti, para ti, and none of that exists in Argentina. There is no <i>convos</i> either, no squashed-together form. Two words, every time. The last one to learn whole is <b>bancar</b>: it means to support, to carry, to put up with, and <b>te banco</b> is one of the warmest things you can say to an Argentine. It means I'm with you on this, whatever it turns out to be.",
+  drills:[
+   {q:"I can't picture this without you.",a:"No me imagino esto sin vos",alt:["no me imagino esto sin vos","no me imagino esto sin vos la verdad"],why:"Sin vos. Sin ti would be correct in Madrid and wrong in her mouth."},
+   {q:"Whatever you do, I've got your back.",a:"Hagas lo que hagas, te banco",alt:["hagas lo que hagas te banco","hagas lo que hagas yo te banco"],why:"Hagas lo que hagas, the doubled subjunctive for whatever you do. Fixed pattern, learn it whole."}]},
+ convo:[
+  {who:"Sofía",line:"¿Puedo preguntarte algo y no te reís?",lineEn:"Can I ask you something and you won't laugh?",task:"Say of course, ask her what's wrong.",model:"Obvio. ¿Qué pasa?",accepts:["obvio que pasa","obvio que paso","claro que pasa"],why:"Obvio is the Argentine of course. Reís is the vos form of reírse."},
+  {who:"Sofía",line:"¿Vos te ves conmigo en cinco años?",lineEn:"Do you see yourself with me in five years?",task:"Say yes, that you can't picture this without her.",model:"Sí. No me imagino esto sin vos.",accepts:["si no me imagino esto sin vos","si no me imagino nada sin vos","si no me imagino esto sin vos para nada"],why:"She said conmigo, which is correct for her since the pronoun is first person. Your half is sin vos."},
+  {who:"Sofía",line:"No me digas eso si no lo sentís.",lineEn:"Don't say that to me if you don't mean it.",task:"Say you mean it, and that you want to be with her.",model:"Lo siento de verdad. Quiero estar con vos.",accepts:["lo siento de verdad quiero estar con vos","lo digo en serio quiero estar con vos","es verdad quiero estar con vos"],why:"Careful with lo siento. Alone it's an apology, but lo siento de verdad here means I truly feel it."},
+  {who:"Sofía",line:"¿Y si todo se va al carajo?",lineEn:"And if the whole thing falls apart?",task:"Say whatever happens, you've got her back.",model:"Pase lo que pase, te banco.",accepts:["pase lo que pase te banco","pase lo que pase yo te banco","pase lo que pase te banco siempre"],why:"Pase lo que pase, same doubled subjunctive as hagas lo que hagas. Whatever happens."},
+  {who:"Sofía",line:"Sos un boludo hermoso. Vení acá.",lineEn:"You're a beautiful idiot. Come here.",task:"Tell her you love her. The heavy one.",model:"Te amo.",accepts:["te amo","te amo sofia","te amo mucho"],why:"Now it's earned. Boludo between two people who love each other is affection, not an insult."}]}
+);
+
+Object.assign(PALTECA, {
+15:{pairs:["tiene_tenes","habla_habla"],
+ input:{title:"En el subte",text:
+"Van parados en el subte. Griffin [practica|practices] en voz baja.\n—¿Tú tienes hambre?\nSofía se ríe [con toda la boca|with her whole mouth].\n—Nadie me habla así, amor. Nadie.\n—¿Y cómo te hablan?\n—«¿Vos tenés hambre?» Vos tenés. Vos sos. Vos querés. [Probá|Try it].\n—¿Vos tenés hambre? —dice Griffin.\n—Ahí está. Y no me digas «contigo», por favor.\n—Quiero ir con vos.\n—Dale —dice ella, y le [aprieta la mano|squeezes his hand]—. Ya sos medio argentino."},
+ hooks:["Sos is the one you cannot derive. Memorize it alone: vos sos.",
+        "Tenés is tener with the r knocked off and the stress thrown to the end. Every -er verb does this.",
+        "Decime, not dime. The command drops the r, takes the accent, then the pronoun rides on the back.",
+        "Con vos. Contigo is the fastest way to sound like you learned Spanish from an app.",
+        "Dale carries okay, go ahead, sure, and let's go. You'll say it fifty times a day."]},
+
+16:{pairs:["sabe_sabes","viene_veni"],
+ input:{title:"Che, ¿ya saliste?",text:
+"El teléfono [vibra|buzzes] a las siete y diez.\n—Che, ¿ya saliste del [laburo|work]?\n—Sí, ya salí. Voy para allá.\n—Dale, te espero en casa. ¿Comemos algo acá?\n—Dale. Te extrañé hoy.\nPasan unos segundos.\n—Ay, gordi. Yo también.\nGriffin [se queda mirando|keeps staring at] la pantalla en la esquina de la calle, [con cara de idiota|with a stupid look on his face], hasta que cambia el semáforo."},
+ hooks:["Mi amor is ordinary in Argentina. Said across a kitchen, not whispered.",
+        "Gordi says nothing about anyone's body. It's pure affection, same as gordo and gorda.",
+        "Extrañar takes the object straight: te extraño. No de, no a.",
+        "Te quiero is the everyday one. Te amo is the heavy one. Don't mix them up in a lunch text.",
+        "Un montón. Argentines pile on with this instead of muchísimo."]},
+
+17:{pairs:["habla_habla","tiene_tenes"],
+ input:{title:"La esquina de siempre",text:
+"—Che, ¿qué onda? ¿A qué hora salís?\n—Como a las siete. Avisame cuando salgas.\n—Dale. Estoy saliendo en diez.\n—Bancame, todavía estoy en la oficina.\n—Bueno pero [apurate|hurry up] que tengo hambre.\n—Ya salgo. Te espero en la esquina.\n—¿En la esquina de siempre?\n—Sí, la de siempre.\n—Perfecto. Mandame un mensaje cuando llegues.\n—Dale, te aviso."},
+ hooks:["¿Qué onda? is what's up. Onda is vibe, and buena onda is the highest compliment.",
+        "Avisame. The single most useful text message in the language.",
+        "Bancame has no clean English word: hold on, wait up, bear with me, all at once.",
+        "Salís is the vos form of salir. Every -ir verb ends in ís.",
+        "Te espero. Esperar grabs the object directly, so esperar por vos is an English import."]},
+
+18:{pairs:["sabe_sabes","mesa_misa"],
+ input:{title:"¿Me queda bien esto?",text:
+"Sofía sale del cuarto y [se da una vuelta|does a spin].\n—¿Me queda bien esto o me cambio?\n—Te queda bárbaro.\n—¿Posta? No me estás diciendo eso para salir rápido.\n—Posta. Estás hermosa.\n—Bueno, dale. ¿Vamos?\n—Vamos. Me encantás.\nElla [se frena|stops short] en la puerta.\n—Ay, pará. ¿Qué te pasa hoy?\n—Nada. Fue un día re lindo.\n—Sos un bobo —dice ella, pero [no se mueve|doesn't move] de la puerta."},
+ hooks:["Re goes in front of anything: re lindo, re cansado, te re quiero. It's the Argentine volume knob.",
+        "Me encantás runs backwards. She's the one doing the enchanting, so the verb agrees with her.",
+        "Bárbaro means great. No barbarians involved.",
+        "Sos lo más is literally you are the most. Spanish leaves the noun out.",
+        "Posta means for real. Answer a compliment with posta and it lands as sincere."]},
+
+19:{pairs:["viene_veni","pero_perro"],
+ input:{title:"Delante de tu hermana",text:
+"—Pará. No me estás escuchando.\n—Te estoy escuchando.\n—Que me dolió lo que dijiste delante de mi hermana.\nGriffin [se queda callado|goes quiet] un segundo. Sabe exactamente qué dijo.\n—Perdoname. No quise decir eso.\n—Pero lo dijiste igual.\n—Tenés razón. Me pasé.\nSofía [suelta el aire|lets out her breath].\n—Bueno. Igual no quiero pelear ahora.\n—No te enojes. Hablémoslo.\n—Dale. Pero después, ¿sí?"},
+ hooks:["Perdoname asks her for something, which is what an apology is for. Lo siento just reports a feeling.",
+        "No quise decir eso is I didn't mean that. In the negative, quise stops meaning wanted.",
+        "Tenés razón. Conceding fast works the same in both languages.",
+        "Me dolió. The thing did the hurting, so the verb agrees with it, not with her.",
+        "Hablémoslo puts you both on the same side of the problem."]},
+
+20:{pairs:["tiene_tenes","papa_papa"],
+ input:{title:"Las fiestas",text:
+"—Mi mamá preguntó otra vez si vamos para las fiestas.\n—¿Y vos qué querés hacer?\n—Quiero ir. Pero también quiero que vos estés cómodo.\n—Yo también quiero ir. Me da un poco de miedo.\n—¿Miedo de qué, bobo?\n—No sé si estoy listo para dos semanas con toda tu familia.\nSofía [se ríe|laughs], pero [sin burlarse|without making fun of him].\n—Nadie está listo para eso. Yo tampoco.\n—¿Querés que hable con tu mamá?\n—No, todavía no. [Pensémoslo|Let's think about it] unos días."},
+ hooks:["Querés que + subjunctive whenever there are two people in the sentence.",
+        "Estar listo is ready. Ser listo is clever. Pick the wrong one and you've called yourself smart.",
+        "Me da miedo. Spanish hands the fear to the thing instead of putting it on you.",
+        "Putting vos in front of the verb adds weight: ¿vos qué querés? aims it right at her.",
+        "El finde. Nobody in Argentina says fin de semana when they're talking."]},
+
+21:{pairs:["habla_habla","cero_cerro"],
+ input:{title:"En cinco años",text:
+"Es tarde y están [tirados|sprawled] en el sillón.\n—¿Puedo preguntarte algo y no te reís?\n—Obvio. ¿Qué pasa?\n—¿Vos te ves conmigo en cinco años?\nGriffin no [tarda|take long] en contestar.\n—Sí. No me imagino esto sin vos.\n—No me digas eso si no lo sentís.\n—Lo siento de verdad. Quiero estar con vos.\n—¿Y si todo [se va al carajo|goes to hell]?\n—Pase lo que pase, te banco.\nSofía lo mira un rato largo.\n—Sos un boludo hermoso. Vení acá."},
+ hooks:["Con vos, sin vos, para vos, por vos. Every preposition, no exceptions, no squashed-together forms.",
+        "Te banco is one of the warmest things you can say in Argentina. I'm with you, whatever this turns out to be.",
+        "Pase lo que pase and hagas lo que hagas. Same doubled subjunctive, learn both whole.",
+        "Te amo carries real weight here. Save it and it means something.",
+        "Boludo between two people who love each other is affection. Between strangers it is not."]}
+});
+
+</script>
+<script>
 /* ---------- state ---------- */
 const KEY = "esfam-v2";
 const blank = {done:{}, streak:0, last:"", srs:{}};
@@ -630,28 +842,32 @@ function daysBetween(a,b){ return Math.round((new Date(b) - new Date(a)) / 86400
 function plusDays(n){ const d = new Date(); d.setDate(d.getDate()+n); return d.toISOString().slice(0,10); }
 
 /* ---------- the phone's Spanish voice ---------- */
-let VOICE = null;
+let VOICE = null, VOICE_AR = null;
+const isAR = d => Number(d) >= 15;
 function pickVoice(){
   if (!("speechSynthesis" in window)) return;
   const all = speechSynthesis.getVoices().filter(v => /^es/i.test(v.lang));
   // prefer Latin American Spanish, fall back to any Spanish at all
   VOICE = all.find(v => /es[-_](MX|US|419|CO|AR|CL|PE)/i.test(v.lang)) || all[0] || null;
+  // days 15-21 are Sofía's Spanish, so use an Argentine voice when the phone has one
+  VOICE_AR = all.find(v => /es[-_]AR/i.test(v.lang)) || null;
 }
 if ("speechSynthesis" in window){
   pickVoice();
   speechSynthesis.addEventListener("voiceschanged", () => { pickVoice(); if (view === "hoy") render(); });
 }
-function say(text, rate){
-  if (!VOICE) return;
+function say(text, rate, ar){
+  const v = (ar && VOICE_AR) ? VOICE_AR : VOICE;
+  if (!v) return;
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
-  u.voice = VOICE; u.lang = VOICE.lang; u.rate = rate ? Number(rate) : 0.92;
+  u.voice = v; u.lang = v.lang; u.rate = rate ? Number(rate) : 0.92;
   speechSynthesis.speak(u);
 }
 const SPK = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg>';
-function spk(text, rate, label){
+function spk(text, rate, label, ar){
   if (!VOICE) return "";
-  return `<button class="spk" data-say="${esc(text)}" data-rate="${rate||0.92}" aria-label="${label||"Escuchar"}">${SPK}</button>`;
+  return `<button class="spk" data-say="${esc(text)}" data-rate="${rate||0.92}"${ar ? ' data-ar="1"' : ''} aria-label="${label||"Escuchar"}">${SPK}</button>`;
 }
 
 /* ---------- text matching ---------- */
@@ -737,7 +953,7 @@ function scene(text){
 function paintStreak(){
   const el = document.getElementById("streak");
   const n = Object.keys(S.done).length;
-  el.innerHTML = S.streak ? `<b>${S.streak}</b> día${S.streak===1?"":"s"} seguidos · ${n}/14` : `${n}/14 lecciones`;
+  el.innerHTML = S.streak ? `<b>${S.streak}</b> día${S.streak===1?"":"s"} seguidos · ${n}/${CURRICULUM.length}` : `${n}/${CURRICULUM.length} lecciones`;
 }
 function setView(v){
   view = v;
@@ -753,7 +969,7 @@ document.getElementById("t-err").textContent = "Memoria";
 // one listener for every speaker button and every glossed word
 app.addEventListener("click", e => {
   const s = e.target.closest("[data-say]");
-  if (s) { say(s.dataset.say, s.dataset.rate); return; }
+  if (s) { say(s.dataset.say, s.dataset.rate, s.dataset.ar); return; }
   const g = e.target.closest(".gl");
   if (g) g.classList.toggle("on");
 });
@@ -773,7 +989,7 @@ function renderHome(){
       <div class="today">
         <div class="card stack">
           <div class="eyebrow">Terminaste el curso</div>
-          <h2 style="font-size:31px">Los catorce días, hechos.</h2>
+          <h2 style="font-size:31px">Los ${CURRICULUM.length} días, hechos.</h2>
           <p class="muted" style="margin:0">Ahora esto es tu gimnasio. Repite cualquier día, o deja que la memoria te traiga lo que toca.</p>
           ${due ? `<div class="btn-row"><button class="btn" id="go-rev">Repasar ${due}</button></div>` : ``}
           ${novoz}
@@ -786,7 +1002,7 @@ function renderHome(){
     app.innerHTML = `
       <div class="today">
         <div class="card stack">
-          <div class="daynum">Día ${l.day} de 14</div>
+          <div class="daynum">Día ${l.day} de ${CURRICULUM.length}</div>
           <h2 style="font-size:31px">${esc(l.title)}</h2>
           <p class="muted" style="margin:0">Primero lo escuchas y lo entiendes. Después lo dices tú.</p>
           <div style="font-size:15px">
@@ -854,6 +1070,7 @@ function nextBtn(text){
 
 function renderLesson(){
   const step = L.q[L.i];
+  const ar = isAR(step.day || L.day || 0);
 
   if (step.kind === "done"){
     const pct = L.total ? Math.round(100 * L.right / L.total) : 100;
@@ -878,7 +1095,7 @@ function renderLesson(){
       <div class="card">
         <div class="scene-h">
           <div style="font-family:var(--serif);font-size:20px">${esc(step.input.title)}</div>
-          ${spk(step.input.text.replace(/\[([^\]|]+)\|[^\]]+\]/g,"$1"), 0.85, "Escuchar la escena")}
+          ${spk(step.input.text.replace(/\[([^\]|]+)\|[^\]]+\]/g,"$1"), 0.85, "Escuchar la escena", ar)}
         </div>
         <div class="scene">${scene(step.input.text)}</div>
         <p class="muted small" style="margin:16px 0 0">Toca cualquier palabra subrayada para ver qué significa. Aquí no se califica nada--solo entiéndela.</p>
@@ -895,9 +1112,9 @@ function renderLesson(){
       <div class="card stack">
         ${step.vocab.map((v,i) => `
           <div class="word">
-            <div class="es">${esc(v.es)} ${spk(v.es, 0.9)}</div>
+            <div class="es">${esc(v.es)} ${spk(v.es, 0.9, "", ar)}</div>
             <div class="en">${esc(v.en)}</div>
-            <div class="ex">${esc(v.ex)} ${spk(v.ex, 0.9)}<i>${esc(v.exEn)}</i></div>
+            <div class="ex">${esc(v.ex)} ${spk(v.ex, 0.9, "", ar)}<i>${esc(v.exEn)}</i></div>
             <div class="hook">${esc(step.hooks[i])}</div>
           </div>`).join("")}
       </div>
@@ -928,7 +1145,7 @@ function renderLesson(){
       ${VOICE ? `
       <div class="card stack">
         <p class="muted small" style="margin:0">Una de estas dos. ¿Cuál oíste?</p>
-        <div class="btn-row"><button class="btn" data-say="${esc(p[which])}" data-rate="0.8">${SPK} Escuchar</button></div>
+        <div class="btn-row"><button class="btn" data-say="${esc(p[which])}" data-rate="0.8"${ar ? ' data-ar="1"' : ''}>${SPK} Escuchar</button></div>
         <div class="pair-opts">
           <button class="btn btn-quiet" data-pick="a">${esc(p.a)}</button>
           <button class="btn btn-quiet" data-pick="b">${esc(p.b)}</button>
@@ -938,7 +1155,7 @@ function renderLesson(){
       : `<div class="card"><p class="muted" style="margin:0">Esta parte necesita una voz en español en el teléfono. Ajustes › Accesibilidad › Contenido hablado › Voces › Español.</p></div>${nextBtn()}`}`;
 
     if (!VOICE){ document.getElementById("nx").onclick = advance; return; }
-    say(p[which], 0.8);
+    say(p[which], 0.8, ar);
     app.querySelectorAll("[data-pick]").forEach(b => b.onclick = () => {
       const ok = b.dataset.pick === which;
       L.total++;
@@ -950,8 +1167,8 @@ function renderLesson(){
           <div class="model">${esc(p[which])}</div>
           <div class="why">${esc(p.note)}</div>
           <div class="btn-row" style="margin-top:12px">
-            <button class="btn btn-quiet" data-say="${esc(p.a)}" data-rate="0.75">${SPK} ${esc(p.a)}</button>
-            <button class="btn btn-quiet" data-say="${esc(p.b)}" data-rate="0.75">${SPK} ${esc(p.b)}</button>
+            <button class="btn btn-quiet" data-say="${esc(p.a)}" data-rate="0.75"${ar ? ' data-ar="1"' : ''}>${SPK} ${esc(p.a)}</button>
+            <button class="btn btn-quiet" data-say="${esc(p.b)}" data-rate="0.75"${ar ? ' data-ar="1"' : ''}>${SPK} ${esc(p.b)}</button>
           </div>
         </div>
         ${nextBtn()}`;
@@ -966,7 +1183,7 @@ function renderLesson(){
     ${label(step)}
     <div class="turn">
       ${step.line ? `<div class="said" id="said">
-          <div class="who">${esc(step.who)} ${spk(step.line, 0.9)}</div>
+          <div class="who">${esc(step.who)} ${spk(step.line, 0.9, "", ar)}</div>
           <div class="es">${esc(step.line)}</div>
           <div class="en">${esc(step.lineEn)}</div>
         </div>
@@ -997,7 +1214,7 @@ function renderLesson(){
     document.getElementById("out").innerHTML = `
       <div class="verdict ${r}">
         ${tag}
-        <div class="model">${esc(step.model)} ${spk(step.model, 0.9)}</div>
+        <div class="model">${esc(step.model)} ${spk(step.model, 0.9, "", ar)}</div>
         <div class="why">${esc(step.why)}</div>
         ${r !== "ok" ? `<button class="linkish" id="mine">Lo que escribí también sirve</button>` : ``}
       </div>
@@ -1019,9 +1236,9 @@ function renderPalabras(){
     app.innerHTML = `<div class="empty">Todavía no hay nada aquí.<br>Termina el día 1 y tus palabras empiezan a acumularse.</div>`;
     return;
   }
-  const card = (v, hook) => `
+  const card = (v, hook, ar) => `
     <div class="word">
-      <div class="es">${esc(v.es)} ${spk(v.es, 0.9)}</div>
+      <div class="es">${esc(v.es)} ${spk(v.es, 0.9, "", ar)}</div>
       <div class="en">${esc(v.en)}</div>
       <div class="ex">${esc(v.ex)}<i>${esc(v.exEn)}</i></div>
       ${hook ? `<div class="hook">${esc(hook)}</div>` : ``}
@@ -1035,7 +1252,7 @@ function renderPalabras(){
       ${days.slice().reverse().map(l => `
         <div>
           <div class="sec-h"><div class="eyebrow">Día ${l.day} · ${esc(l.title)}</div></div>
-          <div class="card">${l.vocab.map((v,i) => card(v, PALTECA[l.day].hooks[i])).join("")}</div>
+          <div class="card">${l.vocab.map((v,i) => card(v, PALTECA[l.day].hooks[i], isAR(l.day))).join("")}</div>
         </div>`).join("")}
     </div>`;
 }
