@@ -73,5 +73,32 @@
       <guid isPermaLink="false">cero-ep07</guid>
       <pubDate>Wed, 07 Oct 2026 13:00:00 -0000</pubDate>
     </item>
+    <item>
+      <title>8. Verbos, parte dos</title>
+      <itunes:episode>8</itunes:episode>
+      <description>40 new words, a story built from them, and review of everything before. Story: On the subway, an older woman named Carmen sits next to Griffin and starts asking him questions. He understands more than he expects.</description>
+      <itunes:duration>29:58</itunes:duration>
+      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero08.mp3" length="10789637" type="audio/mpeg"/>
+      <guid isPermaLink="false">cero-ep08</guid>
+      <pubDate>Wed, 07 Oct 2026 14:00:00 -0000</pubDate>
+    </item>
+    <item>
+      <title>9. La ciudad</title>
+      <itunes:episode>9</itunes:episode>
+      <description>40 new words, a story built from them, and review of everything before. Story: A tourist named Rosa is lost in Manhattan. She asks Griffin for directions to a museum, and he gets her there, mostly.</description>
+      <itunes:duration>29:57</itunes:duration>
+      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero09.mp3" length="10784456" type="audio/mpeg"/>
+      <guid isPermaLink="false">cero-ep09</guid>
+      <pubDate>Wed, 07 Oct 2026 15:00:00 -0000</pubDate>
+    </item>
+    <item>
+      <title>10. Lo que pasó</title>
+      <itunes:episode>10</itunes:episode>
+      <description>40 new words, a story built from them, and review of everything before. Story: Griffin left Ana's party early. The next day Ana tells him everything he missed, and Marco did not have a good night.</description>
+      <itunes:duration>29:59</itunes:duration>
+      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero10.mp3" length="10797784" type="audio/mpeg"/>
+      <guid isPermaLink="false">cero-ep10</guid>
+      <pubDate>Wed, 07 Oct 2026 16:00:00 -0000</pubDate>
+    </item>
   </channel>
 </rss>
