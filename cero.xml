@@ -14,91 +14,46 @@
       <title>1. Lo primero</title>
       <itunes:episode>1</itunes:episode>
       <description>40 new words, a story built from them, and review of everything before. Story: Griffin bumps into a stranger at a coffee shop in New York. It turns out they're both waiting for the same coffee.</description>
-      <itunes:duration>30:02</itunes:duration>
-      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero01.mp3" length="10817372" type="audio/mpeg"/>
-      <guid isPermaLink="false">cero-ep01</guid>
+      <itunes:duration>30:03</itunes:duration>
+      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero01.mp3?v=2" length="10820663" type="audio/mpeg"/>
+      <guid isPermaLink="false">cero-ep01-v2</guid>
       <pubDate>Wed, 07 Oct 2026 07:00:00 -0000</pubDate>
     </item>
     <item>
       <title>2. Querer y poder</title>
       <itunes:episode>2</itunes:episode>
       <description>40 new words, a story built from them, and review of everything before. Story: It's Saturday. Griffin and his friend Marco can't decide what to do. Marco wants to go out, Griffin wants to eat.</description>
-      <itunes:duration>29:59</itunes:duration>
-      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero02.mp3" length="10798254" type="audio/mpeg"/>
-      <guid isPermaLink="false">cero-ep02</guid>
+      <itunes:duration>30:07</itunes:duration>
+      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero02.mp3?v=2" length="10843707" type="audio/mpeg"/>
+      <guid isPermaLink="false">cero-ep02-v2</guid>
       <pubDate>Wed, 07 Oct 2026 08:00:00 -0000</pubDate>
     </item>
     <item>
       <title>3. La gente</title>
       <itunes:episode>3</itunes:episode>
       <description>40 new words, a story built from them, and review of everything before. Story: At Ana's party, Ana walks Griffin around and introduces him to everyone, including her very large family.</description>
-      <itunes:duration>30:01</itunes:duration>
-      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero03.mp3" length="10807495" type="audio/mpeg"/>
-      <guid isPermaLink="false">cero-ep03</guid>
+      <itunes:duration>30:00</itunes:duration>
+      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero03.mp3?v=2" length="10804674" type="audio/mpeg"/>
+      <guid isPermaLink="false">cero-ep03-v2</guid>
       <pubDate>Wed, 07 Oct 2026 09:00:00 -0000</pubDate>
     </item>
     <item>
       <title>4. Números y tiempo</title>
       <itunes:episode>4</itunes:episode>
       <description>40 new words, a story built from them, and review of everything before. Story: Monday morning. Griffin is running late, the subway is stuck, and his boss Elena keeps texting.</description>
-      <itunes:duration>29:59</itunes:duration>
-      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero04.mp3" length="10797317" type="audio/mpeg"/>
-      <guid isPermaLink="false">cero-ep04</guid>
+      <itunes:duration>30:01</itunes:duration>
+      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero04.mp3?v=2" length="10810639" type="audio/mpeg"/>
+      <guid isPermaLink="false">cero-ep04-v2</guid>
       <pubDate>Wed, 07 Oct 2026 10:00:00 -0000</pubDate>
     </item>
     <item>
       <title>5. La comida</title>
       <itunes:episode>5</itunes:episode>
       <description>40 new words, a story built from them, and review of everything before. Story: Griffin and Marco go to a small Mexican restaurant. The waiter keeps bringing the wrong thing.</description>
-      <itunes:duration>29:59</itunes:duration>
-      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero05.mp3" length="10796211" type="audio/mpeg"/>
-      <guid isPermaLink="false">cero-ep05</guid>
+      <itunes:duration>30:03</itunes:duration>
+      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero05.mp3?v=2" length="10820819" type="audio/mpeg"/>
+      <guid isPermaLink="false">cero-ep05-v2</guid>
       <pubDate>Wed, 07 Oct 2026 11:00:00 -0000</pubDate>
-    </item>
-    <item>
-      <title>6. Cómo estás</title>
-      <itunes:episode>6</itunes:episode>
-      <description>40 new words, a story built from them, and review of everything before. Story: Monday at work. Griffin's coworker Luis asks about the weekend. Griffin is exhausted from Ana's party, and Luis has news.</description>
-      <itunes:duration>30:02</itunes:duration>
-      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero06.mp3" length="10813925" type="audio/mpeg"/>
-      <guid isPermaLink="false">cero-ep06</guid>
-      <pubDate>Wed, 07 Oct 2026 12:00:00 -0000</pubDate>
-    </item>
-    <item>
-      <title>7. Verbos, parte uno</title>
-      <itunes:episode>7</itunes:episode>
-      <description>40 new words, a story built from them, and review of everything before. Story: Marco grew up in Mexico and learned English as a kid. Griffin asks how, and Marco explains, which turns out to be the exact method this podcast uses.</description>
-      <itunes:duration>29:57</itunes:duration>
-      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero07.mp3" length="10782584" type="audio/mpeg"/>
-      <guid isPermaLink="false">cero-ep07</guid>
-      <pubDate>Wed, 07 Oct 2026 13:00:00 -0000</pubDate>
-    </item>
-    <item>
-      <title>8. Verbos, parte dos</title>
-      <itunes:episode>8</itunes:episode>
-      <description>40 new words, a story built from them, and review of everything before. Story: On the subway, an older woman named Carmen sits next to Griffin and starts asking him questions. He understands more than he expects.</description>
-      <itunes:duration>29:58</itunes:duration>
-      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero08.mp3" length="10789637" type="audio/mpeg"/>
-      <guid isPermaLink="false">cero-ep08</guid>
-      <pubDate>Wed, 07 Oct 2026 14:00:00 -0000</pubDate>
-    </item>
-    <item>
-      <title>9. La ciudad</title>
-      <itunes:episode>9</itunes:episode>
-      <description>40 new words, a story built from them, and review of everything before. Story: A tourist named Rosa is lost in Manhattan. She asks Griffin for directions to a museum, and he gets her there, mostly.</description>
-      <itunes:duration>29:57</itunes:duration>
-      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero09.mp3" length="10784456" type="audio/mpeg"/>
-      <guid isPermaLink="false">cero-ep09</guid>
-      <pubDate>Wed, 07 Oct 2026 15:00:00 -0000</pubDate>
-    </item>
-    <item>
-      <title>10. Lo que pasó</title>
-      <itunes:episode>10</itunes:episode>
-      <description>40 new words, a story built from them, and review of everything before. Story: Griffin left Ana's party early. The next day Ana tells him everything he missed, and Marco did not have a good night.</description>
-      <itunes:duration>29:59</itunes:duration>
-      <enclosure url="https://griffinhthomas.github.io/espanol/audio/cero/cero10.mp3" length="10797784" type="audio/mpeg"/>
-      <guid isPermaLink="false">cero-ep10</guid>
-      <pubDate>Wed, 07 Oct 2026 16:00:00 -0000</pubDate>
     </item>
   </channel>
 </rss>
