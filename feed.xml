@@ -14,27 +14,27 @@
       <title>1. Llegando a la casa</title>
       <itunes:episode>1</itunes:episode>
       <description>tú vs. usted. The scene, five words, one grammar point, the conversation, then everything from the days before it. Say your answers out loud in the gaps.</description>
-      <itunes:duration>29:39</itunes:duration>
-      <enclosure url="https://griffinhthomas.github.io/espanol/audio/ep01.mp3" length="10676023" type="audio/mpeg"/>
-      <guid isPermaLink="false">esfam-ep01</guid>
+      <itunes:duration>29:41</itunes:duration>
+      <enclosure url="https://griffinhthomas.github.io/espanol/audio/ep01.mp3?v=2" length="10688248" type="audio/mpeg"/>
+      <guid isPermaLink="false">esfam-ep01-v2</guid>
       <pubDate>Wed, 02 Sep 2026 06:00:00 -0000</pubDate>
     </item>
     <item>
       <title>2. En la mesa</title>
       <itunes:episode>2</itunes:episode>
       <description>ser vs. estar con comida. The scene, five words, one grammar point, the conversation, then everything from the days before it. Say your answers out loud in the gaps.</description>
-      <itunes:duration>29:48</itunes:duration>
-      <enclosure url="https://griffinhthomas.github.io/espanol/audio/ep02.mp3" length="10729305" type="audio/mpeg"/>
-      <guid isPermaLink="false">esfam-ep02</guid>
+      <itunes:duration>29:40</itunes:duration>
+      <enclosure url="https://griffinhthomas.github.io/espanol/audio/ep02.mp3?v=2" length="10681030" type="audio/mpeg"/>
+      <guid isPermaLink="false">esfam-ep02-v2</guid>
       <pubDate>Thu, 03 Sep 2026 06:00:00 -0000</pubDate>
     </item>
     <item>
       <title>3. Hablando de tu trabajo</title>
       <itunes:episode>3</itunes:episode>
       <description>llevar + tiempo. The scene, five words, one grammar point, the conversation, then everything from the days before it. Say your answers out loud in the gaps.</description>
-      <itunes:duration>29:43</itunes:duration>
-      <enclosure url="https://griffinhthomas.github.io/espanol/audio/ep03.mp3" length="10699380" type="audio/mpeg"/>
-      <guid isPermaLink="false">esfam-ep03</guid>
+      <itunes:duration>29:36</itunes:duration>
+      <enclosure url="https://griffinhthomas.github.io/espanol/audio/ep03.mp3?v=2" length="10657846" type="audio/mpeg"/>
+      <guid isPermaLink="false">esfam-ep03-v2</guid>
       <pubDate>Fri, 04 Sep 2026 06:00:00 -0000</pubDate>
     </item>
   </channel>
